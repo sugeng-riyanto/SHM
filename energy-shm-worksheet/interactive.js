@@ -558,46 +558,40 @@
   }
 
   // ================================================================
-  // Sliders
+  // Shared state (avoids reading back from DOM where range-clamping
+  // can corrupt values — notably Graph 9's ω slider range 10–45)
   // ================================================================
+  var S = { x0: 5, omega: 2, gamma: 0.3 };
+
+  function syncUI(param, val) {
+    var fmt = param === 'gamma' ? val.toFixed(2) : val.toFixed(1);
+    document.querySelectorAll('[data-display="' + param + '"]').forEach(function (el) {
+      el.textContent = fmt;
+    });
+    document.querySelectorAll('.param-slider[data-param="' + param + '"]').forEach(function (s) {
+      s.value = val;
+    });
+  }
+
+  function updateAll() {
+    updateGraph1(S.x0, 2);
+    updateGraph2(S.x0, 2, S.omega);
+    updateGraph3(S.x0, S.omega);
+    updateGraph4(S.gamma);
+    updateGraph5(S.gamma);
+    updateGraph6(S.gamma);
+    updateGraph7(S.x0, S.omega);
+    updateGraph8(S.gamma);
+    if (document.getElementById('graph9')) updateGraph9(S.omega);
+  }
+
   function setupSliders() {
-    function readParams() {
-      var vals = { x0: 5, omega: 2, gamma: 0.3 };
-      var seen = {};
-      document.querySelectorAll('.param-slider').forEach(function (s) {
-        var k = s.dataset.param;
-        if (!seen[k]) { seen[k] = true; vals[k] = parseFloat(s.value); }
-      });
-      return vals;
-    }
-
-    function syncParam(param, val) {
-      var fmt = param === 'gamma' ? val.toFixed(2) : val.toFixed(1);
-      document.querySelectorAll('[data-display="' + param + '"]').forEach(function (el) {
-        el.textContent = fmt;
-      });
-      document.querySelectorAll('.param-slider[data-param="' + param + '"]').forEach(function (s) {
-        s.value = val;
-      });
-    }
-
     document.querySelectorAll('.param-slider').forEach(function (slider) {
       slider.addEventListener('input', function () {
-        var param = this.dataset.param;
-        var val = parseFloat(this.value);
-        syncParam(param, val);
-        var p = readParams();
-        updateGraph1(p.x0, 2);
-        updateGraph2(p.x0, 2, p.omega);
-        updateGraph3(p.x0, p.omega);
-        updateGraph4(p.gamma);
-        updateGraph5(p.gamma);
-        updateGraph6(p.gamma);
-        updateGraph7(p.x0, p.omega);
-        updateGraph8(p.gamma);
-        if (document.getElementById('graph9')) {
-          updateGraph9(p.omega);
-        }
+        var k = this.dataset.param;
+        S[k] = parseFloat(this.value);
+        syncUI(k, S[k]);
+        updateAll();
       });
     });
   }
@@ -694,39 +688,23 @@
     setupSliders();
     setupZoom();
 
-    var p = { x0: 5, omega: 2, gamma: 0.3 };
-    var first = document.querySelector('.param-slider[data-param="x0"]');
-    if (first) p.x0 = parseFloat(first.value);
-    var firstO = document.querySelector('.param-slider[data-param="omega"]');
-    if (firstO) p.omega = parseFloat(firstO.value);
-    var firstG = document.querySelector('.param-slider[data-param="gamma"]');
-    if (firstG) p.gamma = parseFloat(firstG.value);
+    // Read initial values from first slider of each param
+    var el;
+    el = document.querySelector('.param-slider[data-param="x0"]');
+    if (el) S.x0 = parseFloat(el.value);
+    el = document.querySelector('.param-slider[data-param="omega"]');
+    if (el) S.omega = parseFloat(el.value);
+    el = document.querySelector('.param-slider[data-param="gamma"]');
+    if (el) S.gamma = parseFloat(el.value);
 
-    var fmt = p.gamma.toFixed(2);
-    document.querySelectorAll('[data-display="gamma"]').forEach(function (el) { el.textContent = fmt; });
-    document.querySelectorAll('[data-display="x0"]').forEach(function (el) { el.textContent = p.x0.toFixed(1); });
-    document.querySelectorAll('[data-display="omega"]').forEach(function (el) { el.textContent = p.omega.toFixed(1); });
-
-    syncAllSliders(p);
+    // Sync UI to state (this also sets Graph 9's slider, but the
+    // clamped value there does NOT contaminate S)
+    syncUI('x0', S.x0);
+    syncUI('omega', S.omega);
+    syncUI('gamma', S.gamma);
 
     // Force initial render with proper ranges
-    updateGraph1(p.x0, 2);
-    updateGraph2(p.x0, 2, p.omega);
-    updateGraph3(p.x0, p.omega);
-    updateGraph4(p.gamma);
-    updateGraph5(p.gamma);
-    updateGraph6(p.gamma);
-    updateGraph7(p.x0, p.omega);
-    updateGraph8(p.gamma);
-    if (document.getElementById('graph9')) {
-      updateGraph9(p.omega);
-    }
-  }
-
-  function syncAllSliders(p) {
-    document.querySelectorAll('.param-slider[data-param="x0"]').forEach(function (s) { s.value = p.x0; });
-    document.querySelectorAll('.param-slider[data-param="omega"]').forEach(function (s) { s.value = p.omega; });
-    document.querySelectorAll('.param-slider[data-param="gamma"]').forEach(function (s) { s.value = p.gamma; });
+    updateAll();
   }
 
   if (document.readyState === 'loading') {
