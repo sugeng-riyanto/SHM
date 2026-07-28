@@ -135,14 +135,14 @@
 
   <p>Differentiating with respect to time gives expressions for velocity and acceleration:</p>
 
-  <table class="data-table" style="min-width:75%;">
+  <div class="table-wrap"><table class="data-table" style="min-width:75%;">
     <tr><th>Quantity</th><th>Expression</th><th>Phase relative to x</th></tr>
     <tr><td><strong>Displacement</strong></td><td>x = x<sub>0</sub> sin(&omega;t)</td><td>&mdash;</td></tr>
     <tr><td><strong>Velocity</strong></td><td>v = &omega;x<sub>0</sub> cos(&omega;t) = &omega;x<sub>0</sub> sin(&omega;t + &pi;/2)</td><td>Leads displacement by &pi;/2 (T/4)</td></tr>
     <tr><td><strong>Acceleration</strong></td><td>a = &minus;&omega;&sup2;x<sub>0</sub> sin(&omega;t) = &omega;&sup2;x<sub>0</sub> sin(&omega;t + &pi;)</td><td>Opposes displacement (phase diff. &pi;)</td></tr>
     <tr><td><strong>Max. speed</strong></td><td>v<sub>max</sub> = &omega;x<sub>0</sub></td><td>At equilibrium (x = 0)</td></tr>
     <tr><td><strong>Max. acceleration</strong></td><td>a<sub>max</sub> = &omega;&sup2;x<sub>0</sub></td><td>At maximum displacement (x = &plusmn;x<sub>0</sub>)</td></tr>
-  </table>
+  </table></div>
 
   <div class="graph-container">
     <svg id="graph7" class="graph-svg" data-x0="-0.3" data-x1="6.5" data-y0="-14" data-y1="14" viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
@@ -298,7 +298,7 @@
   </div>
 
   <h3>4.3 Comparison Summary</h3>
-  <table class="data-table" style="min-width:80%;">
+  <div class="table-wrap"><table class="data-table" style="min-width:80%;">
     <tr><th>Property</th><th>Mass&ndash;Spring</th><th>Simple Pendulum</th></tr>
     <tr><td>Period</td><td>T = 2&pi;&radic;(m/k)</td><td>T = 2&pi;&radic;(L/g)</td></tr>
     <tr><td>Restoring mechanism</td><td>Elastic (spring)</td><td>Gravitational (weight component)</td></tr>
@@ -306,7 +306,7 @@
     <tr><td>Depends on gravity?</td><td>No</td><td>Yes (T &prop; 1/&radic;g)</td></tr>
     <tr><td>Amplitude limit?</td><td>Ideal spring: any amplitude (Hooke's law limit)</td><td>Small angles only (&theta; &lt; 10&deg; for &lt; 0.5% error)</td></tr>
     <tr><td>Applications</td><td>Suspension systems, seismometers, clock mechanisms</td><td>Pendulum clocks, measuring g, metronomes</td></tr>
-  </table>
+  </table></div>
 </section>
 
 <!-- ============================================================ -->
@@ -781,14 +781,14 @@
   </ul>
 
   <h3>3.3 Practical Examples of Resonance</h3>
-  <table class="data-table" style="min-width:85%;">
+  <div class="table-wrap"><table class="data-table" style="min-width:85%;">
     <tr><th>System</th><th>Driving frequency</th><th>Natural frequency</th><th>Observation</th></tr>
     <tr><td>Microwave oven</td><td>2.45 GHz</td><td>H<sub>2</sub>O molecular vibration</td><td>Water molecules absorb energy; food heats</td></tr>
     <tr><td>Pendulum clock</td><td>Escapement mechanism</td><td>Pendulum period</td><td>Amplitude maintained against friction</td></tr>
     <tr><td>Bridge (e.g. Tacoma Narrows)</td><td>Wind-induced vortices</td><td>Bridge structural mode</td><td>Large-amplitude oscillations &rarr; collapse</td></tr>
     <tr><td>Radio receiver</td><td>Incoming radio wave</td><td>LC circuit resonance</td><td>Selective amplification of target frequency</td></tr>
     <tr><td>Musical instrument</td><td>Vibrating string/air column</td><td>Standing wave mode</td><td>Sound amplification at harmonics</td></tr>
-  </table>
+  </table></div>
 
   <h3>3.4 Effect of Damping on the Resonance Curve</h3>
   <ul>
@@ -1010,7 +1010,7 @@
     <p class="q-header">Question 5 &mdash; Data Evaluation and Determination of Parameters</p>
     <p class="q-context">A student records the kinetic energy E<sub>k</sub> of a 50 g mass oscillating on a spring at various displacements x from equilibrium. The data are shown in the table.</p>
 
-    <table class="data-table">
+    <div class="table-wrap"><table class="data-table">
       <tr>
         <th>x / cm</th>
         <td>0.0</td><td>1.0</td><td>2.0</td><td>3.0</td><td>4.0</td><td>5.0</td>
@@ -1019,7 +1019,7 @@
         <th>E<sub>k</sub> / mJ</th>
         <td>45.0</td><td>42.8</td><td>36.0</td><td>24.5</td><td>8.0</td><td>0.0</td>
       </tr>
-    </table>
+    </table></div>
 
     <div class="q-part">
       <p><span class="cmd-word">(a) Plot</span> E<sub>k</sub> against x&sup2; on the grid below and determine the amplitude x<sub>0</sub> and angular frequency &omega;. <span class="marks">[4]</span></p>
@@ -1165,11 +1165,11 @@
   <p class="q-header">Question 7 &mdash; Phase Relationships in SHM</p>
   <p class="q-context">A particle executes SHM according to x = (4.0 cm) sin(3.0t). A student measures displacement and velocity simultaneously and records the following data:</p>
 
-  <table class="data-table">
+  <div class="table-wrap"><table class="data-table">
     <tr><th>t / s</th><td>0.00</td><td>0.26</td><td>0.52</td><td>0.79</td><td>1.05</td><td>1.31</td></tr>
     <tr><th>x / cm</th><td>0.00</td><td>2.83</td><td>4.00</td><td>2.83</td><td>0.00</td><td>&minus;2.83</td></tr>
     <tr><th>v / cm s<sup>&minus;1</sup></th><td>12.00</td><td>8.49</td><td>0.00</td><td>&minus;8.49</td><td>&minus;12.00</td><td>&minus;8.49</td></tr>
-  </table>
+  </table></div>
 
   <div class="q-part">
     <p><span class="cmd-word">(a) Verify</span> that the data are consistent with v = &omega;x<sub>0</sub> cos(&omega;t). Determine &omega; and x<sub>0</sub> from the data. <span class="marks">[3]</span></p>
@@ -1278,7 +1278,7 @@
 <!-- ============================================================ -->
 <section>
   <h2>10. Summary of Key Equations</h2>
-  <table class="data-table" style="min-width:70%;">
+  <div class="table-wrap"><table class="data-table" style="min-width:70%;">
     <tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>
     <tr><td>Definition of SHM</td><td>a = &minus;&omega;&sup2;x</td><td>Acceleration &prop; &minus;displacement</td></tr>
     <tr><td>Displacement</td><td>x = x<sub>0</sub> sin(&omega;t)</td><td>Or x = x<sub>0</sub> cos(&omega;t)</td></tr>
@@ -1292,7 +1292,7 @@
     <tr><td>Period (spring)</td><td>T = 2&pi;&radic;(m/k)</td><td>Independent of amplitude</td></tr>
     <tr><td>Period (pendulum)</td><td>T = 2&pi;&radic;(L/g)</td><td>Small-angle approximation</td></tr>
     <tr><td>Damped energy</td><td>E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup></td><td>&gamma; = damping constant</td></tr>
-  </table>
+  </table></div>
 </section>
 
 </main>

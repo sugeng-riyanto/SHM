@@ -62,9 +62,10 @@
     '.answer-space { min-height: 3cm; border-bottom: 1px dashed #ccc; margin: 0.2cm 0 0.5cm; }',
 
     /* Data table */
-    '.data-table { border-collapse: collapse; margin: 0.3cm auto; font-size: 10pt; }',
-    '.data-table th { background: #1a3a5c; color: #fff; padding: 0.2cm 0.4cm; text-align: center; }',
-    '.data-table td { padding: 0.15cm 0.4cm; border: 1px solid #d0d7de; text-align: center; }',
+    '.table-wrap { overflow-x: auto; }',
+    '.data-table { border-collapse: collapse; margin: 0; font-size: 10pt; min-width: 100%; }',
+    '.data-table th { background: #1a3a5c; color: #fff; padding: 0.2cm 0.4cm; text-align: center; white-space: nowrap; }',
+    '.data-table td { padding: 0.15cm 0.4cm; border: 1px solid #d0d7de; text-align: center; white-space: nowrap; }',
     '.data-table tr:nth-child(even) { background: #f0f4f8; }',
 
     /* Mark scheme appendix */
@@ -75,7 +76,7 @@
     '.appendix { page-break-before: always; }',
 
     /* Summary table */
-    '.summary-table { border-collapse: collapse; margin: 0.3cm auto; font-size: 10pt; width: 100%; }',
+    '.summary-table { border-collapse: collapse; margin: 0; font-size: 10pt; width: 100%; }',
     '.summary-table th { background: #1a3a5c; color: #fff; padding: 0.2cm 0.3cm; }',
     '.summary-table td { padding: 0.15cm 0.3cm; border: 1px solid #d0d7de; }',
 
