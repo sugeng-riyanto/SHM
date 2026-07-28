@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIE 9702 — Energy Interchange in SHM | Worksheet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="worksheet-header">
+  <h1>Energy Interchange in Simple Harmonic Motion</h1>
+  <p class="subtitle">Cambridge International AS &amp; A Level Physics &mdash; 9702/4 Oscillations</p>
+  <span class="syllabus-ref">Syllabus ref: 17.1 &middot; 17.2 &middot; 17.3</span>
+</header>
+
+<main>
+
+<!-- ============================================================ -->
+<!--  LEARNING OBJECTIVES                                         -->
+<!-- ============================================================ -->
+<section>
+  <h2>Learning Objectives</h2>
+  <ul class="objectives">
+    <li><span class="cmd">derive</span> the velocity&ndash;displacement relation for SHM using conservation of energy</li>
+    <li><span class="cmd">sketch</span> and <span class="cmd">interpret</span> graphs of E<sub>k</sub>, E<sub>p</sub> and E<sub>total</sub> against displacement and time</li>
+    <li><span class="cmd">explain</span> the interconversion between kinetic and potential energy during one complete oscillation</li>
+    <li><span class="cmd">evaluate</span> the effect of damping on the total mechanical energy of an oscillating system</li>
+    <li><span class="cmd">analyse</span> experimental data to determine oscillation parameters from energy measurements</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!--  SOCRATIC DERIVATION                                         -->
+<!-- ============================================================ -->
+<section>
+  <h2>1. Socratic Derivation: v = &plusmn;&omega;&radic;(x&#8320;&sup2; &minus; x&sup2;)</h2>
+  <p>We shall derive the velocity&ndash;displacement relation for a particle executing SHM using the principle of conservation of mechanical energy. Consider a mass&ndash;spring system with spring constant <em>k</em> and mass <em>m</em>, oscillating with amplitude <em>x</em><sub>0</sub>.</p>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 1</span>
+    <span class="prompt">&#9654; Write the total mechanical energy of the system at an arbitrary displacement <em>x</em> where the particle has velocity <em>v</em>.</span>
+    <span class="result">E<sub>total</sub> = &frac12;mv&sup2; + &frac12;kx&sup2;</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The total energy is the sum of kinetic energy (&frac12;mv&sup2;) and elastic potential energy (&frac12;kx&sup2;).</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 2</span>
+    <span class="prompt">&#9654; What is the velocity at the maximum displacement <em>x</em> = <em>x</em><sub>0</sub>? Hence write E<sub>total</sub> in terms of <em>k</em> and <em>x</em><sub>0</sub> only.</span>
+    <span class="result">At x = x<sub>0</sub>, v = 0 &nbsp;&rArr;&nbsp; E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2;</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">At the turning points the particle is momentarily at rest; all energy is stored as potential energy in the spring.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 3</span>
+    <span class="prompt">&#9654; Energy is conserved. Equate the two expressions for E<sub>total</sub>.</span>
+    <span class="result">&frac12;mv&sup2; + &frac12;kx&sup2; = &frac12;kx<sub>0</sub>&sup2;</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">No energy enters or leaves the system &mdash; mechanical energy is strictly conserved in ideal SHM.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 4</span>
+    <span class="prompt">&#9654; Multiply through by 2 and rearrange to isolate the term containing v&sup2;.</span>
+    <span class="result">mv&sup2; = kx<sub>0</sub>&sup2; &minus; kx&sup2; = k(x<sub>0</sub>&sup2; &minus; x&sup2;)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The kinetic energy term is now isolated. Divide by <em>m</em> to obtain v&sup2;.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 5</span>
+    <span class="prompt">&#9654; Divide by <em>m</em> to obtain an expression for v&sup2;.</span>
+    <span class="result">v&sup2; = (k/m)(x<sub>0</sub>&sup2; &minus; x&sup2;)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The ratio <em>k/m</em> governs the stiffness-to-inertia balance of the oscillator.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 6</span>
+    <span class="prompt">&#9654; Recall the defining relation for angular frequency in SHM: &omega;&sup2; = k/m. Substitute and take the square root.</span>
+    <span class="result">v&sup2; = &omega;&sup2;(x<sub>0</sub>&sup2; &minus; x&sup2;) &nbsp;&rArr;&nbsp; v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The &plusmn; sign indicates that the particle may be travelling in either direction (towards or away from equilibrium) at a given displacement.</span>
+  </div>
+
+  <div class="final-formula">
+    v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  KEY GRAPHS                                                  -->
+<!-- ============================================================ -->
+<section>
+  <h2>2. Key Graphical Representations</h2>
+
+  <div class="graph-grid">
+
+    <div class="graph-container">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+<rect width="620" height="400" fill="#fff" rx="4"/>
+<!-- Graph 1: Energy vs Displacement -->
+<defs><marker id="arr1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+<line x1="70.0" y1="40.0" x2="70.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="156.7" y1="40.0" x2="156.7" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="243.3" y1="40.0" x2="243.3" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="416.7" y1="40.0" x2="416.7" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="503.3" y1="40.0" x2="503.3" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="590.0" y1="40.0" x2="590.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="266.3" x2="590.0" y2="266.3" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="217.1" x2="590.0" y2="217.1" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="167.9" x2="590.0" y2="167.9" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="118.7" x2="590.0" y2="118.7" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="69.5" x2="590.0" y2="69.5" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="315.5" x2="590.0" y2="315.5" stroke="#333" stroke-width="1.5"/>
+<line x1="330.0" y1="40.0" x2="330.0" y2="345.0" stroke="#333" stroke-width="1.5"/>
+<line x1="70.0" y1="311.5" x2="70.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="70.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-6</text>
+<line x1="156.7" y1="311.5" x2="156.7" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="156.7" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-4</text>
+<line x1="243.3" y1="311.5" x2="243.3" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="243.3" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-2</text>
+<line x1="330.0" y1="311.5" x2="330.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="330.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">O</text>
+<line x1="416.7" y1="311.5" x2="416.7" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="416.7" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">2</text>
+<line x1="503.3" y1="311.5" x2="503.3" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="503.3" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">4</text>
+<line x1="590.0" y1="311.5" x2="590.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="590.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">6</text>
+<line x1="326.0" y1="266.3" x2="334.0" y2="266.3" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="270.3" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">5</text>
+<line x1="326.0" y1="217.1" x2="334.0" y2="217.1" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="221.1" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">10</text>
+<line x1="326.0" y1="167.9" x2="334.0" y2="167.9" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="171.9" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">15</text>
+<line x1="326.0" y1="118.7" x2="334.0" y2="118.7" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="122.7" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">20</text>
+<line x1="326.0" y1="69.5" x2="334.0" y2="69.5" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="73.5" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">25</text>
+<text x="330.0" y="385.0" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">displacement / cm </text>
+<text x="62.0" y="192.5" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">energy / mJ</text><!-- Ep curve -->
+<path d="M113.3,69.5 L117.7,79.3 L122.0,88.8 L126.3,98.1 L130.7,107.3 L135.0,116.3 L139.3,125.0 L143.7,133.6 L148.0,141.9 L152.3,150.1 L156.7,158.1 L161.0,165.8 L165.3,173.4 L169.7,180.8 L174.0,188.0 L178.3,195.0 L182.7,201.7 L187.0,208.3 L191.3,214.7 L195.7,220.9 L200.0,226.9 L204.3,232.7 L208.7,238.3 L213.0,243.8 L217.3,249.0 L221.7,254.0 L226.0,258.8 L230.3,263.4 L234.7,267.9 L239.0,272.1 L243.3,276.1 L247.7,280.0 L252.0,283.6 L256.3,287.1 L260.7,290.3 L265.0,293.3 L269.3,296.2 L273.7,298.9 L278.0,301.3 L282.3,303.6 L286.7,305.6 L291.0,307.5 L295.3,309.2 L299.7,310.7 L304.0,311.9 L308.3,313.0 L312.7,313.9 L317.0,314.6 L321.3,315.1 L325.7,315.4 L330.0,315.5 L334.3,315.4 L338.7,315.1 L343.0,314.6 L347.3,313.9 L351.7,313.0 L356.0,311.9 L360.3,310.7 L364.7,309.2 L369.0,307.5 L373.3,305.6 L377.7,303.6 L382.0,301.3 L386.3,298.9 L390.7,296.2 L395.0,293.3 L399.3,290.3 L403.7,287.1 L408.0,283.6 L412.3,280.0 L416.7,276.1 L421.0,272.1 L425.3,267.9 L429.7,263.4 L434.0,258.8 L438.3,254.0 L442.7,249.0 L447.0,243.8 L451.3,238.3 L455.7,232.7 L460.0,226.9 L464.3,220.9 L468.7,214.7 L473.0,208.3 L477.3,201.7 L481.7,195.0 L486.0,188.0 L490.3,180.8 L494.7,173.4 L499.0,165.8 L503.3,158.1 L507.7,150.1 L512.0,141.9 L516.3,133.6 L520.7,125.0 L525.0,116.3 L529.3,107.3 L533.7,98.1 L538.0,88.8 L542.3,79.3 L546.7,69.5" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>
+<!-- Ek curve -->
+<path d="M113.3,315.5 L117.7,305.7 L122.0,296.2 L126.3,286.9 L130.7,277.7 L135.0,268.8 L139.3,260.0 L143.7,251.4 L148.0,243.1 L152.3,234.9 L156.7,226.9 L161.0,219.2 L165.3,211.6 L169.7,204.2 L174.0,197.0 L178.3,190.0 L182.7,183.3 L187.0,176.7 L191.3,170.3 L195.7,164.1 L200.0,158.1 L204.3,152.3 L208.7,146.7 L213.0,141.2 L217.3,136.0 L221.7,131.0 L226.0,126.2 L230.3,121.6 L234.7,117.1 L239.0,112.9 L243.3,108.9 L247.7,105.0 L252.0,101.4 L256.3,98.0 L260.7,94.7 L265.0,91.7 L269.3,88.8 L273.7,86.1 L278.0,83.7 L282.3,81.4 L286.7,79.4 L291.0,77.5 L295.3,75.8 L299.7,74.3 L304.0,73.1 L308.3,72.0 L312.7,71.1 L317.0,70.4 L321.3,69.9 L325.7,69.6 L330.0,69.5 L334.3,69.6 L338.7,69.9 L343.0,70.4 L347.3,71.1 L351.7,72.0 L356.0,73.1 L360.3,74.3 L364.7,75.8 L369.0,77.5 L373.3,79.4 L377.7,81.4 L382.0,83.7 L386.3,86.1 L390.7,88.8 L395.0,91.7 L399.3,94.7 L403.7,98.0 L408.0,101.4 L412.3,105.0 L416.7,108.9 L421.0,112.9 L425.3,117.1 L429.7,121.6 L434.0,126.2 L438.3,131.0 L442.7,136.0 L447.0,141.2 L451.3,146.7 L455.7,152.3 L460.0,158.1 L464.3,164.1 L468.7,170.3 L473.0,176.7 L477.3,183.3 L481.7,190.0 L486.0,197.0 L490.3,204.2 L494.7,211.6 L499.0,219.2 L503.3,226.9 L507.7,234.9 L512.0,243.1 L516.3,251.4 L520.7,260.0 L525.0,268.8 L529.3,277.7 L533.7,286.9 L538.0,296.2 L542.3,305.7 L546.7,315.5" fill="none" stroke="#c44536" stroke-width="2.5"/>
+<!-- Etot curve -->
+<path d="M113.3,69.5 L546.7,69.5" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>
+<rect x="85" y="46" width="160" height="64" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>
+<line x1="93.0" y1="58.0" x2="123.0" y2="58.0" stroke="#1a7a3a" stroke-width="2.5"/><text x="129.0" y="62.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">E_p = ½kx²</text><line x1="93.0" y1="78.0" x2="123.0" y2="78.0" stroke="#c44536" stroke-width="2.5"/><text x="129.0" y="82.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">E_k = ½k(x₀² − x²)</text><line x1="93.0" y1="98.0" x2="123.0" y2="98.0" stroke="#2b6f9e" stroke-width="2"/><line x1="93" y1="98" x2="123" y2="98" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>
+<text x="129.0" y="102.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">E_total (constant)</text><line x1="546.7" y1="315.5" x2="546.7" y2="69.5" stroke="#999" stroke-width="0.8" stroke-dasharray="3,2"/><line x1="113.3" y1="315.5" x2="113.3" y2="69.5" stroke="#999" stroke-width="0.8" stroke-dasharray="3,2"/><text x="546.7" y="347.5" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">+x₀</text><text x="113.3" y="347.5" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">−x₀</text></svg>
+
+      <p class="caption">Fig. 1: Energy vs displacement. E<sub>p</sub> follows a parabolic curve, E<sub>k</sub> is an inverted parabola, and E<sub>total</sub> remains constant.</p>
+    </div>
+
+    <div class="graph-container">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+<rect width="620" height="400" fill="#fff" rx="4"/>
+<!-- Graph 2: Energy vs Time -->
+<defs><marker id="arr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+<line x1="179.5" y1="40.0" x2="179.5" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="247.9" y1="40.0" x2="247.9" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="316.3" y1="40.0" x2="316.3" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="384.7" y1="40.0" x2="384.7" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="453.2" y1="40.0" x2="453.2" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="521.6" y1="40.0" x2="521.6" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="590.0" y1="40.0" x2="590.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="266.3" x2="590.0" y2="266.3" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="217.1" x2="590.0" y2="217.1" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="167.9" x2="590.0" y2="167.9" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="118.7" x2="590.0" y2="118.7" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="69.5" x2="590.0" y2="69.5" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="315.5" x2="590.0" y2="315.5" stroke="#333" stroke-width="1.5"/>
+<line x1="111.1" y1="40.0" x2="111.1" y2="345.0" stroke="#333" stroke-width="1.5"/>
+<line x1="111.1" y1="311.5" x2="111.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="111.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">O</text>
+<line x1="179.5" y1="311.5" x2="179.5" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="179.5" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">0.5</text>
+<line x1="247.9" y1="311.5" x2="247.9" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="247.9" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">1</text>
+<line x1="316.3" y1="311.5" x2="316.3" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="316.3" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">1.5</text>
+<line x1="384.7" y1="311.5" x2="384.7" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="384.7" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">2</text>
+<line x1="453.2" y1="311.5" x2="453.2" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="453.2" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">2.5</text>
+<line x1="521.6" y1="311.5" x2="521.6" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="521.6" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">3</text>
+<line x1="590.0" y1="311.5" x2="590.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="590.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">3.5</text>
+<line x1="107.1" y1="266.3" x2="115.1" y2="266.3" stroke="#333" stroke-width="1"/>
+<text x="101.1" y="270.3" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">5</text>
+<line x1="107.1" y1="217.1" x2="115.1" y2="217.1" stroke="#333" stroke-width="1"/>
+<text x="101.1" y="221.1" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">10</text>
+<line x1="107.1" y1="167.9" x2="115.1" y2="167.9" stroke="#333" stroke-width="1"/>
+<text x="101.1" y="171.9" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">15</text>
+<line x1="107.1" y1="118.7" x2="115.1" y2="118.7" stroke="#333" stroke-width="1"/>
+<text x="101.1" y="122.7" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">20</text>
+<line x1="107.1" y1="69.5" x2="115.1" y2="69.5" stroke="#333" stroke-width="1"/>
+<text x="101.1" y="73.5" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">25</text>
+<text x="330.0" y="385.0" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">time / s </text>
+<text x="62.0" y="192.5" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">energy / mJ</text><path d="M111.1,315.5 L114.7,314.8 L118.4,312.7 L122.0,309.2 L125.6,304.5 L129.3,298.4 L132.9,291.1 L136.6,282.8 L140.2,273.4 L143.9,263.0 L147.5,251.9 L151.2,240.1 L154.8,227.8 L158.5,215.0 L162.1,202.0 L165.8,188.9 L169.4,175.8 L173.1,163.0 L176.7,150.4 L180.4,138.4 L184.0,126.9 L187.7,116.2 L191.3,106.4 L195.0,97.5 L198.6,89.7 L202.3,83.1 L205.9,77.8 L209.6,73.7 L213.2,71.0 L216.9,69.7 L220.5,69.7 L224.2,71.2 L227.8,74.0 L231.5,78.2 L235.1,83.7 L238.8,90.4 L242.4,98.3 L246.1,107.3 L249.7,117.2 L253.4,128.0 L257.0,139.5 L260.7,151.6 L264.3,164.2 L268.0,177.1 L271.6,190.2 L275.3,203.3 L278.9,216.2 L282.6,229.0 L286.2,241.3 L289.9,253.0 L293.5,264.1 L297.2,274.3 L300.8,283.6 L304.5,291.9 L308.1,299.0 L311.8,305.0 L315.4,309.6 L319.1,313.0 L322.7,314.9 L326.4,315.5 L330.0,314.6 L333.6,312.4 L337.3,308.8 L340.9,303.9 L344.6,297.8 L348.2,290.4 L351.9,281.9 L355.5,272.4 L359.2,262.0 L362.8,250.8 L366.5,239.0 L370.1,226.6 L373.8,213.8 L377.4,200.8 L381.1,187.7 L384.7,174.6 L388.4,161.8 L392.0,149.3 L395.7,137.2 L399.3,125.9 L403.0,115.2 L406.6,105.5 L410.3,96.7 L413.9,89.1 L417.6,82.6 L421.2,77.3 L424.9,73.4 L428.5,70.8 L432.2,69.6 L435.8,69.8 L439.5,71.4 L443.1,74.4 L446.8,78.7 L450.4,84.3 L454.1,91.1 L457.7,99.1 L461.4,108.2 L465.0,118.2 L468.7,129.0 L472.3,140.6 L476.0,152.8 L479.6,165.4 L483.3,178.3 L486.9,191.4 L490.6,204.5 L494.2,217.5 L497.9,230.1 L501.5,242.4 L505.2,254.1 L508.8,265.1 L512.5,275.2 L516.1,284.4 L519.8,292.6 L523.4,299.7 L527.1,305.5 L530.7,310.0 L534.4,313.2 L538.0,315.0 L541.6,315.5 L545.3,314.5 L548.9,312.1" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>
+<path d="M111.1,69.5 L114.7,70.2 L118.4,72.3 L122.0,75.8 L125.6,80.5 L129.3,86.6 L132.9,93.9 L136.6,102.2 L140.2,111.6 L143.9,122.0 L147.5,133.1 L151.2,144.9 L154.8,157.2 L158.5,170.0 L162.1,183.0 L165.8,196.1 L169.4,209.2 L173.1,222.0 L176.7,234.6 L180.4,246.6 L184.0,258.1 L187.7,268.8 L191.3,278.6 L195.0,287.5 L198.6,295.3 L202.3,301.9 L205.9,307.2 L209.6,311.3 L213.2,314.0 L216.9,315.3 L220.5,315.3 L224.2,313.8 L227.8,311.0 L231.5,306.8 L235.1,301.3 L238.8,294.6 L242.4,286.7 L246.1,277.7 L249.7,267.8 L253.4,257.0 L257.0,245.5 L260.7,233.4 L264.3,220.8 L268.0,207.9 L271.6,194.8 L275.3,181.7 L278.9,168.8 L282.6,156.0 L286.2,143.7 L289.9,132.0 L293.5,120.9 L297.2,110.7 L300.8,101.4 L304.5,93.1 L308.1,86.0 L311.8,80.0 L315.4,75.4 L319.1,72.0 L322.7,70.1 L326.4,69.5 L330.0,70.4 L333.6,72.6 L337.3,76.2 L340.9,81.1 L344.6,87.2 L348.2,94.6 L351.9,103.1 L355.5,112.6 L359.2,123.0 L362.8,134.2 L366.5,146.0 L370.1,158.4 L373.8,171.2 L377.4,184.2 L381.1,197.3 L384.7,210.4 L388.4,223.2 L392.0,235.7 L395.7,247.8 L399.3,259.1 L403.0,269.8 L406.6,279.5 L410.3,288.3 L413.9,295.9 L417.6,302.4 L421.2,307.7 L424.9,311.6 L428.5,314.2 L432.2,315.4 L435.8,315.2 L439.5,313.6 L443.1,310.6 L446.8,306.3 L450.4,300.7 L454.1,293.9 L457.7,285.9 L461.4,276.8 L465.0,266.8 L468.7,256.0 L472.3,244.4 L476.0,232.2 L479.6,219.6 L483.3,206.7 L486.9,193.6 L490.6,180.5 L494.2,167.5 L497.9,154.9 L501.5,142.6 L505.2,130.9 L508.8,119.9 L512.5,109.8 L516.1,100.6 L519.8,92.4 L523.4,85.3 L527.1,79.5 L530.7,75.0 L534.4,71.8 L538.0,70.0 L541.6,69.5 L545.3,70.5 L548.9,72.9" fill="none" stroke="#c44536" stroke-width="2.5"/>
+<rect x="85" y="46" width="160" height="44" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>
+<line x1="93.0" y1="58.0" x2="123.0" y2="58.0" stroke="#1a7a3a" stroke-width="2.5"/><text x="129.0" y="62.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">E_p = ½kx₀² sin²(ωt)</text><line x1="93.0" y1="78.0" x2="123.0" y2="78.0" stroke="#c44536" stroke-width="2.5"/><text x="129.0" y="82.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">E_k = ½kx₀² cos²(ωt)</text><line x1="218.5" y1="40.0" x2="218.5" y2="345.0" stroke="#999" stroke-width="0.8" stroke-dasharray="3,2"/><line x1="325.9" y1="40.0" x2="325.9" y2="345.0" stroke="#999" stroke-width="0.8" stroke-dasharray="3,2"/><text x="218.5" y="363.0" font-size="10" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">T/4</text><text x="325.9" y="363.0" font-size="10" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">T/2</text></svg>
+
+      <p class="caption">Fig. 2: Energy vs time. E<sub>p</sub> and E<sub>k</sub> oscillate at twice the frequency of the displacement, with a phase difference of &frac14;T between maxima.</p>
+    </div>
+
+    <div class="graph-container">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+<rect width="620" height="400" fill="#fff" rx="4"/>
+<!-- Graph 3: Velocity vs Displacement -->
+<defs><marker id="arr3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+<line x1="70.0" y1="40.0" x2="70.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="156.7" y1="40.0" x2="156.7" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="243.3" y1="40.0" x2="243.3" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="416.7" y1="40.0" x2="416.7" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="503.3" y1="40.0" x2="503.3" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="590.0" y1="40.0" x2="590.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="345.0" x2="590.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="294.2" x2="590.0" y2="294.2" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="243.3" x2="590.0" y2="243.3" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="141.7" x2="590.0" y2="141.7" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="90.8" x2="590.0" y2="90.8" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="40.0" x2="590.0" y2="40.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="192.5" x2="590.0" y2="192.5" stroke="#333" stroke-width="1.5"/>
+<line x1="330.0" y1="40.0" x2="330.0" y2="345.0" stroke="#333" stroke-width="1.5"/>
+<line x1="70.0" y1="188.5" x2="70.0" y2="196.5" stroke="#333" stroke-width="1"/>
+<text x="70.0" y="210.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-6</text>
+<line x1="156.7" y1="188.5" x2="156.7" y2="196.5" stroke="#333" stroke-width="1"/>
+<text x="156.7" y="210.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-4</text>
+<line x1="243.3" y1="188.5" x2="243.3" y2="196.5" stroke="#333" stroke-width="1"/>
+<text x="243.3" y="210.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-2</text>
+<line x1="330.0" y1="188.5" x2="330.0" y2="196.5" stroke="#333" stroke-width="1"/>
+<text x="330.0" y="210.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">O</text>
+<line x1="416.7" y1="188.5" x2="416.7" y2="196.5" stroke="#333" stroke-width="1"/>
+<text x="416.7" y="210.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">2</text>
+<line x1="503.3" y1="188.5" x2="503.3" y2="196.5" stroke="#333" stroke-width="1"/>
+<text x="503.3" y="210.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">4</text>
+<line x1="590.0" y1="188.5" x2="590.0" y2="196.5" stroke="#333" stroke-width="1"/>
+<text x="590.0" y="210.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">6</text>
+<line x1="326.0" y1="345.0" x2="334.0" y2="345.0" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="349.0" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-12</text>
+<line x1="326.0" y1="294.2" x2="334.0" y2="294.2" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="298.2" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-8</text>
+<line x1="326.0" y1="243.3" x2="334.0" y2="243.3" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="247.3" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-4</text>
+<line x1="326.0" y1="141.7" x2="334.0" y2="141.7" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="145.7" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">4</text>
+<line x1="326.0" y1="90.8" x2="334.0" y2="90.8" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="94.8" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">8</text>
+<line x1="326.0" y1="40.0" x2="334.0" y2="40.0" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="44.0" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">12</text>
+<text x="330.0" y="385.0" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">displacement / cm </text>
+<text x="62.0" y="192.5" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">velocity / cm s⁻¹</text><path d="M113.3,192.5 L118.8,164.3 L124.2,152.8 L129.6,144.2 L135.0,137.1 L140.4,131.0 L145.8,125.6 L151.3,120.7 L156.7,116.3 L162.1,112.2 L167.5,108.4 L172.9,105.0 L178.3,101.7 L183.8,98.7 L189.2,95.9 L194.6,93.3 L200.0,90.8 L205.4,88.5 L210.8,86.4 L216.3,84.3 L221.7,82.4 L227.1,80.7 L232.5,79.0 L237.9,77.5 L243.3,76.0 L248.8,74.7 L254.2,73.5 L259.6,72.3 L265.0,71.3 L270.4,70.3 L275.8,69.5 L281.3,68.7 L286.7,68.0 L292.1,67.4 L297.5,66.9 L302.9,66.4 L308.3,66.1 L313.8,65.8 L319.2,65.6 L324.6,65.5 L330.0,65.4 L335.4,65.5 L340.8,65.6 L346.3,65.8 L351.7,66.1 L357.1,66.4 L362.5,66.9 L367.9,67.4 L373.3,68.0 L378.8,68.7 L384.2,69.5 L389.6,70.3 L395.0,71.3 L400.4,72.3 L405.8,73.5 L411.3,74.7 L416.7,76.0 L422.1,77.5 L427.5,79.0 L432.9,80.7 L438.3,82.4 L443.8,84.3 L449.2,86.4 L454.6,88.5 L460.0,90.8 L465.4,93.3 L470.8,95.9 L476.3,98.7 L481.7,101.7 L487.1,105.0 L492.5,108.4 L497.9,112.2 L503.3,116.3 L508.8,120.7 L514.2,125.6 L519.6,131.0 L525.0,137.1 L530.4,144.2 L535.8,152.8 L541.3,164.3 L546.7,192.5" fill="none" stroke="#2b6f9e" stroke-width="2.5"/>
+<path d="M546.7,192.5 L541.3,220.7 L535.8,232.2 L530.4,240.8 L525.0,247.9 L519.6,254.0 L514.2,259.4 L508.8,264.3 L503.3,268.8 L497.9,272.8 L492.5,276.6 L487.1,280.0 L481.7,283.3 L476.3,286.3 L470.8,289.1 L465.4,291.7 L460.0,294.2 L454.6,296.5 L449.2,298.6 L443.8,300.7 L438.3,302.6 L432.9,304.3 L427.5,306.0 L422.1,307.5 L416.7,309.0 L411.3,310.3 L405.8,311.5 L400.4,312.7 L395.0,313.7 L389.6,314.7 L384.2,315.5 L378.8,316.3 L373.3,317.0 L367.9,317.6 L362.5,318.1 L357.1,318.6 L351.7,318.9 L346.3,319.2 L340.8,319.4 L335.4,319.5 L330.0,319.6 L324.6,319.5 L319.2,319.4 L313.8,319.2 L308.3,318.9 L302.9,318.6 L297.5,318.1 L292.1,317.6 L286.7,317.0 L281.3,316.3 L275.8,315.5 L270.4,314.7 L265.0,313.7 L259.6,312.7 L254.2,311.5 L248.8,310.3 L243.3,309.0 L237.9,307.5 L232.5,306.0 L227.1,304.3 L221.7,302.6 L216.3,300.7 L210.8,298.6 L205.4,296.5 L200.0,294.2 L194.6,291.7 L189.2,289.1 L183.8,286.3 L178.3,283.3 L172.9,280.0 L167.5,276.6 L162.1,272.8 L156.7,268.8 L151.3,264.3 L145.8,259.4 L140.4,254.0 L135.0,247.9 L129.6,240.8 L124.2,232.2 L118.8,220.7 L113.3,192.5" fill="none" stroke="#2b6f9e" stroke-width="2.5"/>
+<polygon points="325,63.416666666666686 330,57.416666666666686 335,63.416666666666686" fill="#2b6f9e"/>
+<polygon points="458,85.83333333333331 452,90.83333333333331 458,95.83333333333331" fill="#c44536"/>
+<rect x="85" y="46" width="170" height="44" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>
+<line x1="93.0" y1="58.0" x2="123.0" y2="58.0" stroke="#2b6f9e" stroke-width="2.5"/><text x="129.0" y="62.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">v = +ω√(x₀² − x²)</text><line x1="93.0" y1="78.0" x2="123.0" y2="78.0" stroke="#c44536" stroke-width="2.5"/><text x="129.0" y="82.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">v = −ω√(x₀² − x²)</text><text x="546.7" y="220.5" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">+x₀</text><text x="113.3" y="220.5" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">−x₀</text><text x="330.0" y="55.4" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">+ωx₀</text><text x="330.0" y="337.6" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">−ωx₀</text></svg>
+
+      <p class="caption">Fig. 3: Velocity vs displacement. The elliptical locus confirms the relation v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;). The arrow indicates the direction of motion.</p>
+    </div>
+
+    <div class="graph-container">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+<rect width="620" height="400" fill="#fff" rx="4"/>
+<!-- Graph 4: Damped Energy Envelope -->
+<defs><marker id="arr4" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+<line x1="186.1" y1="40.0" x2="186.1" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="287.1" y1="40.0" x2="287.1" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="388.1" y1="40.0" x2="388.1" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="489.0" y1="40.0" x2="489.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="590.0" y1="40.0" x2="590.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="266.3" x2="590.0" y2="266.3" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="217.1" x2="590.0" y2="217.1" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="167.9" x2="590.0" y2="167.9" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="118.7" x2="590.0" y2="118.7" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="69.5" x2="590.0" y2="69.5" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="315.5" x2="590.0" y2="315.5" stroke="#333" stroke-width="1.5"/>
+<line x1="85.1" y1="40.0" x2="85.1" y2="345.0" stroke="#333" stroke-width="1.5"/>
+<line x1="85.1" y1="311.5" x2="85.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="85.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">O</text>
+<line x1="186.1" y1="311.5" x2="186.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="186.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">2</text>
+<line x1="287.1" y1="311.5" x2="287.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="287.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">4</text>
+<line x1="388.1" y1="311.5" x2="388.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="388.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">6</text>
+<line x1="489.0" y1="311.5" x2="489.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="489.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">8</text>
+<line x1="590.0" y1="311.5" x2="590.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="590.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">10</text>
+<line x1="81.1" y1="266.3" x2="89.1" y2="266.3" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="270.3" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">5</text>
+<line x1="81.1" y1="217.1" x2="89.1" y2="217.1" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="221.1" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">10</text>
+<line x1="81.1" y1="167.9" x2="89.1" y2="167.9" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="171.9" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">15</text>
+<line x1="81.1" y1="118.7" x2="89.1" y2="118.7" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="122.7" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">20</text>
+<line x1="81.1" y1="69.5" x2="89.1" y2="69.5" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="73.5" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">25</text>
+<text x="330.0" y="385.0" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">time / s </text>
+<text x="62.0" y="192.5" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">energy / mJ</text><path d="M85.1,69.5 L90.2,76.8 L95.2,83.8 L100.3,90.7 L105.3,97.3 L110.4,103.8 L115.4,110.0 L120.5,116.1 L125.5,122.0 L130.6,127.7 L135.6,133.3 L140.7,138.7 L145.7,143.9 L150.8,148.9 L155.8,153.9 L160.9,158.6 L165.9,163.3 L171.0,167.8 L176.0,172.1 L181.1,176.4 L186.1,180.5 L191.2,184.5 L196.2,188.4 L201.3,192.1 L206.3,195.8 L211.4,199.3 L216.4,202.7 L221.5,206.1 L226.5,209.3 L231.6,212.4 L236.6,215.5 L241.7,218.4 L246.7,221.3 L251.7,224.1 L256.8,226.8 L261.8,229.4 L266.9,232.0 L271.9,234.4 L277.0,236.8 L282.0,239.1 L287.1,241.4 L292.1,243.6 L297.2,245.7 L302.2,247.8 L307.3,249.8 L312.3,251.7 L317.4,253.6 L322.4,255.4 L327.5,257.2 L332.5,258.9 L337.6,260.6 L342.6,262.2 L347.7,263.8 L352.7,265.3 L357.8,266.8 L362.8,268.2 L367.9,269.6 L372.9,271.0 L378.0,272.3 L383.0,273.6 L388.1,274.8 L393.1,276.0 L398.2,277.2 L403.2,278.3 L408.3,279.4 L413.3,280.5 L418.3,281.5 L423.4,282.5 L428.4,283.5 L433.5,284.4 L438.5,285.4 L443.6,286.3 L448.6,287.1 L453.7,288.0 L458.7,288.8 L463.8,289.6 L468.8,290.3 L473.9,291.1 L478.9,291.8 L484.0,292.5 L489.0,293.2 L494.1,293.8 L499.1,294.5 L504.2,295.1 L509.2,295.7 L514.3,296.3 L519.3,296.8 L524.4,297.4 L529.4,297.9 L534.5,298.5 L539.5,299.0 L544.6,299.4 L549.6,299.9 L554.7,300.4 L559.7,300.8 L564.8,301.3 L569.8,301.7 L574.9,302.1 L579.9,302.5 L585.0,302.9 L590.0,303.2" fill="none" stroke="#c44536" stroke-width="2.5"/>
+<path d="M85.1,69.5 L90.2,76.8 L95.2,83.8 L100.3,90.7 L105.3,97.3 L110.4,103.8 L115.4,110.0 L120.5,116.1 L125.5,122.0 L130.6,127.7 L135.6,133.3 L140.7,138.7 L145.7,143.9 L150.8,148.9 L155.8,153.9 L160.9,158.6 L165.9,163.3 L171.0,167.8 L176.0,172.1 L181.1,176.4 L186.1,180.5 L191.2,184.5 L196.2,188.4 L201.3,192.1 L206.3,195.8 L211.4,199.3 L216.4,202.7 L221.5,206.1 L226.5,209.3 L231.6,212.4 L236.6,215.5 L241.7,218.4 L246.7,221.3 L251.7,224.1 L256.8,226.8 L261.8,229.4 L266.9,232.0 L271.9,234.4 L277.0,236.8 L282.0,239.1 L287.1,241.4 L292.1,243.6 L297.2,245.7 L302.2,247.8 L307.3,249.8 L312.3,251.7 L317.4,253.6 L322.4,255.4 L327.5,257.2 L332.5,258.9 L337.6,260.6 L342.6,262.2 L347.7,263.8 L352.7,265.3 L357.8,266.8 L362.8,268.2 L367.9,269.6 L372.9,271.0 L378.0,272.3 L383.0,273.6 L388.1,274.8 L393.1,276.0 L398.2,277.2 L403.2,278.3 L408.3,279.4 L413.3,280.5 L418.3,281.5 L423.4,282.5 L428.4,283.5 L433.5,284.4 L438.5,285.4 L443.6,286.3 L448.6,287.1 L453.7,288.0 L458.7,288.8 L463.8,289.6 L468.8,290.3 L473.9,291.1 L478.9,291.8 L484.0,292.5 L489.0,293.2 L494.1,293.8 L499.1,294.5 L504.2,295.1 L509.2,295.7 L514.3,296.3 L519.3,296.8 L524.4,297.4 L529.4,297.9 L534.5,298.5 L539.5,299.0 L544.6,299.4 L549.6,299.9 L554.7,300.4 L559.7,300.8 L564.8,301.3 L569.8,301.7 L574.9,302.1 L579.9,302.5 L585.0,302.9 L590.0,303.2" fill="none" stroke="#c44536" stroke-width="1" stroke-dasharray="2,2" opacity="0.3"/>
+<path d="M85.1,69.5 L87.7,82.7 L90.2,113.0 L92.7,155.3 L95.2,203.0 L97.8,248.9 L100.3,286.0 L102.8,309.1 L105.3,315.3 L107.9,304.4 L110.4,278.8 L112.9,243.3 L115.4,203.8 L118.0,166.9 L120.5,138.5 L123.0,123.0 L125.5,122.7 L128.1,137.3 L130.6,164.5 L133.1,199.8 L135.6,237.6 L138.2,272.3 L140.7,298.8 L143.2,313.3 L145.7,314.2 L148.3,301.9 L150.8,278.9 L153.3,249.4 L155.8,218.3 L158.3,190.6 L160.9,170.9 L163.4,162.0 L165.9,165.4 L168.4,180.1 L171.0,203.8 L173.5,232.8 L176.0,262.4 L178.5,288.3 L181.1,306.7 L183.6,315.1 L186.1,312.6 L188.6,300.2 L191.2,280.2 L193.7,256.0 L196.2,231.8 L198.7,211.5 L201.3,198.2 L203.8,194.0 L206.3,199.4 L208.8,213.4 L211.4,233.7 L213.9,257.1 L216.4,280.0 L218.9,299.0 L221.5,311.4 L224.0,315.5 L226.5,311.1 L229.0,299.3 L231.6,282.2 L234.1,262.8 L236.6,244.3 L239.1,229.6 L241.7,221.1 L244.2,220.0 L246.7,226.4 L249.2,239.1 L251.7,256.1 L254.3,274.8 L256.8,292.3 L259.3,305.9 L261.8,313.9 L264.4,315.1 L266.9,309.8 L269.4,299.1 L271.9,284.8 L274.5,269.4 L277.0,255.4 L279.5,245.1 L282.0,240.0 L284.6,240.9 L287.1,247.5 L289.6,258.8 L292.1,272.9 L294.7,287.6 L297.2,300.7 L299.7,310.3 L302.2,315.1 L304.8,314.5 L307.3,308.9 L309.8,299.4 L312.3,287.7 L314.9,275.6 L317.4,265.3 L319.9,258.2 L322.4,255.6 L325.0,257.7 L327.5,264.1 L330.0,273.8 L332.5,285.2 L335.0,296.7 L337.6,306.3 L340.1,312.9 L342.6,315.5 L345.1,313.8 L347.7,308.4 L350.2,300.2 L352.7,290.7 L355.2,281.4 L357.8,273.9 L360.3,269.3 L362.8,268.2 L365.3,270.9 L367.9,276.9 L370.4,285.1 L372.9,294.3 L375.4,303.0 L378.0,310.1 L380.5,314.4 L383.0,315.4 L385.5,313.2 L388.1,308.2 L390.6,301.3 L393.1,293.7 L395.6,286.6 L398.2,281.3 L400.7,278.4 L403.2,278.5 L405.7,281.4 L408.3,286.7 L410.8,293.6 L413.3,300.8 L415.8,307.5 L418.3,312.4 L420.9,315.1 L423.4,315.2 L425.9,312.7 L428.4,308.2 L431.0,302.5 L433.5,296.5 L436.0,291.3 L438.5,287.6 L441.1,286.0 L443.6,286.7 L446.1,289.6 L448.6,294.3 L451.2,299.8 L453.7,305.5 L456.2,310.5 L458.7,313.9 L461.3,315.4 L463.8,314.9 L466.3,312.4 L468.8,308.5 L471.4,303.8 L473.9,299.2 L476.4,295.4 L478.9,292.9 L481.5,292.1 L484.0,293.3 L486.5,296.0 L489.0,300.0 L491.6,304.5 L494.1,308.8 L496.6,312.4 L499.1,314.8 L501.7,315.5 L504.2,314.6 L506.7,312.2 L509.2,308.9 L511.7,305.2 L514.3,301.7 L516.8,298.9 L519.3,297.3 L521.8,297.2 L524.4,298.4 L526.9,300.9 L529.4,304.2 L531.9,307.8 L534.5,311.2 L537.0,313.7 L539.5,315.2 L542.0,315.4 L544.6,314.3 L547.1,312.2 L549.6,309.5 L552.1,306.5 L554.7,303.8 L557.2,301.9 L559.7,301.0 L562.2,301.2 L564.8,302.5 L567.3,304.7 L569.8,307.4 L572.3,310.2 L574.9,312.7 L577.4,314.5 L579.9,315.4 L582.4,315.3 L585.0,314.2 L587.5,312.3 L590.0,310.0" fill="none" stroke="#2b6f9e" stroke-width="1.2" opacity="0.5"/>
+<rect x="85" y="46" width="195" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>
+<line x1="93.0" y1="58.0" x2="123.0" y2="58.0" stroke="#c44536" stroke-width="2.5"/><text x="129.0" y="62.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Eₜₒₜ(t) = E₀ e⁻γᵗ  (envelope)</text><line x1="93.0" y1="78.0" x2="123.0" y2="78.0" stroke="#2b6f9e" stroke-width="1.5"/><text x="129.0" y="82.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Instantaneous E (oscillatory)</text><text x="93.0" y="98.0" font-size="10" text-anchor="start" fill="#888" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">γ = damping coefficient</text></svg>
+
+      <p class="caption">Fig. 4: Damped oscillation. The total energy envelope decays exponentially as E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup>. The instantaneous energy oscillates within this envelope.</p>
+    </div>
+
+    <div class="graph-container">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+<rect width="620" height="400" fill="#fff" rx="4"/>
+<!-- Graph 6: HOTS Damped vs Undamped -->
+<defs><marker id="arr6" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+<line x1="186.1" y1="40.0" x2="186.1" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="287.1" y1="40.0" x2="287.1" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="388.1" y1="40.0" x2="388.1" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="489.0" y1="40.0" x2="489.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="590.0" y1="40.0" x2="590.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="266.3" x2="590.0" y2="266.3" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="217.1" x2="590.0" y2="217.1" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="167.9" x2="590.0" y2="167.9" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="118.7" x2="590.0" y2="118.7" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="69.5" x2="590.0" y2="69.5" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="315.5" x2="590.0" y2="315.5" stroke="#333" stroke-width="1.5"/>
+<line x1="85.1" y1="40.0" x2="85.1" y2="345.0" stroke="#333" stroke-width="1.5"/>
+<line x1="85.1" y1="311.5" x2="85.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="85.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">O</text>
+<line x1="186.1" y1="311.5" x2="186.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="186.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">2</text>
+<line x1="287.1" y1="311.5" x2="287.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="287.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">4</text>
+<line x1="388.1" y1="311.5" x2="388.1" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="388.1" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">6</text>
+<line x1="489.0" y1="311.5" x2="489.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="489.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">8</text>
+<line x1="590.0" y1="311.5" x2="590.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="590.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">10</text>
+<line x1="81.1" y1="266.3" x2="89.1" y2="266.3" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="270.3" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">5</text>
+<line x1="81.1" y1="217.1" x2="89.1" y2="217.1" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="221.1" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">10</text>
+<line x1="81.1" y1="167.9" x2="89.1" y2="167.9" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="171.9" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">15</text>
+<line x1="81.1" y1="118.7" x2="89.1" y2="118.7" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="122.7" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">20</text>
+<line x1="81.1" y1="69.5" x2="89.1" y2="69.5" stroke="#333" stroke-width="1"/>
+<text x="75.1" y="73.5" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">25</text>
+<text x="330.0" y="385.0" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">time / s </text>
+<text x="62.0" y="192.5" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">total energy / mJ</text><path d="M85.1,69.5 L590.0,69.5" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="8,4"/>
+<path d="M85.1,69.5 L90.2,74.4 L95.2,79.2 L100.3,83.8 L105.3,88.4 L110.4,92.9 L115.4,97.3 L120.5,101.6 L125.5,105.9 L130.6,110.0 L135.6,114.1 L140.7,118.1 L145.7,122.0 L150.8,125.8 L155.8,129.6 L160.9,133.3 L165.9,136.9 L171.0,140.4 L176.0,143.9 L181.1,147.3 L186.1,150.6 L191.2,153.9 L196.2,157.1 L201.3,160.2 L206.3,163.3 L211.4,166.3 L216.4,169.3 L221.5,172.1 L226.5,175.0 L231.6,177.8 L236.6,180.5 L241.7,183.2 L246.7,185.8 L251.7,188.4 L256.8,190.9 L261.8,193.3 L266.9,195.8 L271.9,198.1 L277.0,200.5 L282.0,202.7 L287.1,205.0 L292.1,207.2 L297.2,209.3 L302.2,211.4 L307.3,213.5 L312.3,215.5 L317.4,217.5 L322.4,219.4 L327.5,221.3 L332.5,223.2 L337.6,225.0 L342.6,226.8 L347.7,228.5 L352.7,230.3 L357.8,232.0 L362.8,233.6 L367.9,235.2 L372.9,236.8 L378.0,238.4 L383.0,239.9 L388.1,241.4 L393.1,242.9 L398.2,244.3 L403.2,245.7 L408.3,247.1 L413.3,248.4 L418.3,249.8 L423.4,251.1 L428.4,252.4 L433.5,253.6 L438.5,254.8 L443.6,256.0 L448.6,257.2 L453.7,258.4 L458.7,259.5 L463.8,260.6 L468.8,261.7 L473.9,262.8 L478.9,263.8 L484.0,264.8 L489.0,265.8 L494.1,266.8 L499.1,267.8 L504.2,268.7 L509.2,269.6 L514.3,270.5 L519.3,271.4 L524.4,272.3 L529.4,273.2 L534.5,274.0 L539.5,274.8 L544.6,275.6 L549.6,276.4 L554.7,277.2 L559.7,278.0 L564.8,278.7 L569.8,279.4 L574.9,280.1 L579.9,280.8 L585.0,281.5 L590.0,282.2" fill="none" stroke="#c44536" stroke-width="2.5"/>
+<path d="M85.1,69.5 L90.2,74.4 L95.2,79.2 L100.3,83.8 L105.3,88.4 L110.4,92.9 L115.4,97.3 L120.5,101.6 L125.5,105.9 L130.6,110.0 L135.6,114.1 L140.7,118.1 L145.7,122.0 L150.8,125.8 L155.8,129.6 L160.9,133.3 L165.9,136.9 L171.0,140.4 L176.0,143.9 L181.1,147.3 L186.1,150.6 L191.2,153.9 L196.2,157.1 L201.3,160.2 L206.3,163.3 L211.4,166.3 L216.4,169.3 L221.5,172.1 L226.5,175.0 L231.6,177.8 L236.6,180.5 L241.7,183.2 L246.7,185.8 L251.7,188.4 L256.8,190.9 L261.8,193.3 L266.9,195.8 L271.9,198.1 L277.0,200.5 L282.0,202.7 L287.1,205.0 L292.1,207.2 L297.2,209.3 L302.2,211.4 L307.3,213.5 L312.3,215.5 L317.4,217.5 L322.4,219.4 L327.5,221.3 L332.5,223.2 L337.6,225.0 L342.6,226.8 L347.7,228.5 L352.7,230.3 L357.8,232.0 L362.8,233.6 L367.9,235.2 L372.9,236.8 L378.0,238.4 L383.0,239.9 L388.1,241.4 L393.1,242.9 L398.2,244.3 L403.2,245.7 L408.3,247.1 L413.3,248.4 L418.3,249.8 L423.4,251.1 L428.4,252.4 L433.5,253.6 L438.5,254.8 L443.6,256.0 L448.6,257.2 L453.7,258.4 L458.7,259.5 L463.8,260.6 L468.8,261.7 L473.9,262.8 L478.9,263.8 L484.0,264.8 L489.0,265.8 L494.1,266.8 L499.1,267.8 L504.2,268.7 L509.2,269.6 L514.3,270.5 L519.3,271.4 L524.4,272.3 L529.4,273.2 L534.5,274.0 L539.5,274.8 L544.6,275.6 L549.6,276.4 L554.7,277.2 L559.7,278.0 L564.8,278.7 L569.8,279.4 L574.9,280.1 L579.9,280.8 L585.0,281.5 L590.0,282.2L590.0,69.5 Z" fill="rgba(196,69,54,0.08)"/>
+<rect x="85" y="46" width="230" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>
+<line x1="93.0" y1="58.0" x2="123.0" y2="58.0" stroke="#2b6f9e" stroke-width="2"/><line x1="93" y1="58" x2="123" y2="58" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="8,4"/>
+<text x="129.0" y="62.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Undamped: E_total = constant</text><line x1="93.0" y1="78.0" x2="123.0" y2="78.0" stroke="#c44536" stroke-width="2.5"/><text x="129.0" y="82.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Lightly damped: E_total decays</text><text x="93.0" y="98.0" font-size="10" text-anchor="start" fill="#888" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Shaded region = energy dissipated to surroundings</text><text x="186.1" y="118.7" font-size="10" text-anchor="start" fill="#888" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Energy loss</text><text x="186.1" y="148.2" font-size="10" text-anchor="start" fill="#888" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">per cycle ↓</text></svg>
+
+      <p class="caption">Fig. 5: Comparison of undamped (constant) and lightly damped (decaying) total energy. The shaded region represents energy dissipated to the surroundings.</p>
+    </div>
+
+  </div>
+
+  <h3>Key Observations from the Graphs</h3>
+  <ul>
+    <li><strong>Energy conservation:</strong> The sum E<sub>k</sub> + E<sub>p</sub> is constant at every displacement &mdash; the horizontal line in Fig. 1.</li>
+    <li><strong>Phase relationship:</strong> When E<sub>k</sub> is maximum (at equilibrium, x = 0), E<sub>p</sub> is zero, and vice versa at the turning points.</li>
+    <li><strong>Frequency doubling:</strong> Both E<sub>k</sub> and E<sub>p</sub> complete two cycles per oscillation period because each passes through a maximum twice per cycle.</li>
+    <li><strong>Velocity&ndash;displacement ellipse:</strong> The area enclosed by the ellipse in the v&ndash;x plane is proportional to the total energy of the system.</li>
+    <li><strong>Damping:</strong> In a real system, energy is dissipated to the surroundings (e.g. air resistance, internal friction), causing the amplitude and total energy to decrease over time.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!--  DAMPING & RESONANCE                                         -->
+<!-- ============================================================ -->
+<section>
+  <h2>3. Damping, Forced Oscillations and Resonance</h2>
+
+  <h3>3.1 Light, Critical and Heavy Damping</h3>
+  <p>The degree of damping determines how quickly the oscillation amplitude decays:</p>
+  <ul>
+    <li><strong>Light damping:</strong> Amplitude decays exponentially over many oscillations. The system continues to oscillate but with decreasing energy.</li>
+    <li><strong>Critical damping:</strong> The system returns to equilibrium in the shortest possible time without oscillating. Used in car suspension systems and galvanometer design.</li>
+    <li><strong>Heavy (over)damping:</strong> The system returns to equilibrium slowly without oscillating.</li>
+  </ul>
+
+  <h3>3.2 Resonance and Energy Transfer</h3>
+  <p>When a driving frequency matches the natural frequency of the system, resonance occurs. At resonance:</p>
+  <ul>
+    <li>The amplitude of oscillation reaches a maximum.</li>
+    <li>Energy transfer from the driver to the oscillator is most efficient.</li>
+    <li>The width of the resonance curve depends on the degree of damping: lighter damping gives a sharper, taller peak.</li>
+    <li>At resonance, the driving force is in phase with the velocity, so work done by the driving force is always positive &mdash; energy is fed into the system each cycle.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!--  WORKED EXAMPLE                                              -->
+<!-- ============================================================ -->
+<section>
+  <h2>4. Worked Example</h2>
+
+  <div class="example-box">
+    <p class="given"><strong>Problem:</strong> A 200 g mass oscillates on a spring of spring constant 50 N m<sup>&minus;1</sup> with amplitude 4.0 cm. Determine:</p>
+    <p class="given">(a) the total mechanical energy of the system;<br>
+    (b) the speed of the mass when the displacement is 2.0 cm from equilibrium;<br>
+    (c) the kinetic energy and potential energy at this displacement.</p>
+
+    <p><strong>Solution:</strong></p>
+
+    <p><strong>(a)</strong> At maximum displacement, all energy is potential:</p>
+    <p>E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2; = &frac12; &times; 50 &times; (0.040)&sup2; = &frac12; &times; 50 &times; 1.6 &times; 10<sup>&minus;3</sup></p>
+    <p><strong>E<sub>total</sub> = 4.0 &times; 10<sup>&minus;2</sup> J = 40 mJ</strong></p>
+
+    <p><strong>(b)</strong> Use v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;). First find &omega;:</p>
+    <p>&omega; = &radic;(k/m) = &radic;(50 / 0.200) = &radic;250 = 15.81 rad s<sup>&minus;1</sup></p>
+    <p>At x = 0.020 m:</p>
+    <p>v = 15.81 &times; &radic;(0.040&sup2; &minus; 0.020&sup2;) = 15.81 &times; &radic;(1.2 &times; 10<sup>&minus;3</sup>)</p>
+    <p>v = 15.81 &times; 0.03464 = <strong>0.548 m s<sup>&minus;1</sup></strong></p>
+
+    <p><strong>(c)</strong> At x = 0.020 m:</p>
+    <p>E<sub>p</sub> = &frac12;kx&sup2; = &frac12; &times; 50 &times; (0.020)&sup2; = <strong>1.0 &times; 10<sup>&minus;2</sup> J = 10 mJ</strong></p>
+    <p>E<sub>k</sub> = E<sub>total</sub> &minus; E<sub>p</sub> = 40 &minus; 10 = <strong>30 mJ</strong></p>
+    <p>(Check: E<sub>k</sub> = &frac12;mv&sup2; = &frac12; &times; 0.200 &times; 0.548&sup2; = 0.0300 J = 30 mJ &check;)</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  HOTS QUESTION BANK                                          -->
+<!-- ============================================================ -->
+<section>
+  <h2>5. Higher Order Thinking Skills &mdash; Question Bank</h2>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 1                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 1 &mdash; Graphical Analysis of Experimental Error</p>
+    <p class="q-context">A student investigates energy conservation in a mass&ndash;spring system using a motion sensor to measure displacement and velocity. The theoretical prediction is E<sub>k</sub> = &frac12;k(x<sub>0</sub>&sup2; &minus; x&sup2;). The experimental plot of E<sub>k</sub> against displacement x shows a systematic deviation: the experimental curve lies approximately 8% below the theoretical curve at all displacements, and the discrepancy is largest near x = 0. The student's data include error bars of &plusmn;4% on each E<sub>k</sub> measurement.</p>
+
+    <div class="graph-container" style="max-width:550px;margin:0.6rem auto;">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+<rect width="620" height="400" fill="#fff" rx="4"/>
+<!-- Graph 5: HOTS Experimental Error -->
+<defs><marker id="arr5" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#333"/></marker></defs>
+<line x1="70.0" y1="40.0" x2="70.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="156.7" y1="40.0" x2="156.7" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="243.3" y1="40.0" x2="243.3" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="416.7" y1="40.0" x2="416.7" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="503.3" y1="40.0" x2="503.3" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="590.0" y1="40.0" x2="590.0" y2="345.0" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="266.3" x2="590.0" y2="266.3" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="217.1" x2="590.0" y2="217.1" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="167.9" x2="590.0" y2="167.9" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="118.7" x2="590.0" y2="118.7" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="69.5" x2="590.0" y2="69.5" stroke="#e0e0e0" stroke-width="0.5"/>
+<line x1="70.0" y1="315.5" x2="590.0" y2="315.5" stroke="#333" stroke-width="1.5"/>
+<line x1="330.0" y1="40.0" x2="330.0" y2="345.0" stroke="#333" stroke-width="1.5"/>
+<line x1="70.0" y1="311.5" x2="70.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="70.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-6</text>
+<line x1="156.7" y1="311.5" x2="156.7" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="156.7" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-4</text>
+<line x1="243.3" y1="311.5" x2="243.3" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="243.3" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">-2</text>
+<line x1="330.0" y1="311.5" x2="330.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="330.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">O</text>
+<line x1="416.7" y1="311.5" x2="416.7" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="416.7" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">2</text>
+<line x1="503.3" y1="311.5" x2="503.3" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="503.3" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">4</text>
+<line x1="590.0" y1="311.5" x2="590.0" y2="319.5" stroke="#333" stroke-width="1"/>
+<text x="590.0" y="333.5" font-size="11" text-anchor="center" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">6</text>
+<line x1="326.0" y1="266.3" x2="334.0" y2="266.3" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="270.3" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">5</text>
+<line x1="326.0" y1="217.1" x2="334.0" y2="217.1" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="221.1" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">10</text>
+<line x1="326.0" y1="167.9" x2="334.0" y2="167.9" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="171.9" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">15</text>
+<line x1="326.0" y1="118.7" x2="334.0" y2="118.7" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="122.7" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">20</text>
+<line x1="326.0" y1="69.5" x2="334.0" y2="69.5" stroke="#333" stroke-width="1"/>
+<text x="320.0" y="73.5" font-size="11" text-anchor="end" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">25</text>
+<text x="330.0" y="385.0" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">displacement / cm </text>
+<text x="62.0" y="192.5" font-size="12" text-anchor="center" fill="#333" font-weight="bold" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">kinetic energy / mJ</text><path d="M113.3,315.5 L118.8,303.3 L124.2,291.5 L129.6,280.0 L135.0,268.8 L140.4,257.8 L145.8,247.2 L151.3,236.9 L156.7,226.9 L162.1,217.3 L167.5,207.9 L172.9,198.8 L178.3,190.0 L183.8,181.6 L189.2,173.4 L194.6,165.6 L200.0,158.1 L205.4,150.8 L210.8,143.9 L216.3,137.3 L221.7,131.0 L227.1,125.0 L232.5,119.3 L237.9,113.9 L243.3,108.9 L248.8,104.1 L254.2,99.6 L259.6,95.5 L265.0,91.7 L270.4,88.1 L275.8,84.9 L281.3,82.0 L286.7,79.4 L292.1,77.0 L297.5,75.1 L302.9,73.4 L308.3,72.0 L313.8,70.9 L319.2,70.1 L324.6,69.7 L330.0,69.5 L335.4,69.7 L340.8,70.1 L346.3,70.9 L351.7,72.0 L357.1,73.4 L362.5,75.1 L367.9,77.0 L373.3,79.4 L378.8,82.0 L384.2,84.9 L389.6,88.1 L395.0,91.7 L400.4,95.5 L405.8,99.6 L411.3,104.1 L416.7,108.9 L422.1,113.9 L427.5,119.3 L432.9,125.0 L438.3,131.0 L443.8,137.3 L449.2,143.9 L454.6,150.8 L460.0,158.1 L465.4,165.6 L470.8,173.4 L476.3,181.6 L481.7,190.0 L487.1,198.8 L492.5,207.9 L497.9,217.3 L503.3,226.9 L508.8,236.9 L514.2,247.2 L519.6,257.8 L525.0,268.8 L530.4,280.0 L535.8,291.5 L541.3,303.3 L546.7,315.5" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>
+<path d="M113.3,315.5 L118.8,304.5 L124.2,293.9 L129.6,283.6 L135.0,273.6 L140.4,263.9 L145.8,254.4 L151.3,245.3 L156.7,236.4 L162.1,227.9 L167.5,219.6 L172.9,211.5 L178.3,203.8 L183.8,196.3 L189.2,189.1 L194.6,182.1 L200.0,175.4 L205.4,168.9 L210.8,162.7 L216.3,156.7 L221.7,151.0 L227.1,145.5 L232.5,140.3 L237.9,135.3 L243.3,130.6 L248.8,126.1 L254.2,121.9 L259.6,117.9 L265.0,114.1 L270.4,110.6 L275.8,107.4 L281.3,104.4 L286.7,101.6 L292.1,99.2 L297.5,96.9 L302.9,95.0 L308.3,93.3 L313.8,91.8 L319.2,90.7 L324.6,89.8 L330.0,89.2 L335.4,88.9 L340.8,88.8 L346.3,89.1 L351.7,89.6 L357.1,90.5 L362.5,91.6 L367.9,93.1 L373.3,94.8 L378.8,96.9 L384.2,99.3 L389.6,102.0 L395.0,105.0 L400.4,108.3 L405.8,111.9 L411.3,115.9 L416.7,120.2 L422.1,124.8 L427.5,129.7 L432.9,135.0 L438.3,140.5 L443.8,146.4 L449.2,152.6 L454.6,159.1 L460.0,165.9 L465.4,173.1 L470.8,180.5 L476.3,188.3 L481.7,196.4 L487.1,204.7 L492.5,213.4 L497.9,222.4 L503.3,231.6 L508.8,241.1 L514.2,250.9 L519.6,261.0 L525.0,271.4 L530.4,282.0 L535.8,292.9 L541.3,304.1 L546.7,315.5" fill="none" stroke="#c44536" stroke-width="2.5"/>
+<line x1="156.7" y1="228.0" x2="156.7" y2="240.0" stroke="#c44536" stroke-width="1.2"/><line x1="153.7" y1="228.0" x2="159.7" y2="228.0" stroke="#c44536" stroke-width="1"/><line x1="153.7" y1="240.0" x2="159.7" y2="240.0" stroke="#c44536" stroke-width="1"/><line x1="243.3" y1="119.4" x2="243.3" y2="131.4" stroke="#c44536" stroke-width="1.2"/><line x1="240.3" y1="119.4" x2="246.3" y2="119.4" stroke="#c44536" stroke-width="1"/><line x1="240.3" y1="131.4" x2="246.3" y2="131.4" stroke="#c44536" stroke-width="1"/><line x1="330.0" y1="83.2" x2="330.0" y2="95.2" stroke="#c44536" stroke-width="1.2"/><line x1="327.0" y1="83.2" x2="333.0" y2="83.2" stroke="#c44536" stroke-width="1"/><line x1="327.0" y1="95.2" x2="333.0" y2="95.2" stroke="#c44536" stroke-width="1"/><line x1="416.7" y1="119.4" x2="416.7" y2="131.4" stroke="#c44536" stroke-width="1.2"/><line x1="413.7" y1="119.4" x2="419.7" y2="119.4" stroke="#c44536" stroke-width="1"/><line x1="413.7" y1="131.4" x2="419.7" y2="131.4" stroke="#c44536" stroke-width="1"/><line x1="503.3" y1="228.0" x2="503.3" y2="240.0" stroke="#c44536" stroke-width="1.2"/><line x1="500.3" y1="228.0" x2="506.3" y2="228.0" stroke="#c44536" stroke-width="1"/><line x1="500.3" y1="240.0" x2="506.3" y2="240.0" stroke="#c44536" stroke-width="1"/><rect x="85" y="46" width="180" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>
+<line x1="93.0" y1="58.0" x2="123.0" y2="58.0" stroke="#2b6f9e" stroke-width="2"/><line x1="93" y1="58" x2="123" y2="58" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>
+<text x="129.0" y="62.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Theoretical E_k</text><line x1="93.0" y1="78.0" x2="123.0" y2="78.0" stroke="#c44536" stroke-width="2.5"/><text x="129.0" y="82.0" font-size="11" text-anchor="start" fill="#333" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Experimental E_k (with error bars)</text><text x="93.0" y="98.0" font-size="10" text-anchor="start" fill="#888" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">Systematic loss ~8%, uncertainty shown</text></svg>
+
+      <p class="caption">Fig. 6: Theoretical E<sub>k</sub> (dashed) and experimental data with error bars (solid). The experimental curve shows a systematic offset.</p>
+    </div>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Describe</span> the difference between the theoretical and experimental E<sub>k</sub> curves shown in Fig. 5. Explain whether the discrepancy is within the experimental uncertainty. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Suggest</span> one physical cause for the systematic energy loss evident in the data. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Evaluate</span> how the total energy of the system would appear on the experimental graph compared to the constant theoretical value. Sketch the experimental E<sub>total</sub> &ndash; x graph in your answer. <span class="marks">[3]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 1</p>
+    <div class="ms-point"><strong>(a)</strong> M1: The experimental curve is consistently below the theoretical curve at all displacements (accept: systematic offset/shift). A1: The error bars (&plusmn;4%) are smaller than the systematic deviation (~8%) at most points, so the discrepancy cannot be attributed to random uncertainty alone &mdash; a systematic error is present. [2]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: Energy loss due to damping (air resistance or internal friction in the spring). A1: Damping causes mechanical energy to be converted to thermal energy in the surroundings, reducing the kinetic energy at every displacement. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The experimental E<sub>total</sub> would not be constant &mdash; it would decrease over time as energy is dissipated. A1: A sketch showing E<sub>total</sub> declining with each oscillation (step-like or monotonic decay). A1: The experimental E<sub>total</sub> would be calculated as E<sub>k</sub> + E<sub>p</sub>; since E<sub>k</sub> is systematically low, E<sub>total</sub> would appear to decrease below &frac12;kx<sub>0</sub>&sup2;. [3]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 2                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 2 &mdash; Evaluating Experimental Limitations</p>
+    <p class="q-context">A student uses a motion sensor (resolution &plusmn;0.2 cm) and a force sensor (resolution &plusmn;0.01 N) to investigate energy conservation in a mass&ndash;spring system with m = 0.200 &plusmn; 0.001 kg, angular frequency &omega; = 5.0 &plusmn; 0.1 rad s<sup>&minus;1</sup>, and amplitude x<sub>0</sub> = 5.0 &plusmn; 0.1 cm.</p>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Calculate</span> the percentage uncertainty in the kinetic energy E<sub>k</sub> at the equilibrium position (x = 0) due to the uncertainties in m and &omega; only. State the value of E<sub>k</sub> at equilibrium with its absolute uncertainty. <span class="marks">[3]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Explain</span> why the apparent total energy measured by the student may appear to increase slightly near the turning points even when no external work is done on the system. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Evaluate</span> whether a data logger sampling at 50 Hz can reliably measure the maximum kinetic energy for a system oscillating with period T = 0.80 s. Justify your reasoning with a calculation. <span class="marks">[2]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 2</p>
+    <div class="ms-point"><strong>(a)</strong> M1: At equilibrium, v = &omega;x<sub>0</sub> = 5.0 &times; 0.050 = 0.250 m s<sup>&minus;1</sup>. E<sub>k</sub> = &frac12;mv&sup2; = &frac12; &times; 0.200 &times; 0.250&sup2; = 6.25 mJ. For fractional uncertainty in v&sup2;: &Delta;v/v = &Delta;&omega;/&omega; + &Delta;x<sub>0</sub>/x<sub>0</sub> = 0.1/5.0 + 0.1/5.0 = 0.04, so &Delta;(v&sup2;)/v&sup2; = 2 &times; 0.04 = 0.08. A1: &Delta;E<sub>k</sub>/E<sub>k</sub> = &Delta;m/m + &Delta;(v&sup2;)/v&sup2; = 0.001/0.200 + 0.08 = 0.005 + 0.08 = 0.085 = 8.5%. A1: &Delta;E<sub>k</sub> = 0.085 &times; 6.25 = 0.53 mJ. E<sub>k</sub> = (6.25 &plusmn; 0.53) mJ. [3]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: At turning points the velocity is near zero but the force sensor reading for displacement may lag due to the finite sampling rate. A1: If displacement and velocity are not measured simultaneously, E<sub>k</sub> might be assigned to the wrong x, making E<sub>total</sub> = E<sub>k</sub> + E<sub>p</sub> appear to exceed the initial total energy. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The period T = 0.80 s gives frequency f = 1.25 Hz. The sampling frequency 50 Hz gives 50/1.25 = 40 samples per period. A1: With 40 samples per period the sensor will capture data at ~9&deg; intervals &mdash; this is sufficient to resolve the E<sub>k</sub> maximum to within ~1% error, so the measurement is reliable. [2]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 3                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 3 &mdash; Predicting the Effect of Damping</p>
+    <p class="q-context">A mass&ndash;spring system oscillates in a viscous fluid. The damping is light. The initial amplitude is x<sub>0</sub> and the initial total energy is E<sub>0</sub> = &frac12;kx<sub>0</sub>&sup2;.</p>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Sketch</span> the total energy E<sub>total</sub> against time t for both the undamped and the lightly damped case on the same axes. Label the initial energy E<sub>0</sub> and mark three successive maxima. <span class="marks">[3]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Explain</span> why the amplitude of a lightly damped oscillator decays exponentially rather than linearly. Refer to the energy loss per cycle. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Predict</span> how the resonance frequency of this system changes as the degree of damping increases. Justify your answer. <span class="marks">[2]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 3</p>
+    <div class="ms-point"><strong>(a)</strong> B1: Undamped: horizontal line at height E<sub>0</sub> (constant energy). B1: Damped: curve starting at E<sub>0</sub> and decaying with decreasing maxima. B1: Three successive maxima labelled, each lower than the previous, following an approximately exponential envelope. [3]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: The energy lost per cycle is proportional to the energy stored (for light damping, dissipative force &prop; velocity). A1: This gives dE/dt &prop; &minus;E, leading to exponential decay E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup>. Since E &prop; A&sup2;, the amplitude decays as A(t) = A<sub>0</sub>e<sup>&minus;&gamma;t/2</sup>. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The resonance frequency decreases slightly with increasing damping. A1: Damping reduces the effective restoring force and the oscillator responds more sluggishly; the resonance peak shifts to lower frequencies and becomes broader. [2]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 4                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 4 &mdash; Comparing Energy in Different SHM Systems</p>
+    <p class="q-context">Consider two oscillating systems: (i) a mass&ndash;spring system on a frictionless horizontal surface, and (ii) a simple pendulum of length L displaced through a small angle.</p>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) State</span> the form(s) of energy present at maximum displacement and at the equilibrium position for each system. Tabulate your answer. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Explain</span> why the simple pendulum is only approximately SHM for small angular displacements (&theta; &lt; 10&deg;). Refer to the restoring force in your explanation. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Discuss</span> whether total mechanical energy is strictly conserved for a pendulum over many oscillations in a real (non-ideal) setting. What experimental evidence would you look for? <span class="marks">[3]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 4</p>
+    <div class="ms-point"><strong>(a)</strong> B1: Mass&ndash;spring: at max displacement &rarr; elastic potential energy only; at equilibrium &rarr; kinetic energy only. B1: Pendulum: at max displacement &rarr; gravitational potential energy only; at equilibrium &rarr; kinetic energy only. Table with correct entries. [2]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: For a pendulum, the restoring force is F = &minus;mg sin&theta;. A1: For small &theta;, sin&theta; &asymp; &theta; (in radians), so F &asymp; &minus;mg&theta; = &minus;(mg/L)x, giving SHM. For larger &theta;, sin&theta; &lt; &theta; and the motion deviates. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: In a non-ideal setting, mechanical energy is not strictly conserved due to air resistance and friction at the pivot. B1: Evidence: amplitude gradually decreases over time (the pendulum slows and stops). B1: Also: energy is dissipated as thermal energy (slight warming of pivot and surrounding air), which could be measured with sensitive thermometry. [3]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 5                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 5 &mdash; Data Evaluation and Determination of Parameters</p>
+    <p class="q-context">A student records the kinetic energy E<sub>k</sub> of a 50 g mass oscillating on a spring at various displacements x from equilibrium. The data are shown in the table.</p>
+
+    <table class="data-table">
+      <tr>
+        <th>x / cm</th>
+        <td>0.0</td><td>1.0</td><td>2.0</td><td>3.0</td><td>4.0</td><td>5.0</td>
+      </tr>
+      <tr>
+        <th>E<sub>k</sub> / mJ</th>
+        <td>45.0</td><td>42.8</td><td>36.0</td><td>24.5</td><td>8.0</td><td>0.0</td>
+      </tr>
+    </table>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Plot</span> E<sub>k</sub> against x&sup2; on the grid below and determine the amplitude x<sub>0</sub> and angular frequency &omega;. <span class="marks">[4]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Estimate</span> the total energy of the system and the spring constant k. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Explain</span> how the results would differ if the spring itself had a non-negligible mass of 20 g. Would the calculated value of &omega; be an overestimate or an underestimate? Justify your answer. <span class="marks">[2]</span></p>
+    </div>
+
+    <div class="graph-container" style="max-width:550px;margin:0.8rem auto;">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+        <rect width="620" height="400" fill="#fafafa" rx="4"/>
+        <!-- Grid for plotting E_k vs x^2 -->
+        <g stroke="#ddd" stroke-width="0.5">
+          <line x1="70" y1="40" x2="70" y2="355"/><line x1="70" y1="355" x2="590" y2="355"/>
+          <!-- vertical grid -->
+          <line x1="174" y1="40" x2="174" y2="355"/><line x1="278" y1="40" x2="278" y2="355"/>
+          <line x1="382" y1="40" x2="382" y2="355"/><line x1="486" y1="40" x2="486" y2="355"/>
+          <!-- horizontal grid -->
+          <line x1="70" y1="292" x2="590" y2="292"/><line x1="70" y1="229" x2="590" y2="229"/>
+          <line x1="70" y1="166" x2="590" y2="166"/><line x1="70" y1="103" x2="590" y2="103"/>
+        </g>
+        <!-- Axis arrows -->
+        <polyline points="70,40 65,50 70,40 75,50" fill="none" stroke="#333" stroke-width="1.5"/>
+        <polyline points="590,355 580,350 590,355 580,360" fill="none" stroke="#333" stroke-width="1.5"/>
+        <!-- Labels -->
+        <text x="330" y="388" font-size="12" text-anchor="middle" fill="#333" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">x&#x00B2; / cm&#x00B2;</text>
+        <text x="20" y="197" font-size="12" text-anchor="middle" fill="#333" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" transform="rotate(-90,20,197)">E_k / mJ</text>
+        <!-- Tick labels -->
+        <text x="70" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">0</text>
+        <text x="174" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">5</text>
+        <text x="278" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">10</text>
+        <text x="382" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">15</text>
+        <text x="486" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">20</text>
+        <text x="32" y="355" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">0</text>
+        <text x="32" y="292" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">10</text>
+        <text x="32" y="229" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">20</text>
+        <text x="32" y="166" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">30</text>
+        <text x="32" y="103" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">40</text>
+        <text x="32" y="40" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">50</text>
+        <!-- Grid title -->
+        <text x="330" y="22" font-size="13" text-anchor="middle" fill="#333" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_k vs x&#x00B2; &mdash; Student Grid</text>
+      </svg>
+      <p class="caption">Fig. 7: Grid for plotting E<sub>k</sub> against x&sup2;. Axes calibrated: x&sup2; from 0 to 25 cm&sup2;, E<sub>k</sub> from 0 to 50 mJ.</p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 5</p>
+    <div class="ms-point"><strong>(a)</strong> M1: Calculate x&sup2; values: 0, 1, 4, 9, 16, 25 cm&sup2;. Plot points (x&sup2;, E<sub>k</sub>): (0,45.0), (1,42.8), (4,36.0), (9,24.5), (16,8.0), (25,0.0). A1: Best-fit straight line drawn with negative gradient. M1: x<sub>0</sub>&sup2; is the x-intercept (where E<sub>k</sub> = 0) &rarr; x<sub>0</sub>&sup2; = 25 cm&sup2; &rarr; x<sub>0</sub> = 5.0 cm. A1: E<sub>k</sub> = &frac12;m&omega;&sup2;(x<sub>0</sub>&sup2; &minus; x&sup2;). Gradient = &minus;&frac12;m&omega;&sup2; = (45.0 &minus; 0)/(0 &minus; 25) = &minus;1.80 mJ cm<sup>&minus;2</sup> = &minus;18 J m<sup>&minus;2</sup>. &omega;&sup2; = 2 &times; |gradient| / m = 2 &times; 18 / 0.050 = 720. &omega; = 26.8 rad s<sup>&minus;1</sup>. [4]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: E<sub>total</sub> = E<sub>k</sub>(x=0) = 45.0 mJ (accept 45&ndash;46 mJ). A1: k = m&omega;&sup2; = 0.050 &times; 720 = 36 N m<sup>&minus;1</sup>. (Or: E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2; &rarr; k = 2E<sub>total</sub>/x<sub>0</sub>&sup2; = 2 &times; 0.045 / 0.05&sup2; = 36 N m<sup>&minus;1</sup>.) [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The spring's mass contributes to the inertia but not to the restoring force, so the effective mass is greater than 50 g. A1: Since &omega; = &radic;(k/m<sub>eff</sub>), a larger effective mass means a smaller &omega;. The value calculated ignoring spring mass (26.8 rad s<sup>&minus;1</sup>) would be an <strong>overestimate</strong>. [2]</div>
+    <p class="ms-total">Total: [8]</p>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
+<!--  SUMMARY OF KEY EQUATIONS                                    -->
+<!-- ============================================================ -->
+<section>
+  <h2>6. Summary of Key Equations</h2>
+  <table class="data-table" style="min-width:70%;">
+    <tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>
+    <tr><td>Total energy</td><td>E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2;</td><td>Constant in ideal SHM</td></tr>
+    <tr><td>Kinetic energy</td><td>E<sub>k</sub> = &frac12;m&omega;&sup2;(x<sub>0</sub>&sup2; &minus; x&sup2;)</td><td>Maximum at x = 0</td></tr>
+    <tr><td>Potential energy</td><td>E<sub>p</sub> = &frac12;kx&sup2;</td><td>Maximum at x = &plusmn;x<sub>0</sub></td></tr>
+    <tr><td>Velocity&ndash;displacement</td><td>v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)</td><td>Derived from energy conservation</td></tr>
+    <tr><td>Angular frequency</td><td>&omega; = 2&pi;f = &radic;(k/m)</td><td>Mass&ndash;spring system</td></tr>
+    <tr><td>Damped energy</td><td>E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup></td><td>&gamma; = damping constant</td></tr>
+  </table>
+</section>
+
+</main>
+
+</body>
+</html>

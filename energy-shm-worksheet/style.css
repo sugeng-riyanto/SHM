@@ -1,0 +1,336 @@
+/* CIE 9702 Physics — Energy Interchange in SHM Worksheet */
+/* Professional, print-optimised layout */
+
+:root {
+  --primary: #1a3a5c;
+  --secondary: #2b6f9e;
+  --accent: #c44536;
+  --bg: #fafafa;
+  --card-bg: #ffffff;
+  --border: #d0d7de;
+  --text: #1f2328;
+  --muted: #636c76;
+  --code-bg: #f0f2f5;
+  --success: #218838;
+  --warning: #e67e22;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  padding: 0;
+}
+
+/* ---- Header ---- */
+.worksheet-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  padding: 2.2rem 2rem 1.8rem;
+  text-align: center;
+}
+
+.worksheet-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.worksheet-header .subtitle {
+  font-size: 1rem;
+  opacity: 0.92;
+  font-weight: 400;
+}
+
+.worksheet-header .syllabus-ref {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.2rem 1rem;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Main container ---- */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+/* ---- Section styling ---- */
+section {
+  margin-bottom: 2.2rem;
+}
+
+section h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.8rem;
+}
+
+section h3 {
+  font-size: 1.05rem;
+  color: var(--secondary);
+  margin: 1rem 0 0.4rem;
+}
+
+/* ---- Learning objectives ---- */
+.objectives {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  list-style: none;
+  padding: 0.6rem 1rem;
+  background: var(--code-bg);
+  border-radius: 6px;
+  border-left: 4px solid var(--secondary);
+}
+
+.objectives li {
+  font-size: 0.95rem;
+}
+
+.objectives li::before {
+  content: ">";
+  color: var(--secondary);
+  font-weight: 700;
+  margin-right: 0.4rem;
+}
+
+.objectives .cmd {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- Derivation steps ---- */
+.derivation-step {
+  padding: 0.6rem 0.8rem 0.6rem 1rem;
+  margin: 0.3rem 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  border-left: 4px solid var(--secondary);
+}
+
+.derivation-step .step-num {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-right: 0.5rem;
+}
+
+.derivation-step .prompt {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.derivation-step .result {
+  font-weight: 600;
+}
+
+.final-formula {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 0.8rem;
+  margin: 0.6rem 0;
+  background: #eaf3fb;
+  border-radius: 6px;
+  border: 1px solid var(--secondary);
+}
+
+/* ---- Graph container ---- */
+.graph-container {
+  margin: 1rem 0;
+  text-align: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem;
+}
+
+.graph-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.graph-container .caption {
+  margin-top: 0.3rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Two-column graph layout */
+.graph-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ---- Worked example ---- */
+.example-box {
+  background: #f7fafc;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  margin: 0.6rem 0;
+}
+
+.example-box .given {
+  font-size: 0.92rem;
+  margin-bottom: 0.3rem;
+}
+
+.example-box .solution {
+  margin-top: 0.3rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--border);
+}
+
+/* ---- HOTS questions ---- */
+.question {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  margin: 0.8rem 0;
+}
+
+.question .q-header {
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.question .q-context {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.question .q-part {
+  margin: 0.4rem 0 0.4rem 1.2rem;
+}
+
+.question .q-part .marks {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.question .cmd-word {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- Mark scheme ---- */
+.mark-scheme {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  margin: 0.4rem 0 0.8rem;
+  font-size: 0.92rem;
+}
+
+.mark-scheme .ms-header {
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: 0.2rem;
+}
+
+.mark-scheme .ms-point {
+  margin: 0.15rem 0;
+  padding-left: 0.8rem;
+  border-left: 2px solid #adb5bd;
+}
+
+.mark-scheme .ms-total {
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 0.2rem;
+}
+
+/* ---- Tables ---- */
+.data-table {
+  border-collapse: collapse;
+  margin: 0.6rem auto;
+  font-size: 0.95rem;
+}
+
+.data-table th {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.35rem 0.8rem;
+  text-align: center;
+}
+
+.data-table td {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.data-table tr:nth-child(even) {
+  background: #f0f4f8;
+}
+
+/* ---- Print styles ---- */
+@media print {
+  body {
+    font-size: 10pt;
+    background: #fff;
+    color: #000;
+  }
+  .worksheet-header {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding: 1.2rem 1rem;
+  }
+  section {
+    page-break-inside: avoid;
+  }
+  .graph-container {
+    page-break-inside: avoid;
+    border: 0.5pt solid #ccc;
+  }
+  .question {
+    page-break-inside: avoid;
+  }
+  .mark-scheme {
+    page-break-inside: avoid;
+  }
+  main {
+    max-width: none;
+    padding: 0.5in;
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 700px) {
+  .graph-grid {
+    grid-template-columns: 1fr;
+  }
+  .worksheet-header h1 {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIE 9702 — Energy Interchange in SHM | Worksheet</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="worksheet-header">
+  <h1>Energy Interchange in Simple Harmonic Motion</h1>
+  <p class="subtitle">Cambridge International AS &amp; A Level Physics &mdash; 9702/4 Oscillations</p>
+  <span class="syllabus-ref">Syllabus ref: 17.1 &middot; 17.2 &middot; 17.3</span>
+</header>
+
+<main>
+
+<!-- ============================================================ -->
+<!--  LEARNING OBJECTIVES                                         -->
+<!-- ============================================================ -->
+<section>
+  <h2>Learning Objectives</h2>
+  <ul class="objectives">
+    <li><span class="cmd">derive</span> the velocity&ndash;displacement relation for SHM using conservation of energy</li>
+    <li><span class="cmd">sketch</span> and <span class="cmd">interpret</span> graphs of E<sub>k</sub>, E<sub>p</sub> and E<sub>total</sub> against displacement and time</li>
+    <li><span class="cmd">explain</span> the interconversion between kinetic and potential energy during one complete oscillation</li>
+    <li><span class="cmd">evaluate</span> the effect of damping on the total mechanical energy of an oscillating system</li>
+    <li><span class="cmd">analyse</span> experimental data to determine oscillation parameters from energy measurements</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!--  SOCRATIC DERIVATION                                         -->
+<!-- ============================================================ -->
+<section>
+  <h2>1. Socratic Derivation: v = &plusmn;&omega;&radic;(x&#8320;&sup2; &minus; x&sup2;)</h2>
+  <p>We shall derive the velocity&ndash;displacement relation for a particle executing SHM using the principle of conservation of mechanical energy. Consider a mass&ndash;spring system with spring constant <em>k</em> and mass <em>m</em>, oscillating with amplitude <em>x</em><sub>0</sub>.</p>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 1</span>
+    <span class="prompt">&#9654; Write the total mechanical energy of the system at an arbitrary displacement <em>x</em> where the particle has velocity <em>v</em>.</span>
+    <span class="result">E<sub>total</sub> = &frac12;mv&sup2; + &frac12;kx&sup2;</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The total energy is the sum of kinetic energy (&frac12;mv&sup2;) and elastic potential energy (&frac12;kx&sup2;).</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 2</span>
+    <span class="prompt">&#9654; What is the velocity at the maximum displacement <em>x</em> = <em>x</em><sub>0</sub>? Hence write E<sub>total</sub> in terms of <em>k</em> and <em>x</em><sub>0</sub> only.</span>
+    <span class="result">At x = x<sub>0</sub>, v = 0 &nbsp;&rArr;&nbsp; E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2;</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">At the turning points the particle is momentarily at rest; all energy is stored as potential energy in the spring.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 3</span>
+    <span class="prompt">&#9654; Energy is conserved. Equate the two expressions for E<sub>total</sub>.</span>
+    <span class="result">&frac12;mv&sup2; + &frac12;kx&sup2; = &frac12;kx<sub>0</sub>&sup2;</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">No energy enters or leaves the system &mdash; mechanical energy is strictly conserved in ideal SHM.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 4</span>
+    <span class="prompt">&#9654; Multiply through by 2 and rearrange to isolate the term containing v&sup2;.</span>
+    <span class="result">mv&sup2; = kx<sub>0</sub>&sup2; &minus; kx&sup2; = k(x<sub>0</sub>&sup2; &minus; x&sup2;)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The kinetic energy term is now isolated. Divide by <em>m</em> to obtain v&sup2;.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 5</span>
+    <span class="prompt">&#9654; Divide by <em>m</em> to obtain an expression for v&sup2;.</span>
+    <span class="result">v&sup2; = (k/m)(x<sub>0</sub>&sup2; &minus; x&sup2;)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The ratio <em>k/m</em> governs the stiffness-to-inertia balance of the oscillator.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 6</span>
+    <span class="prompt">&#9654; Recall the defining relation for angular frequency in SHM: &omega;&sup2; = k/m. Substitute and take the square root.</span>
+    <span class="result">v&sup2; = &omega;&sup2;(x<sub>0</sub>&sup2; &minus; x&sup2;) &nbsp;&rArr;&nbsp; v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The &plusmn; sign indicates that the particle may be travelling in either direction (towards or away from equilibrium) at a given displacement.</span>
+  </div>
+
+  <div class="final-formula">
+    v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  KEY GRAPHS                                                  -->
+<!-- ============================================================ -->
+<section>
+  <h2>2. Key Graphical Representations</h2>
+
+  <div class="graph-grid">
+
+    <div class="graph-container">
+      {{GRAPH_ENERGY_DISPLACEMENT}}
+      <p class="caption">Fig. 1: Energy vs displacement. E<sub>p</sub> follows a parabolic curve, E<sub>k</sub> is an inverted parabola, and E<sub>total</sub> remains constant.</p>
+    </div>
+
+    <div class="graph-container">
+      {{GRAPH_ENERGY_TIME}}
+      <p class="caption">Fig. 2: Energy vs time. E<sub>p</sub> and E<sub>k</sub> oscillate at twice the frequency of the displacement, with a phase difference of &frac14;T between maxima.</p>
+    </div>
+
+    <div class="graph-container">
+      {{GRAPH_VELOCITY_DISPLACEMENT}}
+      <p class="caption">Fig. 3: Velocity vs displacement. The elliptical locus confirms the relation v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;). The arrow indicates the direction of motion.</p>
+    </div>
+
+    <div class="graph-container">
+      {{GRAPH_DAMPED_ENERGY}}
+      <p class="caption">Fig. 4: Damped oscillation. The total energy envelope decays exponentially as E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup>. The instantaneous energy oscillates within this envelope.</p>
+    </div>
+
+    <div class="graph-container">
+      {{GRAPH_HOTS_DAMPING}}
+      <p class="caption">Fig. 5: Comparison of undamped (constant) and lightly damped (decaying) total energy. The shaded region represents energy dissipated to the surroundings.</p>
+    </div>
+
+  </div>
+
+  <h3>Key Observations from the Graphs</h3>
+  <ul>
+    <li><strong>Energy conservation:</strong> The sum E<sub>k</sub> + E<sub>p</sub> is constant at every displacement &mdash; the horizontal line in Fig. 1.</li>
+    <li><strong>Phase relationship:</strong> When E<sub>k</sub> is maximum (at equilibrium, x = 0), E<sub>p</sub> is zero, and vice versa at the turning points.</li>
+    <li><strong>Frequency doubling:</strong> Both E<sub>k</sub> and E<sub>p</sub> complete two cycles per oscillation period because each passes through a maximum twice per cycle.</li>
+    <li><strong>Velocity&ndash;displacement ellipse:</strong> The area enclosed by the ellipse in the v&ndash;x plane is proportional to the total energy of the system.</li>
+    <li><strong>Damping:</strong> In a real system, energy is dissipated to the surroundings (e.g. air resistance, internal friction), causing the amplitude and total energy to decrease over time.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!--  DAMPING & RESONANCE                                         -->
+<!-- ============================================================ -->
+<section>
+  <h2>3. Damping, Forced Oscillations and Resonance</h2>
+
+  <h3>3.1 Light, Critical and Heavy Damping</h3>
+  <p>The degree of damping determines how quickly the oscillation amplitude decays:</p>
+  <ul>
+    <li><strong>Light damping:</strong> Amplitude decays exponentially over many oscillations. The system continues to oscillate but with decreasing energy.</li>
+    <li><strong>Critical damping:</strong> The system returns to equilibrium in the shortest possible time without oscillating. Used in car suspension systems and galvanometer design.</li>
+    <li><strong>Heavy (over)damping:</strong> The system returns to equilibrium slowly without oscillating.</li>
+  </ul>
+
+  <h3>3.2 Resonance and Energy Transfer</h3>
+  <p>When a driving frequency matches the natural frequency of the system, resonance occurs. At resonance:</p>
+  <ul>
+    <li>The amplitude of oscillation reaches a maximum.</li>
+    <li>Energy transfer from the driver to the oscillator is most efficient.</li>
+    <li>The width of the resonance curve depends on the degree of damping: lighter damping gives a sharper, taller peak.</li>
+    <li>At resonance, the driving force is in phase with the velocity, so work done by the driving force is always positive &mdash; energy is fed into the system each cycle.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<!--  WORKED EXAMPLE                                              -->
+<!-- ============================================================ -->
+<section>
+  <h2>4. Worked Example</h2>
+
+  <div class="example-box">
+    <p class="given"><strong>Problem:</strong> A 200 g mass oscillates on a spring of spring constant 50 N m<sup>&minus;1</sup> with amplitude 4.0 cm. Determine:</p>
+    <p class="given">(a) the total mechanical energy of the system;<br>
+    (b) the speed of the mass when the displacement is 2.0 cm from equilibrium;<br>
+    (c) the kinetic energy and potential energy at this displacement.</p>
+
+    <p><strong>Solution:</strong></p>
+
+    <p><strong>(a)</strong> At maximum displacement, all energy is potential:</p>
+    <p>E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2; = &frac12; &times; 50 &times; (0.040)&sup2; = &frac12; &times; 50 &times; 1.6 &times; 10<sup>&minus;3</sup></p>
+    <p><strong>E<sub>total</sub> = 4.0 &times; 10<sup>&minus;2</sup> J = 40 mJ</strong></p>
+
+    <p><strong>(b)</strong> Use v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;). First find &omega;:</p>
+    <p>&omega; = &radic;(k/m) = &radic;(50 / 0.200) = &radic;250 = 15.81 rad s<sup>&minus;1</sup></p>
+    <p>At x = 0.020 m:</p>
+    <p>v = 15.81 &times; &radic;(0.040&sup2; &minus; 0.020&sup2;) = 15.81 &times; &radic;(1.2 &times; 10<sup>&minus;3</sup>)</p>
+    <p>v = 15.81 &times; 0.03464 = <strong>0.548 m s<sup>&minus;1</sup></strong></p>
+
+    <p><strong>(c)</strong> At x = 0.020 m:</p>
+    <p>E<sub>p</sub> = &frac12;kx&sup2; = &frac12; &times; 50 &times; (0.020)&sup2; = <strong>1.0 &times; 10<sup>&minus;2</sup> J = 10 mJ</strong></p>
+    <p>E<sub>k</sub> = E<sub>total</sub> &minus; E<sub>p</sub> = 40 &minus; 10 = <strong>30 mJ</strong></p>
+    <p>(Check: E<sub>k</sub> = &frac12;mv&sup2; = &frac12; &times; 0.200 &times; 0.548&sup2; = 0.0300 J = 30 mJ &check;)</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  HOTS QUESTION BANK                                          -->
+<!-- ============================================================ -->
+<section>
+  <h2>5. Higher Order Thinking Skills &mdash; Question Bank</h2>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 1                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 1 &mdash; Graphical Analysis of Experimental Error</p>
+    <p class="q-context">A student investigates energy conservation in a mass&ndash;spring system using a motion sensor to measure displacement and velocity. The theoretical prediction is E<sub>k</sub> = &frac12;k(x<sub>0</sub>&sup2; &minus; x&sup2;). The experimental plot of E<sub>k</sub> against displacement x shows a systematic deviation: the experimental curve lies approximately 8% below the theoretical curve at all displacements, and the discrepancy is largest near x = 0. The student's data include error bars of &plusmn;4% on each E<sub>k</sub> measurement.</p>
+
+    <div class="graph-container" style="max-width:550px;margin:0.6rem auto;">
+      {{GRAPH_HOTS_EXPERIMENTAL}}
+      <p class="caption">Fig. 6: Theoretical E<sub>k</sub> (dashed) and experimental data with error bars (solid). The experimental curve shows a systematic offset.</p>
+    </div>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Describe</span> the difference between the theoretical and experimental E<sub>k</sub> curves shown in Fig. 5. Explain whether the discrepancy is within the experimental uncertainty. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Suggest</span> one physical cause for the systematic energy loss evident in the data. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Evaluate</span> how the total energy of the system would appear on the experimental graph compared to the constant theoretical value. Sketch the experimental E<sub>total</sub> &ndash; x graph in your answer. <span class="marks">[3]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 1</p>
+    <div class="ms-point"><strong>(a)</strong> M1: The experimental curve is consistently below the theoretical curve at all displacements (accept: systematic offset/shift). A1: The error bars (&plusmn;4%) are smaller than the systematic deviation (~8%) at most points, so the discrepancy cannot be attributed to random uncertainty alone &mdash; a systematic error is present. [2]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: Energy loss due to damping (air resistance or internal friction in the spring). A1: Damping causes mechanical energy to be converted to thermal energy in the surroundings, reducing the kinetic energy at every displacement. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The experimental E<sub>total</sub> would not be constant &mdash; it would decrease over time as energy is dissipated. A1: A sketch showing E<sub>total</sub> declining with each oscillation (step-like or monotonic decay). A1: The experimental E<sub>total</sub> would be calculated as E<sub>k</sub> + E<sub>p</sub>; since E<sub>k</sub> is systematically low, E<sub>total</sub> would appear to decrease below &frac12;kx<sub>0</sub>&sup2;. [3]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 2                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 2 &mdash; Evaluating Experimental Limitations</p>
+    <p class="q-context">A student uses a motion sensor (resolution &plusmn;0.2 cm) and a force sensor (resolution &plusmn;0.01 N) to investigate energy conservation in a mass&ndash;spring system with m = 0.200 &plusmn; 0.001 kg, angular frequency &omega; = 5.0 &plusmn; 0.1 rad s<sup>&minus;1</sup>, and amplitude x<sub>0</sub> = 5.0 &plusmn; 0.1 cm.</p>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Calculate</span> the percentage uncertainty in the kinetic energy E<sub>k</sub> at the equilibrium position (x = 0) due to the uncertainties in m and &omega; only. State the value of E<sub>k</sub> at equilibrium with its absolute uncertainty. <span class="marks">[3]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Explain</span> why the apparent total energy measured by the student may appear to increase slightly near the turning points even when no external work is done on the system. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Evaluate</span> whether a data logger sampling at 50 Hz can reliably measure the maximum kinetic energy for a system oscillating with period T = 0.80 s. Justify your reasoning with a calculation. <span class="marks">[2]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 2</p>
+    <div class="ms-point"><strong>(a)</strong> M1: At equilibrium, v = &omega;x<sub>0</sub> = 5.0 &times; 0.050 = 0.250 m s<sup>&minus;1</sup>. E<sub>k</sub> = &frac12;mv&sup2; = &frac12; &times; 0.200 &times; 0.250&sup2; = 6.25 mJ. For fractional uncertainty in v&sup2;: &Delta;v/v = &Delta;&omega;/&omega; + &Delta;x<sub>0</sub>/x<sub>0</sub> = 0.1/5.0 + 0.1/5.0 = 0.04, so &Delta;(v&sup2;)/v&sup2; = 2 &times; 0.04 = 0.08. A1: &Delta;E<sub>k</sub>/E<sub>k</sub> = &Delta;m/m + &Delta;(v&sup2;)/v&sup2; = 0.001/0.200 + 0.08 = 0.005 + 0.08 = 0.085 = 8.5%. A1: &Delta;E<sub>k</sub> = 0.085 &times; 6.25 = 0.53 mJ. E<sub>k</sub> = (6.25 &plusmn; 0.53) mJ. [3]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: At turning points the velocity is near zero but the force sensor reading for displacement may lag due to the finite sampling rate. A1: If displacement and velocity are not measured simultaneously, E<sub>k</sub> might be assigned to the wrong x, making E<sub>total</sub> = E<sub>k</sub> + E<sub>p</sub> appear to exceed the initial total energy. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The period T = 0.80 s gives frequency f = 1.25 Hz. The sampling frequency 50 Hz gives 50/1.25 = 40 samples per period. A1: With 40 samples per period the sensor will capture data at ~9&deg; intervals &mdash; this is sufficient to resolve the E<sub>k</sub> maximum to within ~1% error, so the measurement is reliable. [2]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 3                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 3 &mdash; Predicting the Effect of Damping</p>
+    <p class="q-context">A mass&ndash;spring system oscillates in a viscous fluid. The damping is light. The initial amplitude is x<sub>0</sub> and the initial total energy is E<sub>0</sub> = &frac12;kx<sub>0</sub>&sup2;.</p>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Sketch</span> the total energy E<sub>total</sub> against time t for both the undamped and the lightly damped case on the same axes. Label the initial energy E<sub>0</sub> and mark three successive maxima. <span class="marks">[3]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Explain</span> why the amplitude of a lightly damped oscillator decays exponentially rather than linearly. Refer to the energy loss per cycle. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Predict</span> how the resonance frequency of this system changes as the degree of damping increases. Justify your answer. <span class="marks">[2]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 3</p>
+    <div class="ms-point"><strong>(a)</strong> B1: Undamped: horizontal line at height E<sub>0</sub> (constant energy). B1: Damped: curve starting at E<sub>0</sub> and decaying with decreasing maxima. B1: Three successive maxima labelled, each lower than the previous, following an approximately exponential envelope. [3]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: The energy lost per cycle is proportional to the energy stored (for light damping, dissipative force &prop; velocity). A1: This gives dE/dt &prop; &minus;E, leading to exponential decay E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup>. Since E &prop; A&sup2;, the amplitude decays as A(t) = A<sub>0</sub>e<sup>&minus;&gamma;t/2</sup>. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The resonance frequency decreases slightly with increasing damping. A1: Damping reduces the effective restoring force and the oscillator responds more sluggishly; the resonance peak shifts to lower frequencies and becomes broader. [2]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 4                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 4 &mdash; Comparing Energy in Different SHM Systems</p>
+    <p class="q-context">Consider two oscillating systems: (i) a mass&ndash;spring system on a frictionless horizontal surface, and (ii) a simple pendulum of length L displaced through a small angle.</p>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) State</span> the form(s) of energy present at maximum displacement and at the equilibrium position for each system. Tabulate your answer. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Explain</span> why the simple pendulum is only approximately SHM for small angular displacements (&theta; &lt; 10&deg;). Refer to the restoring force in your explanation. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Discuss</span> whether total mechanical energy is strictly conserved for a pendulum over many oscillations in a real (non-ideal) setting. What experimental evidence would you look for? <span class="marks">[3]</span></p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 4</p>
+    <div class="ms-point"><strong>(a)</strong> B1: Mass&ndash;spring: at max displacement &rarr; elastic potential energy only; at equilibrium &rarr; kinetic energy only. B1: Pendulum: at max displacement &rarr; gravitational potential energy only; at equilibrium &rarr; kinetic energy only. Table with correct entries. [2]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: For a pendulum, the restoring force is F = &minus;mg sin&theta;. A1: For small &theta;, sin&theta; &asymp; &theta; (in radians), so F &asymp; &minus;mg&theta; = &minus;(mg/L)x, giving SHM. For larger &theta;, sin&theta; &lt; &theta; and the motion deviates. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: In a non-ideal setting, mechanical energy is not strictly conserved due to air resistance and friction at the pivot. B1: Evidence: amplitude gradually decreases over time (the pendulum slows and stops). B1: Also: energy is dissipated as thermal energy (slight warming of pivot and surrounding air), which could be measured with sensitive thermometry. [3]</div>
+    <p class="ms-total">Total: [7]</p>
+  </div>
+
+  <!-- ---------------------------------------------------------- -->
+  <!--  QUESTION 5                                                -->
+  <!-- ---------------------------------------------------------- -->
+  <div class="question">
+    <p class="q-header">Question 5 &mdash; Data Evaluation and Determination of Parameters</p>
+    <p class="q-context">A student records the kinetic energy E<sub>k</sub> of a 50 g mass oscillating on a spring at various displacements x from equilibrium. The data are shown in the table.</p>
+
+    <table class="data-table">
+      <tr>
+        <th>x / cm</th>
+        <td>0.0</td><td>1.0</td><td>2.0</td><td>3.0</td><td>4.0</td><td>5.0</td>
+      </tr>
+      <tr>
+        <th>E<sub>k</sub> / mJ</th>
+        <td>45.0</td><td>42.8</td><td>36.0</td><td>24.5</td><td>8.0</td><td>0.0</td>
+      </tr>
+    </table>
+
+    <div class="q-part">
+      <p><span class="cmd-word">(a) Plot</span> E<sub>k</sub> against x&sup2; on the grid below and determine the amplitude x<sub>0</sub> and angular frequency &omega;. <span class="marks">[4]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(b) Estimate</span> the total energy of the system and the spring constant k. <span class="marks">[2]</span></p>
+    </div>
+    <div class="q-part">
+      <p><span class="cmd-word">(c) Explain</span> how the results would differ if the spring itself had a non-negligible mass of 20 g. Would the calculated value of &omega; be an overestimate or an underestimate? Justify your answer. <span class="marks">[2]</span></p>
+    </div>
+
+    <div class="graph-container" style="max-width:550px;margin:0.8rem auto;">
+      <svg viewBox="0 0 620 400" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">
+        <rect width="620" height="400" fill="#fafafa" rx="4"/>
+        <!-- Grid for plotting E_k vs x^2 -->
+        <g stroke="#ddd" stroke-width="0.5">
+          <line x1="70" y1="40" x2="70" y2="355"/><line x1="70" y1="355" x2="590" y2="355"/>
+          <!-- vertical grid -->
+          <line x1="174" y1="40" x2="174" y2="355"/><line x1="278" y1="40" x2="278" y2="355"/>
+          <line x1="382" y1="40" x2="382" y2="355"/><line x1="486" y1="40" x2="486" y2="355"/>
+          <!-- horizontal grid -->
+          <line x1="70" y1="292" x2="590" y2="292"/><line x1="70" y1="229" x2="590" y2="229"/>
+          <line x1="70" y1="166" x2="590" y2="166"/><line x1="70" y1="103" x2="590" y2="103"/>
+        </g>
+        <!-- Axis arrows -->
+        <polyline points="70,40 65,50 70,40 75,50" fill="none" stroke="#333" stroke-width="1.5"/>
+        <polyline points="590,355 580,350 590,355 580,360" fill="none" stroke="#333" stroke-width="1.5"/>
+        <!-- Labels -->
+        <text x="330" y="388" font-size="12" text-anchor="middle" fill="#333" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">x&#x00B2; / cm&#x00B2;</text>
+        <text x="20" y="197" font-size="12" text-anchor="middle" fill="#333" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" transform="rotate(-90,20,197)">E_k / mJ</text>
+        <!-- Tick labels -->
+        <text x="70" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">0</text>
+        <text x="174" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">5</text>
+        <text x="278" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">10</text>
+        <text x="382" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">15</text>
+        <text x="486" y="372" font-size="10" text-anchor="middle" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">20</text>
+        <text x="32" y="355" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">0</text>
+        <text x="32" y="292" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">10</text>
+        <text x="32" y="229" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">20</text>
+        <text x="32" y="166" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">30</text>
+        <text x="32" y="103" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">40</text>
+        <text x="32" y="40" font-size="10" text-anchor="end" fill="#555" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">50</text>
+        <!-- Grid title -->
+        <text x="330" y="22" font-size="13" text-anchor="middle" fill="#333" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_k vs x&#x00B2; &mdash; Student Grid</text>
+      </svg>
+      <p class="caption">Fig. 7: Grid for plotting E<sub>k</sub> against x&sup2;. Axes calibrated: x&sup2; from 0 to 25 cm&sup2;, E<sub>k</sub> from 0 to 50 mJ.</p>
+    </div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Question 5</p>
+    <div class="ms-point"><strong>(a)</strong> M1: Calculate x&sup2; values: 0, 1, 4, 9, 16, 25 cm&sup2;. Plot points (x&sup2;, E<sub>k</sub>): (0,45.0), (1,42.8), (4,36.0), (9,24.5), (16,8.0), (25,0.0). A1: Best-fit straight line drawn with negative gradient. M1: x<sub>0</sub>&sup2; is the x-intercept (where E<sub>k</sub> = 0) &rarr; x<sub>0</sub>&sup2; = 25 cm&sup2; &rarr; x<sub>0</sub> = 5.0 cm. A1: E<sub>k</sub> = &frac12;m&omega;&sup2;(x<sub>0</sub>&sup2; &minus; x&sup2;). Gradient = &minus;&frac12;m&omega;&sup2; = (45.0 &minus; 0)/(0 &minus; 25) = &minus;1.80 mJ cm<sup>&minus;2</sup> = &minus;18 J m<sup>&minus;2</sup>. &omega;&sup2; = 2 &times; |gradient| / m = 2 &times; 18 / 0.050 = 720. &omega; = 26.8 rad s<sup>&minus;1</sup>. [4]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: E<sub>total</sub> = E<sub>k</sub>(x=0) = 45.0 mJ (accept 45&ndash;46 mJ). A1: k = m&omega;&sup2; = 0.050 &times; 720 = 36 N m<sup>&minus;1</sup>. (Or: E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2; &rarr; k = 2E<sub>total</sub>/x<sub>0</sub>&sup2; = 2 &times; 0.045 / 0.05&sup2; = 36 N m<sup>&minus;1</sup>.) [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The spring's mass contributes to the inertia but not to the restoring force, so the effective mass is greater than 50 g. A1: Since &omega; = &radic;(k/m<sub>eff</sub>), a larger effective mass means a smaller &omega;. The value calculated ignoring spring mass (26.8 rad s<sup>&minus;1</sup>) would be an <strong>overestimate</strong>. [2]</div>
+    <p class="ms-total">Total: [8]</p>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
+<!--  SUMMARY OF KEY EQUATIONS                                    -->
+<!-- ============================================================ -->
+<section>
+  <h2>6. Summary of Key Equations</h2>
+  <table class="data-table" style="min-width:70%;">
+    <tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>
+    <tr><td>Total energy</td><td>E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2;</td><td>Constant in ideal SHM</td></tr>
+    <tr><td>Kinetic energy</td><td>E<sub>k</sub> = &frac12;m&omega;&sup2;(x<sub>0</sub>&sup2; &minus; x&sup2;)</td><td>Maximum at x = 0</td></tr>
+    <tr><td>Potential energy</td><td>E<sub>p</sub> = &frac12;kx&sup2;</td><td>Maximum at x = &plusmn;x<sub>0</sub></td></tr>
+    <tr><td>Velocity&ndash;displacement</td><td>v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)</td><td>Derived from energy conservation</td></tr>
+    <tr><td>Angular frequency</td><td>&omega; = 2&pi;f = &radic;(k/m)</td><td>Mass&ndash;spring system</td></tr>
+    <tr><td>Damped energy</td><td>E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup></td><td>&gamma; = damping constant</td></tr>
+  </table>
+</section>
+
+</main>
+
+</body>
+</html>
