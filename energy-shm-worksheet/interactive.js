@@ -607,12 +607,96 @@
   }
 
   // ================================================================
-  // Initialization
+  // Zoom system — per-graph viewBox zoom with mouse wheel + buttons
+  // ================================================================
+  function setupZoom() {
+    document.querySelectorAll('.graph-container').forEach(function (container) {
+      var svg = container.querySelector('svg.graph-svg');
+      if (!svg) return;
+
+      // Store original viewBox
+      var vb = svg.viewBox.baseVal;
+      var orig = { x: vb.x, y: vb.y, w: vb.width, h: vb.height };
+      svg._origVB = orig;
+
+      // Create zoom toolbar
+      var bar = document.createElement('div');
+      bar.className = 'zoom-bar';
+
+      var btnIn = document.createElement('button');
+      btnIn.className = 'zoom-btn';
+      btnIn.title = 'Zoom in';
+      btnIn.textContent = '+';
+      btnIn.addEventListener('click', function (e) { e.stopPropagation(); zoomSVG(svg, 1.3, null); });
+
+      var btnOut = document.createElement('button');
+      btnOut.className = 'zoom-btn';
+      btnOut.title = 'Zoom out';
+      btnOut.textContent = '\u2212';
+      btnOut.addEventListener('click', function (e) { e.stopPropagation(); zoomSVG(svg, 1 / 1.3, null); });
+
+      var btnReset = document.createElement('button');
+      btnReset.className = 'zoom-btn zoom-btn-reset';
+      btnReset.title = 'Reset zoom';
+      btnReset.textContent = '\u292B';
+      btnReset.addEventListener('click', function (e) { e.stopPropagation(); resetZoom(svg); });
+
+      bar.appendChild(btnIn);
+      bar.appendChild(btnOut);
+      bar.appendChild(btnReset);
+      container.appendChild(bar);
+
+      // Mouse wheel zoom
+      svg.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        var rect = svg.getBoundingClientRect();
+        var mx = e.clientX - rect.left;
+        var my = e.clientY - rect.top;
+        var scale = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+        zoomSVG(svg, scale, { x: mx, y: my });
+      }, { passive: false });
+    });
+  }
+
+  function zoomSVG(svg, factor, center) {
+    var vb = svg.viewBox.baseVal;
+    var w = vb.width, h = vb.height;
+    var nw = w * factor, nh = h * factor;
+    if (nw < 100 || nw > 3000) return;
+    var cx, cy;
+    if (center) {
+      var rect = svg.getBoundingClientRect();
+      var scaleX = w / rect.width, scaleY = h / rect.height;
+      cx = center.x * scaleX + vb.x;
+      cy = center.y * scaleY + vb.y;
+    } else {
+      cx = vb.x + w / 2;
+      cy = vb.y + h / 2;
+    }
+    vb.x = cx - (cx - vb.x) * (nw / w);
+    vb.y = cy - (cy - vb.y) * (nh / h);
+    vb.width = nw;
+    vb.height = nh;
+  }
+
+  function resetZoom(svg) {
+    var orig = svg._origVB;
+    if (!orig) return;
+    var vb = svg.viewBox.baseVal;
+    vb.x = orig.x;
+    vb.y = orig.y;
+    vb.width = orig.w;
+    vb.height = orig.h;
+  }
+
+  // ================================================================
+  // Init
   // ================================================================
   function init() {
     setupToggles();
     setupTooltips();
     setupSliders();
+    setupZoom();
 
     var p = { x0: 5, omega: 2, gamma: 0.3 };
     var first = document.querySelector('.param-slider[data-param="x0"]');

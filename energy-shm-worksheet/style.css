@@ -473,6 +473,58 @@ section h3 {
   }
 }
 
+/* ---- Zoom bar ---- */
+.graph-container {
+  position: relative;
+}
+.zoom-bar {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  display: flex;
+  gap: 2px;
+  z-index: 5;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+.graph-container:hover .zoom-bar {
+  opacity: 1;
+}
+.zoom-btn {
+  width: 24px;
+  height: 22px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.88);
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+.zoom-btn:hover {
+  background: #fff;
+  border-color: #888;
+}
+.zoom-btn-reset {
+  font-size: 12px;
+}
+@media (pointer: coarse) {
+  .zoom-bar {
+    opacity: 0.6;
+  }
+  .zoom-btn {
+    width: 30px;
+    height: 28px;
+    font-size: 18px;
+  }
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 700px) {
   .graph-grid {
