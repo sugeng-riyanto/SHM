@@ -429,6 +429,120 @@ function graphHOTSDamping() {
 }
 
 // ============================================================
+// Graph 7: x-t, v-t, a-t phase relationships
+// ============================================================
+function graphPhaseRelations() {
+  const X0 = -0.3, X1 = 6.5, Y0 = -14, Y1 = 14;
+  const xStep = 1, yStep = 5;
+  const n = 150;
+
+  // x(t) = 5*sin(t), v(t) = 5*cos(t), a(t) = -5*sin(t)
+  const xData = [], vData = [], aData = [];
+  for (let i = 0; i <= n; i++) {
+    const t = 6.4 * i / n;
+    xData.push([t, 5 * Math.sin(t)]);
+    vData.push([t, 5 * Math.cos(t)]);
+    aData.push([t, -5 * Math.sin(t)]);
+  }
+
+  const xPath = genPath(xData, X0, X1, Y0, Y1);
+  const vPath = genPath(vData, X0, X1, Y0, Y1);
+  const aPath = genPath(aData, X0, X1, Y0, Y1);
+
+  let svg = '<svg id="graph7" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
+  svg += '<!-- Graph 7: Phase Relationships -->\n';
+  svg += '<defs>' + arrowHead('arr7', '#333') + '</defs>\n';
+  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'x, v, a / (cm, cm s\u207B\u00B9, cm s\u207B\u00B2)', 'Phase Relationships in SHM');
+  svg += '<g id="graph7-curves">\n';
+  svg += '<path id="graph7-x" d="' + xPath + '" fill="none" stroke="#1a3a5c" stroke-width="2.5"/>\n';
+  svg += '<path id="graph7-v" d="' + vPath + '" fill="none" stroke="#2b6f9e" stroke-width="2"/>\n';
+  svg += '<path id="graph7-a" d="' + aPath + '" fill="none" stroke="#c44536" stroke-width="2" stroke-dasharray="6,3"/>\n';
+  svg += '</g>\n';
+
+  // Phase annotations
+  const pi2 = sx(Math.PI / 2, X0, X1), pi = sx(Math.PI, X0, X1), pi3 = sx(3 * Math.PI / 2, X0, X1), pi4 = sx(2 * Math.PI, X0, X1);
+  svg += '<g class="annotations" pointer-events="none">\n';
+  svg += line(pi2, PY, pi2, PY + PH, '#999', 0.6, '3,2');
+  svg += line(pi, PY, pi, PY + PH, '#999', 0.6, '3,2');
+  svg += line(pi3, PY, pi3, PY + PH, '#999', 0.6, '3,2');
+  svg += line(pi4, PY, pi4, PY + PH, '#999', 0.6, '3,2');
+  svg += '<text x="' + pi2.toFixed(1) + '" y="' + (PY + PH + 18) + '" font-size="9" text-anchor="middle" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">T/4</text>\n';
+  svg += '<text x="' + pi.toFixed(1) + '" y="' + (PY + PH + 18) + '" font-size="9" text-anchor="middle" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">T/2</text>\n';
+  svg += '<text x="' + pi3.toFixed(1) + '" y="' + (PY + PH + 18) + '" font-size="9" text-anchor="middle" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">3T/4</text>\n';
+  svg += '<text x="' + pi4.toFixed(1) + '" y="' + (PY + PH + 18) + '" font-size="9" text-anchor="middle" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">T</text>\n';
+
+  // Phase difference labels
+  svg += '<text x="' + (pi2 + 10).toFixed(1) + '" y="' + (sy(7, Y0, Y1) - 8) + '" font-size="9" fill="#2b6f9e" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">v leads x by T/4</text>\n';
+  svg += '<text x="' + (pi2 + 10).toFixed(1) + '" y="' + (sy(-7, Y0, Y1) + 16) + '" font-size="9" fill="#c44536" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">a lags x by T/4</text>\n';
+  svg += '</g>\n';
+
+  // Interactive Legend
+  const lx = PX + 15, ly = PY + 18;
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="175" height="64" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph7-x" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#1a3a5c" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">x = x\u2080 sin(\u03C9t)</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph7-v" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#2b6f9e" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">v = \u03C9x\u2080 cos(\u03C9t)</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph7-a" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 40) + '" x2="' + (lx + 38) + '" y2="' + (ly + 40) + '" stroke="#c44536" stroke-width="2" stroke-dasharray="6,3"/><text x="' + (lx + 44) + '" y="' + (ly + 44) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">a = \u2212\u03C9\u00B2x\u2080 sin(\u03C9t)</text></g>\n';
+
+  svg += '</svg>\n';
+  return svg;
+}
+
+// ============================================================
+// Graph 8: Resonance curves at different damping levels
+// ============================================================
+function graphResonance() {
+  const X0 = -0.3, X1 = 4.5, Y0 = -0.5, Y1 = 5.5;
+  const xStep = 0.5, yStep = 1;
+
+  // Amplitude vs driving frequency as fraction of natural freq
+  // A = A0 / sqrt((1 - (f/f0)^2)^2 + (2*gamma*(f/f0))^2)
+  const n = 120;
+  const light = [], medium = [], heavy = [];
+  const gammas = [0.15, 0.4, 0.8];
+  const colors = ['#c44536', '#2b6f9e', '#1a7a3a'];
+
+  for (let i = 0; i <= n; i++) {
+    const r = 4.2 * i / n; // f/f0 ratio
+    light.push([r, 5 / Math.sqrt(Math.pow(1 - r * r, 2) + Math.pow(2 * gammas[0] * r, 2))]);
+    medium.push([r, 5 / Math.sqrt(Math.pow(1 - r * r, 2) + Math.pow(2 * gammas[1] * r, 2))]);
+    heavy.push([r, 5 / Math.sqrt(Math.pow(1 - r * r, 2) + Math.pow(2 * gammas[2] * r, 2))]);
+  }
+
+  const lightPath = genPath(light, X0, X1, Y0, Y1);
+  const medPath = genPath(medium, X0, X1, Y0, Y1);
+  const heavyPath = genPath(heavy, X0, X1, Y0, Y1);
+
+  let svg = '<svg id="graph8" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
+  svg += '<!-- Graph 8: Resonance Curves -->\n';
+  svg += '<defs>' + arrowHead('arr8', '#333') + '</defs>\n';
+  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'driving frequency / natural frequency', 'amplitude', 'Resonance at Different Damping Levels');
+  svg += '<g id="graph8-curves">\n';
+  svg += '<path id="graph8-light" d="' + lightPath + '" fill="none" stroke="' + colors[0] + '" stroke-width="2.5"/>\n';
+  svg += '<path id="graph8-medium" d="' + medPath + '" fill="none" stroke="' + colors[1] + '" stroke-width="2.5"/>\n';
+  svg += '<path id="graph8-heavy" d="' + heavyPath + '" fill="none" stroke="' + colors[2] + '" stroke-width="2.5"/>\n';
+  svg += '</g>\n';
+
+  // Mark natural frequency (f/f0 = 1)
+  const f0x = sx(1, X0, X1);
+  svg += line(f0x, PY, f0x, PY + PH, '#999', 0.8, '4,3');
+  svg += '<text x="' + f0x.toFixed(1) + '" y="' + (PY + PH + 18) + '" font-size="10" text-anchor="middle" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">f\u2080</text>\n';
+
+  // Interactive Legend
+  const lx = PX + 15, ly = PY + 18;
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="170" height="64" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph8-light" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="' + colors[0] + '" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Light damping</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph8-medium" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="' + colors[1] + '" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Medium damping</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph8-heavy" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 40) + '" x2="' + (lx + 38) + '" y2="' + (ly + 40) + '" stroke="' + colors[2] + '" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 44) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Heavy damping</text></g>\n';
+
+  svg += '</svg>\n';
+  return svg;
+}
+
+// ============================================================
 // Main: generate all SVGs, replace in template, write output
 // ============================================================
 function main() {
@@ -438,7 +552,9 @@ function main() {
     'GRAPH_VELOCITY_DISPLACEMENT': graphVelocityDisplacement(),
     'GRAPH_DAMPED_ENERGY': graphDampedEnergy(),
     'GRAPH_HOTS_EXPERIMENTAL': graphHOTSExperimental(),
-    'GRAPH_HOTS_DAMPING': graphHOTSDamping()
+    'GRAPH_HOTS_DAMPING': graphHOTSDamping(),
+    'GRAPH_PHASE_RELATIONS': graphPhaseRelations(),
+    'GRAPH_RESONANCE': graphResonance()
   };
 
   const templatePath = path.join(__dirname, 'index.html.template');

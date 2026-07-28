@@ -38,11 +38,14 @@
 <section>
   <h2>Learning Objectives</h2>
   <ul class="objectives">
-    <li><span class="cmd">derive</span> the velocity&ndash;displacement relation for SHM using conservation of energy</li>
+    <li><span class="cmd">define</span> simple harmonic motion as a &prop; &minus;x and <span class="cmd">state</span> the defining equation a = &minus;&omega;&sup2;x</li>
+    <li><span class="cmd">use</span> the equations x = x<sub>0</sub> sin(&omega;t), v = &omega;x<sub>0</sub> cos(&omega;t) and a = &minus;&omega;&sup2;x<sub>0</sub> sin(&omega;t)</li>
+    <li><span class="cmd">derive</span> the velocity&ndash;displacement relation v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;) using conservation of energy</li>
+    <li><span class="cmd">sketch</span> and <span class="cmd">interpret</span> graphs of x, v and a against time, showing phase relationships</li>
     <li><span class="cmd">sketch</span> and <span class="cmd">interpret</span> graphs of E<sub>k</sub>, E<sub>p</sub> and E<sub>total</sub> against displacement and time</li>
-    <li><span class="cmd">explain</span> the interconversion between kinetic and potential energy during one complete oscillation</li>
-    <li><span class="cmd">evaluate</span> the effect of damping on the total mechanical energy of an oscillating system</li>
-    <li><span class="cmd">analyse</span> experimental data to determine oscillation parameters from energy measurements</li>
+    <li><span class="cmd">derive</span> the period equations T = 2&pi;&radic;(m/k) and T = 2&pi;&radic;(L/g)</li>
+    <li><span class="cmd">evaluate</span> the effect of damping on amplitude, energy and resonance sharpness</li>
+    <li><span class="cmd">analyse</span> experimental data to determine SHM parameters from position, velocity and energy measurements</li>
   </ul>
 </section>
 
@@ -101,10 +104,79 @@
 </section>
 
 <!-- ============================================================ -->
+<!--  SHM DEFINITION                                             -->
+<!-- ============================================================ -->
+<section>
+  <h2>2. Definition and Conditions for Simple Harmonic Motion</h2>
+  <p>Simple harmonic motion is defined as an oscillation in which the acceleration <em>a</em> is directly proportional to the displacement <em>x</em> from a fixed point and is always directed towards that point.</p>
+
+  <div class="final-formula">a = &minus;&omega;&sup2;x</div>
+
+  <p>where &omega; is the angular frequency (measured in rad s<sup>&minus;1</sup>). The negative sign indicates that the acceleration is always directed towards the equilibrium position (restoring). Equivalently:</p>
+
+  <ul>
+    <li>Restoring force: <strong>F = &minus;kx</strong> &nbsp;(where k = m&omega;&sup2; is the force constant)</li>
+    <li>Condition for SHM: <strong>a &prop; &minus;x</strong></li>
+    <li>Angular frequency: <strong>&omega; = 2&pi;f = 2&pi;/T</strong></li>
+  </ul>
+
+  <p>For a body to execute SHM, the restoring force must obey Hooke's law (F = &minus;kx) over the range of motion.</p>
+</section>
+
+<!-- ============================================================ -->
+<!--  KINEMATICS OF SHM                                           -->
+<!-- ============================================================ -->
+<section>
+  <h2>3. Kinematics of Simple Harmonic Motion</h2>
+
+  <p>The displacement of a particle executing SHM can be described by a sinusoidal function of time:</p>
+
+  <div class="final-formula">x = x<sub>0</sub> sin(&omega;t) &nbsp; or &nbsp; x = x<sub>0</sub> cos(&omega;t)</div>
+
+  <p>Differentiating with respect to time gives expressions for velocity and acceleration:</p>
+
+  <table class="data-table" style="min-width:75%;">
+    <tr><th>Quantity</th><th>Expression</th><th>Phase relative to x</th></tr>
+    <tr><td><strong>Displacement</strong></td><td>x = x<sub>0</sub> sin(&omega;t)</td><td>&mdash;</td></tr>
+    <tr><td><strong>Velocity</strong></td><td>v = &omega;x<sub>0</sub> cos(&omega;t) = &omega;x<sub>0</sub> sin(&omega;t + &pi;/2)</td><td>Leads displacement by &pi;/2 (T/4)</td></tr>
+    <tr><td><strong>Acceleration</strong></td><td>a = &minus;&omega;&sup2;x<sub>0</sub> sin(&omega;t) = &omega;&sup2;x<sub>0</sub> sin(&omega;t + &pi;)</td><td>Opposes displacement (phase diff. &pi;)</td></tr>
+    <tr><td><strong>Max. speed</strong></td><td>v<sub>max</sub> = &omega;x<sub>0</sub></td><td>At equilibrium (x = 0)</td></tr>
+    <tr><td><strong>Max. acceleration</strong></td><td>a<sub>max</sub> = &omega;&sup2;x<sub>0</sub></td><td>At maximum displacement (x = &plusmn;x<sub>0</sub>)</td></tr>
+  </table>
+
+  <div class="graph-container">
+    {{GRAPH_PHASE_RELATIONS}}
+    <p class="caption">Fig. 7: Displacement, velocity and acceleration as functions of time. Note the phase differences: velocity leads displacement by T/4, acceleration opposes displacement (antiphase).</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!--  PERIOD OF OSCILLATION                                       -->
+<!-- ============================================================ -->
+<section>
+  <h2>4. Period of Oscillation for Common SHM Systems</h2>
+
+  <h3>4.1 Mass&ndash;Spring System</h3>
+  <p>For a mass <em>m</em> on a spring of force constant <em>k</em>:</p>
+  <div class="final-formula" style="font-size:1rem;">&omega; = &radic;(k/m) &nbsp; &rArr; &nbsp; T = 2&pi;&radic;(m/k)</div>
+
+  <h3>4.2 Simple Pendulum</h3>
+  <p>For a pendulum of length <em>L</em> (small-angle approximation):</p>
+  <div class="final-formula" style="font-size:1rem;">&omega; = &radic;(g/L) &nbsp; &rArr; &nbsp; T = 2&pi;&radic;(L/g)</div>
+
+  <p><strong>Key points:</strong></p>
+  <ul>
+    <li>The period of a mass&ndash;spring system is independent of <em>g</em> and depends only on <em>m</em> and <em>k</em>.</li>
+    <li>The period of a pendulum is independent of mass and amplitude (for small angles) &mdash; it depends only on <em>L</em> and <em>g</em>.</li>
+    <li>The period of a pendulum can be used to determine <em>g</em> experimentally.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
 <!--  KEY GRAPHS                                                  -->
 <!-- ============================================================ -->
 <section>
-  <h2>2. Key Graphical Representations</h2>
+  <h2>5. Key Graphical Representations</h2>
 
   <!-- Interactive Controls -->
   <div class="interactive-controls" style="display:flex;flex-wrap:wrap;gap:1rem 2rem;padding:0.6rem 1rem;background:#f0f4f8;border-radius:6px;margin-bottom:1rem;border:1px solid #d0d7de;">
@@ -155,6 +227,11 @@
 
   </div>
 
+  <div class="graph-container" style="max-width:550px;margin:0.6rem auto;">
+    {{GRAPH_RESONANCE}}
+    <p class="caption">Fig. 8: Resonance curves for light, medium and heavy damping. The peak amplitude decreases and the curve broadens as damping increases.</p>
+  </div>
+
   <h3>Key Observations from the Graphs</h3>
   <ul>
     <li><strong>Energy conservation:</strong> The sum E<sub>k</sub> + E<sub>p</sub> is constant at every displacement &mdash; the horizontal line in Fig. 1.</li>
@@ -187,6 +264,25 @@
     <li>The width of the resonance curve depends on the degree of damping: lighter damping gives a sharper, taller peak.</li>
     <li>At resonance, the driving force is in phase with the velocity, so work done by the driving force is always positive &mdash; energy is fed into the system each cycle.</li>
   </ul>
+
+  <h3>3.3 Practical Examples of Resonance</h3>
+  <table class="data-table" style="min-width:85%;">
+    <tr><th>System</th><th>Driving frequency</th><th>Natural frequency</th><th>Observation</th></tr>
+    <tr><td>Microwave oven</td><td>2.45 GHz</td><td>H<sub>2</sub>O molecular vibration</td><td>Water molecules absorb energy; food heats</td></tr>
+    <tr><td>Pendulum clock</td><td>Escapement mechanism</td><td>Pendulum period</td><td>Amplitude maintained against friction</td></tr>
+    <tr><td>Bridge (e.g. Tacoma Narrows)</td><td>Wind-induced vortices</td><td>Bridge structural mode</td><td>Large-amplitude oscillations &rarr; collapse</td></tr>
+    <tr><td>Radio receiver</td><td>Incoming radio wave</td><td>LC circuit resonance</td><td>Selective amplification of target frequency</td></tr>
+    <tr><td>Musical instrument</td><td>Vibrating string/air column</td><td>Standing wave mode</td><td>Sound amplification at harmonics</td></tr>
+  </table>
+
+  <h3>3.4 Effect of Damping on the Resonance Curve</h3>
+  <ul>
+    <li>As damping <strong>increases</strong>, the resonance peak amplitude <strong>decreases</strong>.</li>
+    <li>The resonance curve becomes <strong>broader</strong> (less sharp).</li>
+    <li>The resonance frequency shifts <strong>slightly lower</strong>.</li>
+    <li>For very heavy damping, the resonance peak disappears entirely (the system is overdamped).</li>
+  </ul>
+  <p>These relationships are illustrated in Fig. 8.</p>
 </section>
 
 <!-- ============================================================ -->
@@ -239,7 +335,7 @@
     </div>
 
     <div class="q-part">
-      <p><span class="cmd-word">(a) Describe</span> the difference between the theoretical and experimental E<sub>k</sub> curves shown in Fig. 5. Explain whether the discrepancy is within the experimental uncertainty. <span class="marks">[2]</span></p>
+      <p><span class="cmd-word">(a) Describe</span> the difference between the theoretical and experimental E<sub>k</sub> curves shown in Fig. 6. Explain whether the discrepancy is within the experimental uncertainty. <span class="marks">[2]</span></p>
     </div>
     <div class="q-part">
       <p><span class="cmd-word">(b) Suggest</span> one physical cause for the systematic energy loss evident in the data. <span class="marks">[2]</span></p>
@@ -397,7 +493,7 @@
         <!-- Grid title -->
         <text x="330" y="22" font-size="13" text-anchor="middle" fill="#333" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_k vs x&#x00B2; &mdash; Student Grid</text>
       </svg>
-      <p class="caption">Fig. 7: Grid for plotting E<sub>k</sub> against x&sup2;. Axes calibrated: x&sup2; from 0 to 25 cm&sup2;, E<sub>k</sub> from 0 to 50 mJ.</p>
+      <p class="caption">Fig. 9: Grid for plotting E<sub>k</sub> against x&sup2;. Axes calibrated: x&sup2; from 0 to 25 cm&sup2;, E<sub>k</sub> from 0 to 50 mJ.</p>
     </div>
   </div>
 
@@ -411,18 +507,84 @@
 
 </section>
 
+<!-- ---------------------------------------------------------- -->
+<!--  QUESTION 6                                                -->
+<!-- ---------------------------------------------------------- -->
+<div class="question">
+  <p class="q-header">Question 6 &mdash; Resonance Curve Analysis</p>
+  <p class="q-context">A student investigates the amplitude of a driven oscillator at various driving frequencies. The system has a natural frequency f<sub>0</sub> = 2.0 Hz. Three trials are conducted with increasing levels of damping (light, medium, heavy).</p>
+
+  <div class="q-part">
+    <p><span class="cmd-word">(a) Sketch</span> the three resonance curves (amplitude against driving frequency) on the same axes. Label the natural frequency f<sub>0</sub> and indicate the peak amplitude for each case. <span class="marks">[3]</span></p>
+  </div>
+  <div class="q-part">
+    <p><span class="cmd-word">(b) Explain</span> why the resonance peak for light damping is sharper and taller than for heavy damping. Refer to energy transfer in your answer. <span class="marks">[2]</span></p>
+  </div>
+  <div class="q-part">
+    <p><span class="cmd-word">(c) Predict</span> what would happen to the resonance frequency if the mass of the oscillator were doubled. Justify your answer. <span class="marks">[2]</span></p>
+  </div>
+</div>
+
+<div class="mark-scheme">
+  <p class="ms-header">Mark Scheme &mdash; Question 6</p>
+  <div class="ms-point"><strong>(a)</strong> B1: Three curves with peaks at approximately f<sub>0</sub> (or slightly below for heavier damping). B1: Light damping curve has tallest, narrowest peak; heavy damping has shortest, widest. B1: f<sub>0</sub> marked at 2.0 Hz on frequency axis. [3]</div>
+  <div class="ms-point"><strong>(b)</strong> M1: With light damping, less energy is dissipated per cycle, so the oscillator can store more energy and reach larger amplitude. A1: The driving force does positive work near resonance; with less damping, energy accumulates, producing a taller peak. [2]</div>
+  <div class="ms-point"><strong>(c)</strong> M1: For a mass&ndash;spring system, f<sub>0</sub> = (1/2&pi;)&radic;(k/m). A1: Doubling mass reduces f<sub>0</sub> by a factor of &radic;2 (to approximately 1.4 Hz). [2]</div>
+  <p class="ms-total">Total: [7]</p>
+</div>
+
+<!-- ---------------------------------------------------------- -->
+<!--  QUESTION 7                                                -->
+<!-- ---------------------------------------------------------- -->
+<div class="question">
+  <p class="q-header">Question 7 &mdash; Phase Relationships in SHM</p>
+  <p class="q-context">A particle executes SHM according to x = (4.0 cm) sin(3.0t). A student measures displacement and velocity simultaneously and records the following data:</p>
+
+  <table class="data-table">
+    <tr><th>t / s</th><td>0.00</td><td>0.26</td><td>0.52</td><td>0.79</td><td>1.05</td><td>1.31</td></tr>
+    <tr><th>x / cm</th><td>0.00</td><td>2.83</td><td>4.00</td><td>2.83</td><td>0.00</td><td>&minus;2.83</td></tr>
+    <tr><th>v / cm s<sup>&minus;1</sup></th><td>12.00</td><td>8.49</td><td>0.00</td><td>&minus;8.49</td><td>&minus;12.00</td><td>&minus;8.49</td></tr>
+  </table>
+
+  <div class="q-part">
+    <p><span class="cmd-word">(a) Verify</span> that the data are consistent with v = &omega;x<sub>0</sub> cos(&omega;t). Determine &omega; and x<sub>0</sub> from the data. <span class="marks">[3]</span></p>
+  </div>
+  <div class="q-part">
+    <p><span class="cmd-word">(b) Calculate</span> the acceleration at t = 0.52 s and state its direction. <span class="marks">[2]</span></p>
+  </div>
+  <div class="q-part">
+    <p><span class="cmd-word">(c) Sketch</span> the acceleration&ndash;time graph for the first complete cycle. On the same axes, sketch the displacement&ndash;time graph and indicate the phase difference between them. <span class="marks">[2]</span></p>
+  </div>
+</div>
+
+<div class="mark-scheme">
+  <p class="ms-header">Mark Scheme &mdash; Question 7</p>
+  <div class="ms-point"><strong>(a)</strong> M1: From data, maximum x = 4.0 cm = x<sub>0</sub>. v<sub>max</sub> = 12.0 cm s<sup>&minus;1</sup> at t = 0 (x = 0). A1: &omega; = v<sub>max</sub>/x<sub>0</sub> = 12.0/4.0 = 3.0 rad s<sup>&minus;1</sup>. M1: At t = 0.26 s, &omega;t = 0.78 rad; predicted x = 4.0 sin(0.78) = 2.81 cm, v = 12.0 cos(0.78) = 8.56 cm s<sup>&minus;1</sup>. Both within rounding of the measured values. [3]</div>
+  <div class="ms-point"><strong>(b)</strong> M1: a = &minus;&omega;&sup2;x = &minus;(3.0)&sup2; &times; 4.0 = &minus;36 cm s<sup>&minus;2</sup> (or &minus;0.36 m s<sup>&minus;2</sup>). A1: Negative sign means acceleration is directed towards equilibrium (downwards/leftwards). [2]</div>
+  <div class="ms-point"><strong>(c)</strong> M1: a&ndash;t graph is a sine wave with opposite sign to x&ndash;t graph. A1: Acceleration is antiphase (phase difference of &pi; radians or 180&deg;) with displacement. [2]</div>
+  <p class="ms-total">Total: [7]</p>
+</div>
+
+</section>
+
 <!-- ============================================================ -->
 <!--  SUMMARY OF KEY EQUATIONS                                    -->
 <!-- ============================================================ -->
 <section>
-  <h2>6. Summary of Key Equations</h2>
+  <h2>7. Summary of Key Equations</h2>
   <table class="data-table" style="min-width:70%;">
     <tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>
+    <tr><td>Definition of SHM</td><td>a = &minus;&omega;&sup2;x</td><td>Acceleration &prop; &minus;displacement</td></tr>
+    <tr><td>Displacement</td><td>x = x<sub>0</sub> sin(&omega;t)</td><td>Or x = x<sub>0</sub> cos(&omega;t)</td></tr>
+    <tr><td>Velocity</td><td>v = &omega;x<sub>0</sub> cos(&omega;t)</td><td>Leads x by T/4</td></tr>
+    <tr><td>Acceleration</td><td>a = &minus;&omega;&sup2;x<sub>0</sub> sin(&omega;t)</td><td>Antiphase with x</td></tr>
+    <tr><td>Velocity&ndash;displacement</td><td>v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)</td><td>From energy conservation</td></tr>
     <tr><td>Total energy</td><td>E<sub>total</sub> = &frac12;kx<sub>0</sub>&sup2;</td><td>Constant in ideal SHM</td></tr>
     <tr><td>Kinetic energy</td><td>E<sub>k</sub> = &frac12;m&omega;&sup2;(x<sub>0</sub>&sup2; &minus; x&sup2;)</td><td>Maximum at x = 0</td></tr>
     <tr><td>Potential energy</td><td>E<sub>p</sub> = &frac12;kx&sup2;</td><td>Maximum at x = &plusmn;x<sub>0</sub></td></tr>
-    <tr><td>Velocity&ndash;displacement</td><td>v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;)</td><td>Derived from energy conservation</td></tr>
     <tr><td>Angular frequency</td><td>&omega; = 2&pi;f = &radic;(k/m)</td><td>Mass&ndash;spring system</td></tr>
+    <tr><td>Period (spring)</td><td>T = 2&pi;&radic;(m/k)</td><td>Independent of amplitude</td></tr>
+    <tr><td>Period (pendulum)</td><td>T = 2&pi;&radic;(L/g)</td><td>Small-angle approximation</td></tr>
     <tr><td>Damped energy</td><td>E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup></td><td>&gamma; = damping constant</td></tr>
   </table>
 </section>

@@ -108,15 +108,20 @@
     var svg4   = getSvgHTML('graph4');
     var svg5   = getSvgHTML('graph5');
     var svg6   = getSvgHTML('graph6');
+    var svg7   = getSvgHTML('graph7');
+    var svg8   = getSvgHTML('graph8');
     var gridSvg = document.querySelector('.graph-container svg');
     var q5grid = gridSvg && document.contains(gridSvg) ? gridSvg.outerHTML : '';
 
-    return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<title>SHM Energy Interchange — Workbook</title>\n<style>\n' + workbookCSS + '\n</style>\n</head>\n<body>\n' +
+    return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<title>SHM — Comprehensive Workbook</title>\n<style>\n' + workbookCSS + '\n</style>\n</head>\n<body>\n' +
       coverPage() +
       '<div class="content">' +
       learningObjectives() +
+      shmDefinition() +
+      kinematicsSection(svg7) +
+      periodFormulas() +
       socraticDerivation() +
-      keyGraphs(svg1, svg2, svg3, svg4, svg5, svg6) +
+      keyGraphs(svg1, svg2, svg3, svg4, svg5, svg6, svg8) +
       dampingSection() +
       workedExample() +
       '<div class="appendix"></div>' +
@@ -132,9 +137,9 @@
 
   function coverPage() {
     return '<div class="cover-page">' +
-      '<h1>Energy Interchange in<br>Simple Harmonic Motion</h1>' +
+      '<h1>Simple Harmonic Motion<br>Comprehensive Worksheet</h1>' +
       '<p class="subj">Cambridge International AS &amp; A Level Physics &mdash; 9702/4</p>' +
-      '<p class="ref">Syllabus ref: 17.1 &middot; 17.2 &middot; 17.3</p>' +
+      '<p class="ref">Syllabus ref: 17.1 &middot; 17.2 &middot; 17.3 &middot; 17.4</p>' +
       '<div class="field"><label>Student name:</label><div class="line"></div></div>' +
       '<div class="field"><label>Date:</label><div class="line"></div></div>' +
       '</div>';
@@ -147,12 +152,75 @@
   function learningObjectives() {
     return '<h2>Learning Objectives</h2>' +
       '<ul>' +
-      '<li>derive the velocity\u2013displacement relation for SHM using conservation of energy</li>' +
+      '<li>define simple harmonic motion as a \u221D \u2212x and state the defining equation a = \u2212\u03C9\u00B2x</li>' +
+      '<li>use the equations x = x\u2080 sin(\u03C9t), v = \u03C9x\u2080 cos(\u03C9t) and a = \u2212\u03C9\u00B2x\u2080 sin(\u03C9t)</li>' +
+      '<li>derive the velocity\u2013displacement relation v = \u00B1\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2) using conservation of energy</li>' +
+      '<li>sketch and interpret graphs of x, v and a against time, showing phase relationships</li>' +
       '<li>sketch and interpret graphs of E\u2096, E\u209A and E\u209C\u2092\u209C against displacement and time</li>' +
-      '<li>explain the interconversion between kinetic and potential energy during one complete oscillation</li>' +
-      '<li>evaluate the effect of damping on the total mechanical energy of an oscillating system</li>' +
-      '<li>analyse experimental data to determine oscillation parameters from energy measurements</li>' +
+      '<li>derive the period equations T = 2\u03C0\u221A(m/k) and T = 2\u03C0\u221A(L/g)</li>' +
+      '<li>evaluate the effect of damping on amplitude, energy and resonance sharpness</li>' +
+      '<li>analyse experimental data to determine SHM parameters from position, velocity and energy measurements</li>' +
       '</ul>';
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  SHM definition
+  // ──────────────────────────────────────────────────────────────
+
+  function shmDefinition() {
+    return '<h2>1. Definition and Conditions for SHM</h2>' +
+      '<p>A body executes <strong>simple harmonic motion</strong> if its acceleration is directly proportional to its displacement from a fixed point and directed towards that point:</p>' +
+      '<div class="final-formula">a \u221D \u2212x \u00A0\u00A0\u21D2\u00A0\u00A0 a = \u2212\u03C9\u00B2x</div>' +
+      '<p>where \u03C9 is the <strong>angular frequency</strong> (in rad s\u207B\u00B9). The negative sign indicates acceleration always acts towards the equilibrium position.</p>' +
+      '<h3>Conditions</h3>' +
+      '<ul>' +
+      '<li>A restoring force (or torque) proportional to displacement from equilibrium.</li>' +
+      '<li>No energy loss (ideal case); in practice, light damping may be present.</li>' +
+      '<li>The system must have inertia to overshoot the equilibrium position.</li>' +
+      '</ul>';
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  Kinematics of SHM
+  // ──────────────────────────────────────────────────────────────
+
+  function kinematicsSection(phaseSvg) {
+    return '<h2>2. Kinematics of SHM</h2>' +
+      '<p>For SHM starting at equilibrium (x = 0, t = 0):</p>' +
+      '<table class="summary-table">' +
+      '<tr><th>Quantity</th><th>Equation</th><th>Phase</th></tr>' +
+      '<tr><td>Displacement</td><td>x = x\u2080 sin(\u03C9t)</td><td>Reference</td></tr>' +
+      '<tr><td>Velocity</td><td>v = \u03C9x\u2080 cos(\u03C9t)</td><td>Leads x by \u00BC cycle</td></tr>' +
+      '<tr><td>Acceleration</td><td>a = \u2212\u03C9\u00B2x\u2080 sin(\u03C9t)</td><td>Antiphase with x</td></tr>' +
+      '</table>' +
+      '<p><strong>Key relationships:</strong></p>' +
+      '<ul>' +
+      '<li>v<sub>max</sub> = \u03C9x\u2080 (occurs at x = 0)</li>' +
+      '<li>a<sub>max</sub> = \u03C9\u00B2x\u2080 (occurs at x = \u00B1x\u2080)</li>' +
+      '<li>Velocity lags acceleration by \u00BC cycle and leads displacement by \u00BC cycle.</li>' +
+      '</ul>' +
+      '<div class="graph-container">' + phaseSvg + '<p class="caption">Fig. 7: Phase relationship between x, v and a in SHM.</p></div>';
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  Period of oscillation
+  // ──────────────────────────────────────────────────────────────
+
+  function periodFormulas() {
+    return '<h2>3. Period of Oscillation</h2>' +
+      '<p>The period <em>T</em> of an SHM oscillator depends on the physical properties of the system:</p>' +
+      '<h3>3.1 Mass\u2013Spring System</h3>' +
+      '<div class="final-formula">T = 2\u03C0\u221A(m/k)</div>' +
+      '<p>Derivation: From F = \u2212kx and F = ma, we get a = \u2212(k/m)x. Comparing with a = \u2212\u03C9\u00B2x gives \u03C9 = \u221A(k/m). Since T = 2\u03C0/\u03C9, we obtain T = 2\u03C0\u221A(m/k).</p>' +
+      '<ul><li><strong>Independent of amplitude</strong> (isochronous oscillator).</li>' +
+      '<li>Increasing mass \u2192 longer period; increasing spring constant \u2192 shorter period.</li></ul>' +
+
+      '<h3>3.2 Simple Pendulum (small-angle approximation)</h3>' +
+      '<div class="final-formula">T = 2\u03C0\u221A(L/g)</div>' +
+      '<p>Derivation: Restoring torque \u03C4 = \u2212mgL sin\u03B8. For small \u03B8, sin\u03B8 \u2248 \u03B8. Using \u03C4 = I\u03B1 and I = mL\u00B2 gives \u03B1 = \u2212(g/L)\u03B8, so \u03C9 = \u221A(g/L) and T = 2\u03C0\u221A(L/g).</p>' +
+      '<ul><li>Valid only for small amplitudes (\u03B8 < 10\u00B0).</li>' +
+      '<li>Period independent of mass and amplitude.</li>' +
+      '<li>Larger amplitudes \u2192 period slightly longer than formula predicts.</li></ul>';
   }
 
   // ──────────────────────────────────────────────────────────────
@@ -160,7 +228,7 @@
   // ──────────────────────────────────────────────────────────────
 
   function socraticDerivation() {
-    return '<h2>1. Socratic Derivation: v = \u00B1\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)</h2>' +
+    return '<h2>4. Socratic Derivation: v = \u00B1\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)</h2>' +
       '<p>We shall derive the velocity\u2013displacement relation for a particle executing SHM using the principle of conservation of mechanical energy. Consider a mass\u2013spring system with spring constant <em>k</em> and mass <em>m</em>, oscillating with amplitude x\u2080.</p>' +
 
       '<div class="derivation-step"><span class="step-num">Step 1</span><span class="prompt">\u25C4 Write the total mechanical energy of the system at an arbitrary displacement <em>x</em> where the particle has velocity <em>v</em>.</span><span class="result">E\u209C\u2092\u209C = \u00BDmv\u00B2 + \u00BDkx\u00B2</span></div>' +
@@ -176,8 +244,8 @@
   //  Key graphs
   // ──────────────────────────────────────────────────────────────
 
-  function keyGraphs(s1, s2, s3, s4, s5, s6) {
-    return '<h2>2. Key Graphical Representations</h2>' +
+  function keyGraphs(s1, s2, s3, s4, s5, s6, s8) {
+    return '<h2>5. Key Graphical Representations</h2>' +
       '<div class="graph-grid">' +
         '<div class="graph-container">' + s1 + '<p class="caption">Fig. 1: Energy vs displacement. E\u209A follows a parabolic curve, E\u2096 is an inverted parabola, and E\u209C\u2092\u209C remains constant.</p></div>' +
         '<div class="graph-container">' + s2 + '<p class="caption">Fig. 2: Energy vs time. E\u209A and E\u2096 oscillate at twice the frequency of the displacement.</p></div>' +
@@ -185,6 +253,7 @@
         '<div class="graph-container">' + s4 + '<p class="caption">Fig. 4: Damped oscillation \u2014 energy envelope decays as E(t) = E\u2080e\u207B\u03B3\u1D57.</p></div>' +
         '<div class="graph-container">' + s5 + '<p class="caption">Fig. 5: Comparison of undamped and lightly damped total energy.</p></div>' +
         '<div class="graph-container">' + s6 + '<p class="caption">Fig. 6: HOTS \u2014 experimental vs theoretical E\u2096 with systematic error.</p></div>' +
+        '<div class="graph-container">' + s8 + '<p class="caption">Fig. 8: Resonance curves for light, medium and heavy damping.</p></div>' +
       '</div>' +
       '<h3>Key Observations</h3>' +
       '<ul>' +
@@ -193,6 +262,7 @@
       '<li>Frequency doubling: both E\u2096 and E\u209A complete two cycles per oscillation period.</li>' +
       '<li>Velocity\u2013displacement ellipse: area enclosed is proportional to total energy.</li>' +
       '<li>Damping: energy dissipated to surroundings causes amplitude and total energy to decay.</li>' +
+      '<li>Resonance: lighter damping gives a sharper, taller peak at the natural frequency.</li>' +
       '</ul>';
   }
 
@@ -201,18 +271,31 @@
   // ──────────────────────────────────────────────────────────────
 
   function dampingSection() {
-    return '<h2>3. Damping, Forced Oscillations and Resonance</h2>' +
-      '<h3>3.1 Light, Critical and Heavy Damping</h3>' +
+    return '<h2>6. Damping, Forced Oscillations and Resonance</h2>' +
+      '<h3>6.1 Light, Critical and Heavy Damping</h3>' +
       '<ul>' +
-      '<li><strong>Light damping:</strong> amplitude decays exponentially over many oscillations.</li>' +
-      '<li><strong>Critical damping:</strong> returns to equilibrium in shortest time without oscillating.</li>' +
-      '<li><strong>Heavy damping:</strong> returns slowly without oscillating.</li>' +
+      '<li><strong>Light damping:</strong> amplitude decays exponentially over many oscillations; system oscillates before stopping.</li>' +
+      '<li><strong>Critical damping:</strong> returns to equilibrium in the shortest possible time without oscillating.</li>' +
+      '<li><strong>Heavy damping:</strong> returns to equilibrium slowly without oscillating.</li>' +
       '</ul>' +
-      '<h3>3.2 Resonance and Energy Transfer</h3>' +
+      '<h3>6.2 Resonance and Energy Transfer</h3>' +
       '<ul>' +
-      '<li>At resonance, amplitude is maximum and energy transfer is most efficient.</li>' +
-      '<li>Lighter damping gives a sharper, taller resonance peak.</li>' +
-      '<li>Driving force is in phase with velocity at resonance; work done is always positive.</li>' +
+      '<li>At resonance, driving frequency matches natural frequency \u2192 amplitude is maximum.</li>' +
+      '<li>Lighter damping gives a sharper, taller resonance peak at a frequency closer to f\u2080.</li>' +
+      '<li>Driving force is in phase with velocity at resonance; work done by the driver is always positive.</li>' +
+      '</ul>' +
+      '<h3>6.3 Applications of Resonance</h3>' +
+      '<table class="summary-table">' +
+      '<tr><th>Useful resonance</th><th>Example</th><th>Harmful resonance</th><th>Example</th></tr>' +
+      '<tr><td>Microwave ovens</td><td>Water molecules resonate at ~2.45 GHz</td><td>Bridge oscillations</td><td>Tacoma Narrows (1940)</td></tr>' +
+      '<tr><td>Musical instruments</td><td>Strings/air columns resonate at harmonics</td><td>Engine vibration</td><td>Dampers absorb resonant frequencies</td></tr>' +
+      '<tr><td>MR and NMR</td><td>Nuclei resonate in magnetic field</td><td>Building in earthquakes</td><td>Tuned mass dampers used in skyscrapers</td></tr>' +
+      '</table>' +
+      '<h3>6.4 Effect of Damping on Resonance</h3>' +
+      '<ul>' +
+      '<li>Increasing damping reduces the amplitude at resonance.</li>' +
+      '<li>The resonance peak broadens and shifts to slightly lower frequency.</li>' +
+      '<li>At very high damping, the resonance peak disappears entirely.</li>' +
       '</ul>';
   }
 
@@ -221,7 +304,7 @@
   // ──────────────────────────────────────────────────────────────
 
   function workedExample() {
-    return '<h2>4. Worked Example</h2>' +
+    return '<h2>7. Worked Example</h2>' +
       '<div class="example-box">' +
       '<p><strong>Problem:</strong> A 200 g mass oscillates on a spring of spring constant 50 N m\u207B\u00B9 with amplitude 4.0 cm. Determine:</p>' +
       '<p>(a) the total mechanical energy of the system;<br>(b) the speed when displacement is 2.0 cm;<br>(c) E\u2096 and E\u209A at this displacement.</p>' +
@@ -238,8 +321,8 @@
   // ──────────────────────────────────────────────────────────────
 
   function questionsSection(q5grid) {
-    return '<h2>5. Practice Questions</h2>' +
-      q1() + q2() + q3() + q4() + q5(q5grid);
+    return '<h2>8. Practice Questions</h2>' +
+      q1() + q2() + q3() + q4() + q5(q5grid) + q6() + q7();
   }
 
   function q1() {
@@ -295,12 +378,35 @@
       '</div>';
   }
 
+  function q6() {
+    return '<div class="question">' +
+      '<p class="q-header">Question 6 \u2014 Resonance Curve Analysis [7]</p>' +
+      '<p class="q-context">A student investigates the amplitude of a driven oscillator at various driving frequencies. The system has a natural frequency f\u2080 = 2.0 Hz. Three trials are conducted with increasing levels of damping (light, medium, heavy).</p>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Sketch the three resonance curves (amplitude against driving frequency) on the same axes. Label f\u2080 and indicate the peak amplitude for each case. <span class="marks">[3]</span></div><div class="answer-space" style="min-height:4cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why the resonance peak for light damping is sharper and taller than for heavy damping. Refer to energy transfer in your answer. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Predict what would happen to the resonance frequency if the mass of the oscillator were doubled. Justify your answer. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
+      '</div>';
+  }
+
+  function q7() {
+    var table = '<table class="data-table"><tr><th>t / s</th><td>0.00</td><td>0.26</td><td>0.52</td><td>0.79</td><td>1.05</td><td>1.31</td></tr><tr><th>x / cm</th><td>0.00</td><td>2.83</td><td>4.00</td><td>2.83</td><td>0.00</td><td>\u22122.83</td></tr><tr><th>v / cm s\u207B\u00B9</th><td>12.00</td><td>8.49</td><td>0.00</td><td>\u22128.49</td><td>\u221212.00</td><td>\u22128.49</td></tr></table>';
+
+    return '<div class="question">' +
+      '<p class="q-header">Question 7 \u2014 Phase Relationships in SHM [7]</p>' +
+      '<p class="q-context">A particle executes SHM according to x = (4.0 cm) sin(3.0t). A student measures displacement and velocity simultaneously and records:</p>' +
+      table +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Verify that the data are consistent with v = \u03C9x\u2080 cos(\u03C9t). Determine \u03C9 and x\u2080 from the data. <span class="marks">[3]</span></div><div class="answer-space" style="min-height:3.5cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Calculate the acceleration at t = 0.52 s and state its direction. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:2.5cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Sketch the acceleration\u2013time graph for the first complete cycle. On the same axes, sketch the displacement\u2013time graph and indicate the phase difference between them. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:4cm;"></div>' +
+      '</div>';
+  }
+
   // ──────────────────────────────────────────────────────────────
   //  Mark scheme appendix
   // ──────────────────────────────────────────────────────────────
 
   function markSchemeAppendix() {
-    return '<h2>6. Mark Scheme Appendix</h2>' +
+    return '<h2>9. Mark Scheme Appendix</h2>' +
       '<p style="font-size:10pt;color:#636c76;">Cambridge 9702 convention: M1/A1/B1. M = method, A = answer, B = independent mark.</p>' +
       '<h3>Question 1 [7]</h3>' +
       '<div class="mark-scheme"><div class="ms-point">(a) M1: Experimental curve consistently below theoretical at all displacements. A1: Error bars (\u00B14%) smaller than deviation (~8%) \u2192 systematic error present. [2]</div>' +
@@ -325,7 +431,17 @@
       '<h3>Question 5 [8]</h3>' +
       '<div class="mark-scheme"><div class="ms-point">(a) M1: x\u00B2 values: 0, 1, 4, 9, 16, 25 cm\u00B2. Plot (x\u00B2, E\u2096). A1: Best-fit straight line. M1: x-intercept = x\u2080\u00B2 = 25 \u2192 x\u2080 = 5.0 cm. A1: Gradient = \u2212\u00BDm\u03C9\u00B2 = \u221218 J m\u207B\u00B2 \u2192 \u03C9\u00B2 = 720 \u2192 \u03C9 = 26.8 rad s\u207B\u00B9. [4]</div>' +
       '<div class="ms-point">(b) M1: E\u209C\u2092\u209C = E\u2096(x=0) = 45.0 mJ. A1: k = m\u03C9\u00B2 = 36 N m\u207B\u00B9. [2]</div>' +
-      '<div class="ms-point">(c) M1: Spring mass adds to inertia. A1: \u03C9 = \u221A(k/m_eff), larger m_eff \u2192 smaller \u03C9. The calculated value is an overestimate. [2]</div><p class="ms-total">Total: [8]</p></div>';
+      '<div class="ms-point">(c) M1: Spring mass adds to inertia. A1: \u03C9 = \u221A(k/m_eff), larger m_eff \u2192 smaller \u03C9. The calculated value is an overestimate. [2]</div><p class="ms-total">Total: [8]</p></div>' +
+
+      '<h3>Question 6 [7]</h3>' +
+      '<div class="mark-scheme"><div class="ms-point">(a) B1: Three curves with peaks at approximately f\u2080 (or slightly below for heavier damping). B1: Light damping curve has tallest, narrowest peak; heavy damping has shortest, widest. B1: f\u2080 marked at 2.0 Hz on frequency axis. [3]</div>' +
+      '<div class="ms-point">(b) M1: With light damping, less energy is dissipated per cycle, so the oscillator can store more energy and reach larger amplitude. A1: The driving force does positive work near resonance; with less damping, energy accumulates, producing a taller peak. [2]</div>' +
+      '<div class="ms-point">(c) M1: For a mass\u2013spring system, f\u2080 = (1/2\u03C0)\u221A(k/m). A1: Doubling mass reduces f\u2080 by a factor of \u221A2 (to approximately 1.4 Hz). [2]</div><p class="ms-total">Total: [7]</p></div>' +
+
+      '<h3>Question 7 [7]</h3>' +
+      '<div class="mark-scheme"><div class="ms-point">(a) M1: From data, maximum x = 4.0 cm = x\u2080. v<sub>max</sub> = 12.0 cm s\u207B\u00B9 at t = 0 (x = 0). A1: \u03C9 = v<sub>max</sub>/x\u2080 = 12.0/4.0 = 3.0 rad s\u207B\u00B9. M1: At t = 0.26 s, \u03C9t = 0.78 rad; predicted x = 4.0 sin(0.78) = 2.81 cm, v = 12.0 cos(0.78) = 8.56 cm s\u207B\u00B9. Both within rounding of measured values. [3]</div>' +
+      '<div class="ms-point">(b) M1: a = \u2212\u03C9\u00B2x = \u2212(3.0)\u00B2 \u00D7 4.0 = \u221236 cm s\u207B\u00B2 (or \u22120.36 m s\u207B\u00B2). A1: Negative sign means acceleration is directed towards equilibrium (downwards/leftwards). [2]</div>' +
+      '<div class="ms-point">(c) M1: a\u2013t graph is a sine wave with opposite sign to x\u2013t graph. A1: Acceleration is antiphase (phase difference of \u03C0 radians or 180\u00B0) with displacement. [2]</div><p class="ms-total">Total: [7]</p></div>';
   }
 
   // ──────────────────────────────────────────────────────────────
@@ -333,14 +449,20 @@
   // ──────────────────────────────────────────────────────────────
 
   function summaryEquations() {
-    return '<h2>7. Summary of Key Equations</h2>' +
+    return '<h2>10. Summary of Key Equations</h2>' +
       '<table class="summary-table">' +
       '<tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>' +
+      '<tr><td>Definition of SHM</td><td>a = \u2212\u03C9\u00B2x</td><td>Acceleration \u221D \u2212displacement</td></tr>' +
+      '<tr><td>Displacement</td><td>x = x\u2080 sin(\u03C9t)</td><td>Or x = x\u2080 cos(\u03C9t)</td></tr>' +
+      '<tr><td>Velocity</td><td>v = \u03C9x\u2080 cos(\u03C9t)</td><td>Leads x by T/4</td></tr>' +
+      '<tr><td>Acceleration</td><td>a = \u2212\u03C9\u00B2x\u2080 sin(\u03C9t)</td><td>Antiphase with x</td></tr>' +
+      '<tr><td>Velocity\u2013displacement</td><td>v = \u00B1\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)</td><td>From energy conservation</td></tr>' +
       '<tr><td>Total energy</td><td>E\u209C\u2092\u209C = \u00BDkx\u2080\u00B2</td><td>Constant in ideal SHM</td></tr>' +
       '<tr><td>Kinetic energy</td><td>E\u2096 = \u00BDm\u03C9\u00B2(x\u2080\u00B2 \u2212 x\u00B2)</td><td>Maximum at x = 0</td></tr>' +
       '<tr><td>Potential energy</td><td>E\u209A = \u00BDkx\u00B2</td><td>Maximum at x = \u00B1x\u2080</td></tr>' +
-      '<tr><td>Velocity\u2013displacement</td><td>v = \u00B1\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)</td><td>From energy conservation</td></tr>' +
       '<tr><td>Angular frequency</td><td>\u03C9 = 2\u03C0f = \u221A(k/m)</td><td>Mass\u2013spring system</td></tr>' +
+      '<tr><td>Period (spring)</td><td>T = 2\u03C0\u221A(m/k)</td><td>Independent of amplitude</td></tr>' +
+      '<tr><td>Period (pendulum)</td><td>T = 2\u03C0\u221A(L/g)</td><td>Small-angle approx.</td></tr>' +
       '<tr><td>Damped energy</td><td>E(t) = E\u2080e\u207B\u03B3\u1D57</td><td>\u03B3 = damping constant</td></tr>' +
       '</table>';
   }
