@@ -251,6 +251,32 @@
     setPath(svg, 'graph8-heavy', genResonanceCurve(gH));
   }
 
+  function updateGraph9(omega) {
+    var svg = document.getElementById('graph9');
+    if (!svg) return;
+    // Theoretical: Ek = Emax - ½mω²·x², where Emax = ½mω²x₀²
+    // m = 0.050 kg, x₀² = 25 cm² = 0.0025 m²
+    // Emax (mJ) = 0.5 * 0.050 * ω² * 0.0025 * 1000 = 0.0625 ω²
+    // Gradient = -0.0625 ω² / 25  (mJ per cm²) = -0.0025 ω²
+    var m = 0.050, x0sq = 0.0025;
+    var Emax = 0.5 * m * omega * omega * x0sq * 1000; // in mJ
+    var n = 50;
+    var theory = [];
+    for (var i = 0; i <= n; i++) {
+      var x2 = 25 * i / n;
+      var ek = Emax * (1 - x2 / 25);
+      theory.push([x2, Math.max(0, ek)]);
+    }
+    setPath(svg, 'graph9-theory', theory);
+
+    // Update annotation text
+    var grad = -Emax / 25;
+    var gradEl = svg.getElementById('graph9-grad-lbl');
+    if (gradEl) gradEl.textContent = 'Gradient = ' + grad.toFixed(2) + ' mJ cm\u207B\u00B2';
+    var omegaEl = svg.getElementById('graph9-omega-lbl');
+    if (omegaEl) omegaEl.textContent = 'Fitted \u03C9 = ' + omega.toFixed(1) + ' rad s\u207B\u00B9';
+  }
+
   function setPath(svg, id, data) {
     var el = svg.getElementById(id);
     if (el) el.setAttribute('d', genPath(svg, data));
@@ -427,6 +453,7 @@
         updateGraph2(x0, 2, omega);
         updateGraph3(x0, omega);
         updateGraph7(x0, omega);
+        updateGraph9(omega);
       });
     }
   }
@@ -456,6 +483,7 @@
     updateGraph6(gamma);
     updateGraph7(x0, omega);
     updateGraph8(gamma);
+    updateGraph9(omega);
   }
 
   if (document.readyState === 'loading') {

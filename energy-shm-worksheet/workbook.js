@@ -110,8 +110,7 @@
     var svg6   = getSvgHTML('graph6');
     var svg7   = getSvgHTML('graph7');
     var svg8   = getSvgHTML('graph8');
-    var gridSvg = document.querySelector('.graph-container svg');
-    var q5grid = gridSvg && document.contains(gridSvg) ? gridSvg.outerHTML : '';
+    var svg9   = getSvgHTML('graph9');
 
     return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<title>SHM — Comprehensive Workbook</title>\n<style>\n' + workbookCSS + '\n</style>\n</head>\n<body>\n' +
       coverPage() +
@@ -125,7 +124,7 @@
       dampingSection() +
       workedExample() +
       '<div class="appendix"></div>' +
-      questionsSection(q5grid) +
+      questionsSection(svg9) +
       conceptCaseStudies() +
       markSchemeAppendix() +
       summaryEquations() +
@@ -366,15 +365,16 @@
       '</div>';
   }
 
-  function q5(grid) {
+  function q5(svg9) {
     var tableHTML = '<table class="data-table"><tr><th>x / cm</th><td>0.0</td><td>1.0</td><td>2.0</td><td>3.0</td><td>4.0</td><td>5.0</td></tr><tr><th>E\u2096 / mJ</th><td>45.0</td><td>42.8</td><td>36.0</td><td>24.5</td><td>8.0</td><td>0.0</td></tr></table>';
 
     return '<div class="question">' +
       '<p class="q-header">Question 5 \u2014 Data Evaluation and Determination of Parameters [8]</p>' +
       '<p class="q-context">A student records E\u2096 of a 50 g mass at various displacements. Data:</p>' +
       tableHTML +
-      '<div class="q-part"><span class="cmd-word">(a)</span> Plot E\u2096 against x\u00B2 and determine x\u2080 and \u03C9. <span class="marks">[4]</span></div><div class="answer-space" style="min-height:6cm;"><p style="color:#999;font-size:9pt;">[Use the grid on the next page or a separate sheet]</p></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Estimate total energy and spring constant k. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:2.5cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Plot E\u2096 against x\u00B2 on the interactive grid below and determine x\u2080 and \u03C9. Adjust the \u03C9 slider to fit the best-fit line to the data. <span class="marks">[4]</span></div>' +
+      '<div class="graph-container" style="max-width:550px;margin:0.8rem auto;">' + svg9 + '<p class="caption">Fig. 9: Interactive E\u2096 vs x\u00B2 plot. Data points pre-plotted; adjust \u03C9 slider to match the best-fit line.</p></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Read the gradient from the display and estimate total energy and spring constant k. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:2.5cm;"></div>' +
       '<div class="q-part"><span class="cmd-word">(c)</span> Explain how results differ if spring mass (20 g) is non-negligible. Is calculated \u03C9 overestimated or underestimated? <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
       '</div>';
   }

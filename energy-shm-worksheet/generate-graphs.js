@@ -543,6 +543,86 @@ function graphResonance() {
 }
 
 // ============================================================
+// Graph 9: Q5 Interactive grid — Ek vs x² with data points
+// ============================================================
+function graphQ5Grid() {
+  const X0 = -0.5, X1 = 26, Y0 = -2, Y1 = 52;
+  const xStep = 5, yStep = 10;
+
+  // Fixed experimental data: (x², Ek/mJ)
+  const dataPoints = [[0,45.0],[1,42.8],[4,36.0],[9,24.5],[16,8.0],[25,0.0]];
+
+  // Theoretical line at default omega = 26.8 rad/s (m = 0.050 kg)
+  // Ek = Emax - ½mω²·x², where Emax = ½mω²x₀² and x₀² = 25
+  // At default: Emax = 45.0, gradient = -45.0/25 = -1.8
+  const m_kg = 0.050, x0sq = 25;
+  const defaultOmega = 26.8;
+  const defaultEmax = 0.5 * m_kg * defaultOmega * defaultOmega * x0sq * 1e-2; // in mJ
+  // Actually: Emax (mJ) = 0.5 * m(kg) * ω² * x₀²(m²) * 1000
+  // x₀ = 0.05 m, x₀² = 0.0025 m²
+  // Emax = 0.5 * 0.050 * ω² * 0.0025 * 1000 = 0.0625 * ω²
+  // For ω = 26.8: Emax = 0.0625 * 718.24 = 44.89 ≈ 45.0 ✓
+
+  let theoreticalData = [];
+  for (let i = 0; i <= 50; i++) {
+    const x2 = 25 * i / 50;
+    const ek = 0.5 * m_kg * defaultOmega * defaultOmega * 0.0025 * 1000 - 0.5 * m_kg * defaultOmega * defaultOmega * (x2 / 10000) * 1000;
+    theoreticalData.push([x2, Math.max(0, ek)]);
+  }
+
+  // Simpler: theoretical line through (0, 45.0) and (25, 0)
+  theoreticalData = [];
+  for (let i = 0; i <= 50; i++) {
+    const x2 = 25 * i / 50;
+    const ek = 45.0 * (1 - x2 / 25);
+    theoreticalData.push([x2, Math.max(0, ek)]);
+  }
+
+  const theoryPath = genPath(theoreticalData, X0, X1, Y0, Y1);
+
+  // Data point circles
+  let circles = '';
+  dataPoints.forEach((p, idx) => {
+    const cx = sx(p[0], X0, X1);
+    const cy = sy(p[1], Y0, Y1);
+    circles += '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="5" fill="#c44536" stroke="#fff" stroke-width="1.5" opacity="0.9"/>\n';
+    // Error bar (±0.5 mJ)
+    const errTop = sy(p[1] + 0.5, Y0, Y1);
+    const errBot = sy(p[1] - 0.5, Y0, Y1);
+    circles += '<line x1="' + cx.toFixed(1) + '" y1="' + errTop.toFixed(1) + '" x2="' + cx.toFixed(1) + '" y2="' + errBot.toFixed(1) + '" stroke="#c44536" stroke-width="1.2"/>\n';
+    circles += '<line x1="' + (cx - 3).toFixed(1) + '" y1="' + errTop.toFixed(1) + '" x2="' + (cx + 3).toFixed(1) + '" y2="' + errTop.toFixed(1) + '" stroke="#c44536" stroke-width="1"/>\n';
+    circles += '<line x1="' + (cx - 3).toFixed(1) + '" y1="' + errBot.toFixed(1) + '" x2="' + (cx + 3).toFixed(1) + '" y2="' + errBot.toFixed(1) + '" stroke="#c44536" stroke-width="1"/>\n';
+  });
+
+  let svg = '<svg id="graph9" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
+  svg += '<!-- Graph 9: Q5 Interactive Grid -->\n';
+  svg += '<defs>' + arrowHead('arr9', '#333') + '</defs>\n';
+  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'x\u00B2 / cm\u00B2', 'E_k / mJ', 'E_k vs x\u00B2 \u2014 Interactive Plot');
+  svg += '<g id="graph9-curves">\n';
+  svg += '<path id="graph9-theory" d="' + theoryPath + '" fill="none" stroke="#2b6f9e" stroke-width="2.5" stroke-dasharray="8,4"/>\n';
+  svg += '</g>\n';
+  svg += '<g id="graph9-points">\n' + circles + '</g>\n';
+
+  // Annotations — gradient value
+  const grad = -45.0 / 25;
+  svg += '<g class="annotations" pointer-events="none">\n';
+  svg += '<text id="graph9-grad-lbl" x="' + (PX + 15).toFixed(1) + '" y="' + (PY + 120).toFixed(1) + '" font-size="11" fill="#2b6f9e" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Gradient = \u2212' + Math.abs(grad).toFixed(2) + ' mJ cm\u207B\u00B2</text>\n';
+  svg += '<text id="graph9-omega-lbl" x="' + (PX + 15).toFixed(1) + '" y="' + (PY + 140).toFixed(1) + '" font-size="11" fill="#2b6f9e" font-weight="bold" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Fitted \u03C9 = ' + defaultOmega.toFixed(1) + ' rad s\u207B\u00B9</text>\n';
+  svg += '</g>\n';
+
+  // Legend
+  const lx = PX + 15, ly = PY + 18;
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="210" height="44" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph9-theory" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#2b6f9e" stroke-width="2.5" stroke-dasharray="8,4"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Best-fit line (adjust \u03C9 \u2192)</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph9-points" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#c44536" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Experimental data points</text></g>\n';
+
+  svg += '</svg>\n';
+  return svg;
+}
+
+// ============================================================
 // Main: generate all SVGs, replace in template, write output
 // ============================================================
 function main() {
@@ -554,7 +634,8 @@ function main() {
     'GRAPH_HOTS_EXPERIMENTAL': graphHOTSExperimental(),
     'GRAPH_HOTS_DAMPING': graphHOTSDamping(),
     'GRAPH_PHASE_RELATIONS': graphPhaseRelations(),
-    'GRAPH_RESONANCE': graphResonance()
+    'GRAPH_RESONANCE': graphResonance(),
+    'GRAPH_Q5_GRID': graphQ5Grid()
   };
 
   const templatePath = path.join(__dirname, 'index.html.template');
