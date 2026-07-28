@@ -59,7 +59,8 @@
     '.cmd-word { font-weight: 700; color: #c44536; }',
 
     /* Answer space */
-    '.answer-space { min-height: 3cm; border-bottom: 1px dashed #ccc; margin: 0.2cm 0 0.5cm; }',
+    '.answer-field { display:block; width:100%; min-height:3cm; padding:0.3cm; margin:0.2cm 0 0.5cm; border:1px solid #d0d7de; border-radius:4px; font:inherit; font-size:10pt; line-height:1.5; resize:vertical; box-sizing:border-box; background:#fafbfc; }',
+    '.answer-field:focus { outline:2px solid #2b6f9e; outline-offset:1px; background:#fff; }',
 
     /* Data table */
     '.table-wrap { overflow-x: auto; }',
@@ -80,12 +81,19 @@
     '.summary-table th { background: #1a3a5c; color: #fff; padding: 0.2cm 0.3cm; }',
     '.summary-table td { padding: 0.15cm 0.3cm; border: 1px solid #d0d7de; }',
 
+    /* Print toolbar */
+    '.print-footer { text-align: center; padding: 1cm 0 2cm; }',
+    '.print-btn { display:inline-flex; align-items:center; gap:0.3cm; padding:0.4cm 1.2cm; font-size:12pt; font-weight:600; color:#fff; background:#1a3a5c; border:none; border-radius:6px; cursor:pointer; }',
+    '.print-btn:hover { background:#2b6f9e; }',
+    '.print-btn:active { transform:scale(0.97); }',
+
     /* Print */
     '@media print {',
     '  body { font-size: 10pt; }',
     '  .cover-page { padding: 3cm 2cm; }',
     '  h2 { margin-top: 0.4cm; }',
     '  .graph-grid { page-break-inside: avoid; }',
+    '  .print-footer { display: none; }',
     '}'
   ].join('\n');
 
@@ -138,7 +146,9 @@
       conceptCaseStudies() +
       markSchemeAppendix() +
       summaryEquations() +
-      '</div>\n</body>\n</html>';
+      '</div>' +
+      '<div class="print-footer"><button class="print-btn" onclick="window.print()">\u25B6 Print as PDF</button></div>' +
+      '\n</body>\n</html>';
   }
 
   // ──────────────────────────────────────────────────────────────
@@ -323,7 +333,7 @@
       '<p><strong>(b)</strong> \u03C9 = \u221A(k/m) = \u221A(50/0.200) = 15.81 rad s\u207B\u00B9. At x = 0.020 m: v = 15.81 \u00D7 \u221A(0.040\u00B2 \u2212 0.020\u00B2) = <strong>0.548 m s\u207B\u00B9</strong></p>' +
       '<p><strong>(c)</strong> E\u209A = \u00BDkx\u00B2 = \u00BD \u00D7 50 \u00D7 0.020\u00B2 = <strong>10 mJ</strong>. E\u2096 = E\u209C\u2092\u209C \u2212 E\u209A = <strong>30 mJ</strong>.</p>' +
       '</div>' +
-      '<div class="answer-space"></div>';
+      '<div class="answer-field" placeholder="Write your answer here..."></textarea>';
   }
 
   // ──────────────────────────────────────────────────────────────
@@ -339,9 +349,9 @@
     return '<div class="question">' +
       '<p class="q-header">Question 1 \u2014 Graphical Analysis of Experimental Error [7]</p>' +
       '<p class="q-context">A student investigates energy conservation in a mass\u2013spring system using a motion sensor. The experimental E\u2096\u2013x plot lies ~8% below the theoretical curve, with error bars of \u00B14%. The discrepancy is largest near x = 0.</p>' +
-      '<div class="q-part"><span class="cmd-word">(a)</span> Describe the difference between the theoretical and experimental E\u2096 curves. Explain whether the discrepancy is within experimental uncertainty. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3.5cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Suggest one physical cause for the systematic energy loss. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(c)</span> Evaluate how the experimental E\u209C\u2092\u209C would appear. Sketch the graph. <span class="marks">[3]</span></div><div class="answer-space" style="min-height:4cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Describe the difference between the theoretical and experimental E\u2096 curves. Explain whether the discrepancy is within experimental uncertainty. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3.5cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Suggest one physical cause for the systematic energy loss. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Evaluate how the experimental E\u209C\u2092\u209C would appear. Sketch the graph. <span class="marks">[3]</span></div><div class="answer-field" style="min-height:4cm;" placeholder="Write your answer here..."></textarea>' +
       '</div>';
   }
 
@@ -349,9 +359,9 @@
     return '<div class="question">' +
       '<p class="q-header">Question 2 \u2014 Evaluating Experimental Limitations [7]</p>' +
       '<p class="q-context">A student uses a motion sensor (\u00B10.2 cm) and force sensor (\u00B10.01 N) with m = 0.200 \u00B1 0.001 kg, \u03C9 = 5.0 \u00B1 0.1 rad s\u207B\u00B9, x\u2080 = 5.0 \u00B1 0.1 cm.</p>' +
-      '<div class="q-part"><span class="cmd-word">(a)</span> Calculate the percentage uncertainty in E\u2096 at equilibrium. State E\u2096 with its absolute uncertainty. <span class="marks">[3]</span></div><div class="answer-space" style="min-height:4cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why apparent total energy may increase near turning points. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(c)</span> Evaluate whether a 50 Hz logger can reliably measure maximum E\u2096 for T = 0.80 s. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Calculate the percentage uncertainty in E\u2096 at equilibrium. State E\u2096 with its absolute uncertainty. <span class="marks">[3]</span></div><div class="answer-field" style="min-height:4cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why apparent total energy may increase near turning points. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Evaluate whether a 50 Hz logger can reliably measure maximum E\u2096 for T = 0.80 s. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
       '</div>';
   }
 
@@ -359,9 +369,9 @@
     return '<div class="question">' +
       '<p class="q-header">Question 3 \u2014 Predicting the Effect of Damping [7]</p>' +
       '<p class="q-context">A mass\u2013spring system oscillates in a viscous fluid with light damping. Initial amplitude x\u2080, initial total energy E\u2080 = \u00BDkx\u2080\u00B2.</p>' +
-      '<div class="q-part"><span class="cmd-word">(a)</span> Sketch E\u209C\u2092\u209C against t for undamped and lightly damped cases. Label E\u2080 and three successive maxima. <span class="marks">[3]</span></div><div class="answer-space" style="min-height:4cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why amplitude decays exponentially rather than linearly. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(c)</span> Predict how resonance frequency changes as damping increases. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Sketch E\u209C\u2092\u209C against t for undamped and lightly damped cases. Label E\u2080 and three successive maxima. <span class="marks">[3]</span></div><div class="answer-field" style="min-height:4cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why amplitude decays exponentially rather than linearly. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Predict how resonance frequency changes as damping increases. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
       '</div>';
   }
 
@@ -369,9 +379,9 @@
     return '<div class="question">' +
       '<p class="q-header">Question 4 \u2014 Comparing Energy in Different SHM Systems [7]</p>' +
       '<p class="q-context">Compare: (i) mass\u2013spring on frictionless surface, (ii) simple pendulum at small angle.</p>' +
-      '<div class="q-part"><span class="cmd-word">(a)</span> State the forms of energy at max displacement and equilibrium for each. Tabulate. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why the pendulum is only approximately SHM for small angles. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(c)</span> Discuss whether total mechanical energy is conserved in a real pendulum. What evidence would you look for? <span class="marks">[3]</span></div><div class="answer-space" style="min-height:3.5cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> State the forms of energy at max displacement and equilibrium for each. Tabulate. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why the pendulum is only approximately SHM for small angles. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Discuss whether total mechanical energy is conserved in a real pendulum. What evidence would you look for? <span class="marks">[3]</span></div><div class="answer-field" style="min-height:3.5cm;" placeholder="Write your answer here..."></textarea>' +
       '</div>';
   }
 
@@ -384,8 +394,8 @@
       tableHTML +
       '<div class="q-part"><span class="cmd-word">(a)</span> Plot E\u2096 against x\u00B2 on the interactive grid below and determine x\u2080 and \u03C9. Adjust the \u03C9 slider to fit the best-fit line to the data. <span class="marks">[4]</span></div>' +
       '<div class="graph-container" style="max-width:550px;margin:0.8rem auto;">' + svg9 + '<p class="caption">Fig. 9: Interactive E\u2096 vs x\u00B2 plot. Data points pre-plotted; adjust \u03C9 slider to match the best-fit line.</p></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Read the gradient from the display and estimate total energy and spring constant k. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:2.5cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(c)</span> Explain how results differ if spring mass (20 g) is non-negligible. Is calculated \u03C9 overestimated or underestimated? <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Read the gradient from the display and estimate total energy and spring constant k. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:2.5cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Explain how results differ if spring mass (20 g) is non-negligible. Is calculated \u03C9 overestimated or underestimated? <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
       '</div>';
   }
 
@@ -393,9 +403,9 @@
     return '<div class="question">' +
       '<p class="q-header">Question 6 \u2014 Resonance Curve Analysis [7]</p>' +
       '<p class="q-context">A student investigates the amplitude of a driven oscillator at various driving frequencies. The system has a natural frequency f\u2080 = 2.0 Hz. Three trials are conducted with increasing levels of damping (light, medium, heavy).</p>' +
-      '<div class="q-part"><span class="cmd-word">(a)</span> Sketch the three resonance curves (amplitude against driving frequency) on the same axes. Label f\u2080 and indicate the peak amplitude for each case. <span class="marks">[3]</span></div><div class="answer-space" style="min-height:4cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why the resonance peak for light damping is sharper and taller than for heavy damping. Refer to energy transfer in your answer. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(c)</span> Predict what would happen to the resonance frequency if the mass of the oscillator were doubled. Justify your answer. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:3cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Sketch the three resonance curves (amplitude against driving frequency) on the same axes. Label f\u2080 and indicate the peak amplitude for each case. <span class="marks">[3]</span></div><div class="answer-field" style="min-height:4cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why the resonance peak for light damping is sharper and taller than for heavy damping. Refer to energy transfer in your answer. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Predict what would happen to the resonance frequency if the mass of the oscillator were doubled. Justify your answer. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:3cm;" placeholder="Write your answer here..."></textarea>' +
       '</div>';
   }
 
@@ -406,9 +416,9 @@
       '<p class="q-header">Question 7 \u2014 Phase Relationships in SHM [7]</p>' +
       '<p class="q-context">A particle executes SHM according to x = (4.0 cm) sin(3.0t). A student measures displacement and velocity simultaneously and records:</p>' +
       table +
-      '<div class="q-part"><span class="cmd-word">(a)</span> Verify that the data are consistent with v = \u03C9x\u2080 cos(\u03C9t). Determine \u03C9 and x\u2080 from the data. <span class="marks">[3]</span></div><div class="answer-space" style="min-height:3.5cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(b)</span> Calculate the acceleration at t = 0.52 s and state its direction. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:2.5cm;"></div>' +
-      '<div class="q-part"><span class="cmd-word">(c)</span> Sketch the acceleration\u2013time graph for the first complete cycle. On the same axes, sketch the displacement\u2013time graph and indicate the phase difference between them. <span class="marks">[2]</span></div><div class="answer-space" style="min-height:4cm;"></div>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Verify that the data are consistent with v = \u03C9x\u2080 cos(\u03C9t). Determine \u03C9 and x\u2080 from the data. <span class="marks">[3]</span></div><div class="answer-field" style="min-height:3.5cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Calculate the acceleration at t = 0.52 s and state its direction. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:2.5cm;" placeholder="Write your answer here..."></textarea>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Sketch the acceleration\u2013time graph for the first complete cycle. On the same axes, sketch the displacement\u2013time graph and indicate the phase difference between them. <span class="marks">[2]</span></div><div class="answer-field" style="min-height:4cm;" placeholder="Write your answer here..."></textarea>' +
       '</div>';
   }
 
