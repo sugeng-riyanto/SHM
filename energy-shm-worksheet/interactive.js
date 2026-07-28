@@ -563,8 +563,10 @@
   function setupSliders() {
     function readParams() {
       var vals = { x0: 5, omega: 2, gamma: 0.3 };
+      var seen = {};
       document.querySelectorAll('.param-slider').forEach(function (s) {
-        vals[s.dataset.param] = parseFloat(s.value);
+        var k = s.dataset.param;
+        if (!seen[k]) { seen[k] = true; vals[k] = parseFloat(s.value); }
       });
       return vals;
     }
