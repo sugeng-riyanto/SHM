@@ -406,11 +406,6 @@ section h3 {
   flex-shrink: 0;
 }
 
-.btn-pdf:hover {
-  background: #c44536;
-  border-color: #c44536;
-}
-
 .btn-docx:hover {
   background: #218838;
   border-color: #218838;

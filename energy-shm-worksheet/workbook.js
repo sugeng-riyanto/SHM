@@ -366,38 +366,6 @@
       win.focus();
     },
 
-    /** Download as PDF via html2pdf.js CDN */
-    downloadPDF: function () {
-      var container = document.createElement('div');
-      container.innerHTML = buildHTML();
-      container.style.position = 'absolute';
-      container.style.left = '-9999px';
-      container.style.top = '0';
-      container.style.width = '210mm';
-      document.body.appendChild(container);
-
-      var script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-      script.onload = function () {
-        var opt = {
-          margin: [0.4, 0.4, 0.4, 0.4],
-          filename: 'shm-energy-interchange-workbook.pdf',
-          image: { type: 'jpeg', quality: 0.95 },
-          html2canvas: { scale: 2, useCORS: true, logging: false },
-          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(container).save().then(function () {
-          document.body.removeChild(container);
-        });
-      };
-      script.onerror = function () {
-        document.body.removeChild(container);
-        alert('Failed to load PDF library. Try the Print option instead.');
-        window.print();
-      };
-      document.body.appendChild(script);
-    },
-
     /** Download as DOCX (Word-compatible HTML) */
     downloadDOCX: function () {
       var html = buildHTML();
