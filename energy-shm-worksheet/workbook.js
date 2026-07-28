@@ -102,6 +102,7 @@
   // ──────────────────────────────────────────────────────────────
 
   function buildHTML() {
+    if (window.prepareGraphsForExport) window.prepareGraphsForExport();
     var svg1   = getSvgHTML('graph1');
     var svg2   = getSvgHTML('graph2');
     var svg3   = getSvgHTML('graph3');

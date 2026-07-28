@@ -680,6 +680,18 @@
   }
 
   // ================================================================
+  // Public API (for workbook.js export)
+  // ================================================================
+  window.prepareGraphsForExport = function () {
+    document.querySelectorAll('svg.graph-svg').forEach(function (svg) {
+      resetZoom(svg);
+      [].forEach.call(svg.querySelectorAll('#g-tooltip, [id^="g-crosshair-"]'), function (el) { el.remove(); });
+    });
+  };
+  window.getS = function () { return S; };
+  window.triggerFullRender = function () { updateAll(); };
+
+  // ================================================================
   // Init
   // ================================================================
   function init() {
