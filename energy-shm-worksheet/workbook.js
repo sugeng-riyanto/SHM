@@ -43,7 +43,7 @@
 
     /* Graphs */
     '.graph-container { text-align: center; margin: 0.4cm 0; page-break-inside: avoid; }',
-    '.graph-container svg { max-width: 100%; height: auto; }',
+    '.graph-container img { max-width: 100%; height: auto; }',
     '.graph-container .caption { font-size: 9pt; color: #636c76; font-style: italic; margin-top: 0.1cm; }',
     '.graph-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5cm; }',
 
@@ -93,9 +93,17 @@
   //  Content extraction helpers
   // ──────────────────────────────────────────────────────────────
 
+  function svgToDataURI(svgEl) {
+    var s = new XMLSerializer();
+    var str = s.serializeToString(svgEl);
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(str);
+  }
+
   function getSvgHTML(id) {
     var el = document.getElementById(id);
-    return el ? el.outerHTML : '<p>[Graph unavailable]</p>';
+    if (!el) return '<p>[Graph unavailable]</p>';
+    var uri = svgToDataURI(el);
+    return '<img src="' + uri + '" style="max-width:100%;height:auto;" alt="Graph">';
   }
 
   // ──────────────────────────────────────────────────────────────
