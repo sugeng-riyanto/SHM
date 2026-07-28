@@ -147,6 +147,16 @@
   <div class="graph-container">
     {{GRAPH_PHASE_RELATIONS}}
     <p class="caption">Fig. 7: Displacement, velocity and acceleration as functions of time. Note the phase differences: velocity leads displacement by T/4, acceleration opposes displacement (antiphase).</p>
+    <div class="slider-stack">
+      <div class="slider-control compact" data-param="x0">
+        <label class="slider-label">x&#8320; = <span class="slider-value" data-display="x0">5.0</span></label>
+        <input type="range" class="param-slider" data-param="x0" min="2" max="8" step="0.1" value="5">
+      </div>
+      <div class="slider-control compact" data-param="omega">
+        <label class="slider-label">&#969; = <span class="slider-value" data-display="omega">2.0</span></label>
+        <input type="range" class="param-slider" data-param="omega" min="0.5" max="4" step="0.1" value="2">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -244,51 +254,60 @@
 <section>
   <h2>5. Key Graphical Representations</h2>
 
-  <!-- Interactive Controls -->
-  <div class="interactive-controls" style="display:flex;flex-wrap:wrap;gap:1rem 2rem;padding:0.6rem 1rem;background:#f0f4f8;border-radius:6px;margin-bottom:1rem;border:1px solid #d0d7de;">
-    <div style="flex:1;min-width:160px;">
-      <label for="x0-slider" style="font-size:0.92rem;font-weight:600;color:#1a3a5c;">Amplitude x&#8320; = <span id="x0-value" style="color:#c44536;">5.0</span></label>
-      <input type="range" id="x0-slider" min="2" max="8" step="0.1" value="5" style="width:100%;">
-      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:#636c76;"><span>2.0</span><span>8.0</span></div>
-    </div>
-    <div style="flex:1;min-width:160px;">
-      <label for="omega-slider" style="font-size:0.92rem;font-weight:600;color:#1a3a5c;">Angular freq. &#969; = <span id="omega-value" style="color:#c44536;">2.0</span></label>
-      <input type="range" id="omega-slider" min="0.5" max="4" step="0.1" value="2" style="width:100%;">
-      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:#636c76;"><span>0.5</span><span>4.0</span></div>
-    </div>
-    <div style="flex:1;min-width:160px;">
-      <label for="gamma-slider" style="font-size:0.92rem;font-weight:600;color:#1a3a5c;">Damping &#947; = <span id="gamma-value" style="color:#c44536;">0.30</span></label>
-      <input type="range" id="gamma-slider" min="0" max="1" step="0.01" value="0.3" style="width:100%;">
-      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:#636c76;"><span>0.00</span><span>1.00</span></div>
-    </div>
-  </div>
-  <p style="font-size:0.88rem;color:#636c76;margin:0 0 0.8rem 0;">&#9654; Adjust sliders to change parameters in real time. Affects all interactive graphs (including phase plot Fig. 7 and resonance curves Fig. 8). Click legend items to toggle curves. Hover over any graph for numerical readout.</p>
-
   <div class="graph-grid">
 
     <div class="graph-container">
       {{GRAPH_ENERGY_DISPLACEMENT}}
       <p class="caption">Fig. 1: Energy vs displacement. E<sub>p</sub> follows a parabolic curve, E<sub>k</sub> is an inverted parabola, and E<sub>total</sub> remains constant.</p>
+      <div class="slider-control" data-param="x0">
+        <label class="slider-label">Amplitude x&#8320; = <span class="slider-value" data-display="x0">5.0</span></label>
+        <input type="range" class="param-slider" data-param="x0" min="2" max="8" step="0.1" value="5">
+        <div class="slider-range"><span>2.0</span><span>8.0</span></div>
+      </div>
     </div>
 
     <div class="graph-container">
       {{GRAPH_ENERGY_TIME}}
       <p class="caption">Fig. 2: Energy vs time. E<sub>p</sub> and E<sub>k</sub> oscillate at twice the frequency of the displacement, with a phase difference of &frac14;T between maxima.</p>
+      <div class="slider-control" data-param="omega">
+        <label class="slider-label">Angular freq. &#969; = <span class="slider-value" data-display="omega">2.0</span></label>
+        <input type="range" class="param-slider" data-param="omega" min="0.5" max="4" step="0.1" value="2">
+        <div class="slider-range"><span>0.5</span><span>4.0</span></div>
+      </div>
     </div>
 
     <div class="graph-container">
       {{GRAPH_VELOCITY_DISPLACEMENT}}
       <p class="caption">Fig. 3: Velocity vs displacement. The elliptical locus confirms the relation v = &plusmn;&omega;&radic;(x<sub>0</sub>&sup2; &minus; x&sup2;). The arrow indicates the direction of motion.</p>
+      <div class="slider-stack">
+        <div class="slider-control compact" data-param="x0">
+          <label class="slider-label">x&#8320; = <span class="slider-value" data-display="x0">5.0</span></label>
+          <input type="range" class="param-slider" data-param="x0" min="2" max="8" step="0.1" value="5">
+        </div>
+        <div class="slider-control compact" data-param="omega">
+          <label class="slider-label">&#969; = <span class="slider-value" data-display="omega">2.0</span></label>
+          <input type="range" class="param-slider" data-param="omega" min="0.5" max="4" step="0.1" value="2">
+        </div>
+      </div>
     </div>
 
     <div class="graph-container">
       {{GRAPH_DAMPED_ENERGY}}
       <p class="caption">Fig. 4: Damped oscillation. The total energy envelope decays exponentially as E(t) = E<sub>0</sub>e<sup>&minus;&gamma;t</sup>. The instantaneous energy oscillates within this envelope.</p>
+      <div class="slider-control" data-param="gamma">
+        <label class="slider-label">Damping &#947; = <span class="slider-value" data-display="gamma">0.30</span></label>
+        <input type="range" class="param-slider" data-param="gamma" min="0" max="1" step="0.01" value="0.3">
+        <div class="slider-range"><span>0.00</span><span>1.00</span></div>
+      </div>
     </div>
 
     <div class="graph-container">
       {{GRAPH_HOTS_DAMPING}}
       <p class="caption">Fig. 5: Comparison of undamped (constant) and lightly damped (decaying) total energy. The shaded region represents energy dissipated to the surroundings.</p>
+      <div class="slider-control compact" data-param="gamma">
+        <label class="slider-label">&#947; = <span class="slider-value" data-display="gamma">0.30</span></label>
+        <input type="range" class="param-slider" data-param="gamma" min="0" max="1" step="0.01" value="0.3">
+      </div>
     </div>
 
   </div>
@@ -296,6 +315,11 @@
   <div class="graph-container" style="max-width:550px;margin:0.6rem auto;">
     {{GRAPH_RESONANCE}}
     <p class="caption">Fig. 8: Resonance curves for light, medium and heavy damping. The peak amplitude decreases and the curve broadens as damping increases.</p>
+    <div class="slider-control" data-param="gamma">
+      <label class="slider-label">Damping &#947; = <span class="slider-value" data-display="gamma">0.30</span></label>
+      <input type="range" class="param-slider" data-param="gamma" min="0" max="1" step="0.01" value="0.3">
+      <div class="slider-range"><span>0.00</span><span>1.00</span></div>
+    </div>
   </div>
 
   <h3>Key Observations from the Graphs</h3>
@@ -528,6 +552,11 @@
     <div class="graph-container" style="max-width:550px;margin:0.8rem auto;">
       {{GRAPH_Q5_GRID}}
       <p class="caption">Fig. 9: Interactive E<sub>k</sub> vs x&sup2; plot. Data points from the table are plotted automatically. Adjust the &omega; slider to match the theoretical best-fit line (dashed). Gradient and fitted &omega; are shown.</p>
+      <div class="slider-control" data-param="omega">
+        <label class="slider-label">Angular freq. &#969; = <span class="slider-value" data-display="omega">26.8</span></label>
+        <input type="range" class="param-slider" data-param="omega" min="10" max="45" step="0.5" value="26.8">
+        <div class="slider-range"><span>10</span><span>45</span></div>
+      </div>
     </div>
   </div>
 

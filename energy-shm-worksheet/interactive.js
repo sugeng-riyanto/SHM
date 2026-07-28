@@ -244,7 +244,6 @@
   function updateGraph8(gamma) {
     var svg = document.getElementById('graph8');
     if (!svg) return;
-    // Three damping levels proportional to gamma slider
     var gL = gamma * 0.5, gM = gamma * 1.3, gH = gamma * 2.7;
     setPath(svg, 'graph8-light', genResonanceCurve(gL));
     setPath(svg, 'graph8-medium', genResonanceCurve(gM));
@@ -254,12 +253,8 @@
   function updateGraph9(omega) {
     var svg = document.getElementById('graph9');
     if (!svg) return;
-    // Theoretical: Ek = Emax - ½mω²·x², where Emax = ½mω²x₀²
-    // m = 0.050 kg, x₀² = 25 cm² = 0.0025 m²
-    // Emax (mJ) = 0.5 * 0.050 * ω² * 0.0025 * 1000 = 0.0625 ω²
-    // Gradient = -0.0625 ω² / 25  (mJ per cm²) = -0.0025 ω²
     var m = 0.050, x0sq = 0.0025;
-    var Emax = 0.5 * m * omega * omega * x0sq * 1000; // in mJ
+    var Emax = 0.5 * m * omega * omega * x0sq * 1000;
     var n = 50;
     var theory = [];
     for (var i = 0; i <= n; i++) {
@@ -268,8 +263,6 @@
       theory.push([x2, Math.max(0, ek)]);
     }
     setPath(svg, 'graph9-theory', theory);
-
-    // Update annotation text
     var grad = -Emax / 25;
     var gradEl = svg.getElementById('graph9-grad-lbl');
     if (gradEl) gradEl.textContent = 'Gradient = ' + grad.toFixed(2) + ' mJ cm\u207B\u00B2';
@@ -288,7 +281,6 @@
       var r = getRange(svg);
       var xPos = sx(svg, xDefault === 0 ? 0 : (xDefault > 0 ? xDefault : -xDefault), r.x0, r.x1);
       el.textContent = label;
-      // Update position based on new axis limits
     }
   }
 
@@ -334,7 +326,7 @@
     var pw = vb.width - PL - PR, ph = vb.height - PT - PB;
     var dx = (mx - PL) / pw * (r.x1 - r.x0) + r.x0;
     var dy = (my - PT) / ph * (r.y1 - r.y0) + r.y0;
-    dy = (r.y1 - r.y0) - dy + r.y0; // invert
+    dy = (r.y1 - r.y0) - dy + r.y0;
     return { x: dx, y: dy };
   }
 
@@ -354,7 +346,6 @@
 
         var pt = getDataPoint(svg, svgX, svgY);
 
-        // Crosshairs
         if (crosshairH) {
           crosshairH.setAttribute('x1', PL.toString());
           crosshairH.setAttribute('x2', (PL + 500).toString());
@@ -370,7 +361,6 @@
           if (!svg.contains(crosshairV)) svg.appendChild(crosshairV);
         }
 
-        // Tooltip
         if (tooltipEl) {
           var txt = 'x = ' + pt.x.toFixed(2) + ', y = ' + pt.y.toFixed(2);
           tooltipEl.setAttribute('x', (svgX + 10).toFixed(1));
@@ -400,7 +390,6 @@
         var showed = target.style.display !== 'none';
         target.style.display = showed ? 'none' : '';
         this.classList.toggle('dimmed');
-        // Also dim the legend line
         var line = this.querySelector('.legend-line');
         if (line) {
           line.style.opacity = showed ? '0.3' : '1';
@@ -410,52 +399,54 @@
   }
 
   // ================================================================
-  // Sliders
+  // Sliders — data-attribute based, supports multiple per param
   // ================================================================
   function setupSliders() {
-    // Damping slider
-    var gammaSlider = document.getElementById('gamma-slider');
-    var gammaDisplay = document.getElementById('gamma-value');
-    if (gammaSlider) {
-      gammaSlider.addEventListener('input', function () {
-        var g = parseFloat(this.value);
-        if (gammaDisplay) gammaDisplay.textContent = g.toFixed(2);
-        updateGraph4(g);
-        updateGraph5(g);
-        updateGraph6(g);
-        updateGraph8(g);
+    // Helper: read current values from all sliders
+    function readParams() {
+      var vals = { x0: 5, omega: 2, gamma: 0.3 };
+      document.querySelectorAll('.param-slider').forEach(function (s) {
+        vals[s.dataset.param] = parseFloat(s.value);
+      });
+      return vals;
+    }
+
+    // Helper: sync all displays and sliders for a given param
+    function syncParam(param, val) {
+      var fmt = param === 'gamma' ? val.toFixed(2) : val.toFixed(1);
+      document.querySelectorAll('[data-display="' + param + '"]').forEach(function (el) {
+        el.textContent = fmt;
+      });
+      document.querySelectorAll('.param-slider[data-param="' + param + '"]').forEach(function (s) {
+        s.value = val;
       });
     }
 
-    // Amplitude slider
-    var x0Slider = document.getElementById('x0-slider');
-    var x0Display = document.getElementById('x0-value');
-    if (x0Slider) {
-      x0Slider.addEventListener('input', function () {
-        var x0 = parseFloat(this.value);
-        if (x0Display) x0Display.textContent = x0.toFixed(1);
-        var omega = omegaSlider ? parseFloat(omegaSlider.value) : 2;
-        updateGraph1(x0, 2);
-        updateGraph2(x0, 2, omega);
-        updateGraph3(x0, omega);
-        updateGraph7(x0, omega);
-      });
-    }
+    document.querySelectorAll('.param-slider').forEach(function (slider) {
+      slider.addEventListener('input', function () {
+        var param = this.dataset.param;
+        var val = parseFloat(this.value);
 
-    // Angular frequency slider
-    var omegaSlider = document.getElementById('omega-slider');
-    var omegaDisplay = document.getElementById('omega-value');
-    if (omegaSlider) {
-      omegaSlider.addEventListener('input', function () {
-        var omega = parseFloat(this.value);
-        if (omegaDisplay) omegaDisplay.textContent = omega.toFixed(1);
-        var x0 = x0Slider ? parseFloat(x0Slider.value) : 5;
-        updateGraph2(x0, 2, omega);
-        updateGraph3(x0, omega);
-        updateGraph7(x0, omega);
-        updateGraph9(omega);
+        // Sync all instances of this parameter
+        syncParam(param, val);
+
+        // Read all current values and update affected graphs
+        var p = readParams();
+
+        // Always update all interactive graphs
+        updateGraph1(p.x0, 2);
+        updateGraph2(p.x0, 2, p.omega);
+        updateGraph3(p.x0, p.omega);
+        updateGraph4(p.gamma);
+        updateGraph5(p.gamma);
+        updateGraph6(p.gamma);
+        updateGraph7(p.x0, p.omega);
+        updateGraph8(p.gamma);
+        if (document.getElementById('graph9')) {
+          updateGraph9(p.omega);
+        }
       });
-    }
+    });
   }
 
   // ================================================================
@@ -467,23 +458,39 @@
     setupSliders();
 
     // Force initial render to match sliders
-    var x0Slider = document.getElementById('x0-slider');
-    var gammaSlider = document.getElementById('gamma-slider');
-    var omegaSlider = document.getElementById('omega-slider');
+    var p = { x0: 5, omega: 2, gamma: 0.3 };
+    var first = document.querySelector('.param-slider[data-param="x0"]');
+    if (first) p.x0 = parseFloat(first.value);
+    var firstO = document.querySelector('.param-slider[data-param="omega"]');
+    if (firstO) p.omega = parseFloat(firstO.value);
+    var firstG = document.querySelector('.param-slider[data-param="gamma"]');
+    if (firstG) p.gamma = parseFloat(firstG.value);
 
-    var x0 = x0Slider ? parseFloat(x0Slider.value) : 5;
-    var gamma = gammaSlider ? parseFloat(gammaSlider.value) : 0.3;
-    var omega = omegaSlider ? parseFloat(omegaSlider.value) : 2;
+    // Sync all displays
+    var fmt = p.gamma.toFixed(2);
+    document.querySelectorAll('[data-display="gamma"]').forEach(function (el) { el.textContent = fmt; });
+    document.querySelectorAll('[data-display="x0"]').forEach(function (el) { el.textContent = p.x0.toFixed(1); });
+    document.querySelectorAll('[data-display="omega"]').forEach(function (el) { el.textContent = p.omega.toFixed(1); });
 
-    updateGraph1(x0, 2);
-    updateGraph2(x0, 2, omega);
-    updateGraph3(x0, omega);
-    updateGraph4(gamma);
-    updateGraph5(gamma);
-    updateGraph6(gamma);
-    updateGraph7(x0, omega);
-    updateGraph8(gamma);
-    updateGraph9(omega);
+    syncAllSliders(p);
+
+    updateGraph1(p.x0, 2);
+    updateGraph2(p.x0, 2, p.omega);
+    updateGraph3(p.x0, p.omega);
+    updateGraph4(p.gamma);
+    updateGraph5(p.gamma);
+    updateGraph6(p.gamma);
+    updateGraph7(p.x0, p.omega);
+    updateGraph8(p.gamma);
+    if (document.getElementById('graph9')) {
+      updateGraph9(p.omega);
+    }
+  }
+
+  function syncAllSliders(p) {
+    document.querySelectorAll('.param-slider[data-param="x0"]').forEach(function (s) { s.value = p.x0; });
+    document.querySelectorAll('.param-slider[data-param="omega"]').forEach(function (s) { s.value = p.omega; });
+    document.querySelectorAll('.param-slider[data-param="gamma"]').forEach(function (s) { s.value = p.gamma; });
   }
 
   if (document.readyState === 'loading') {
