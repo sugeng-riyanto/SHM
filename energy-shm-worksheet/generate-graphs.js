@@ -130,7 +130,7 @@ function graphEnergyDisplacement() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 1: Energy vs Displacement -->\n';
   svg += '<defs>' + arrowHead('arr1', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'energy / mJ', 'Energy vs Displacement');
+  svg += '<g id="graph1-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'energy / mJ', 'Energy vs Displacement') + '\n</g>\n';
   svg += '<g id="graph1-curves">\n';
   svg += '<path id="graph1-ep" d="' + epPath + '" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>\n';
   svg += '<path id="graph1-ek" d="' + ekPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
@@ -183,7 +183,7 @@ function graphEnergyTime() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 2: Energy vs Time -->\n';
   svg += '<defs>' + arrowHead('arr2', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'energy / mJ', 'Energy vs Time');
+  svg += '<g id="graph2-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'energy / mJ', 'Energy vs Time') + '\n</g>\n';
   svg += '<g id="graph2-curves">\n';
   svg += '<path id="graph2-ep" d="' + epPath + '" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>\n';
   svg += '<path id="graph2-ek" d="' + ekPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
@@ -236,7 +236,7 @@ function graphVelocityDisplacement() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 3: Velocity vs Displacement -->\n';
   svg += '<defs>' + arrowHead('arr3', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'velocity / cm s\u207B\u00B9', 'Velocity vs Displacement');
+  svg += '<g id="graph3-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'velocity / cm s\u207B\u00B9', 'Velocity vs Displacement') + '\n</g>\n';
   svg += '<g id="graph3-curves">\n';
   svg += '<path id="graph3-up" d="' + upPath + '" fill="none" stroke="#2b6f9e" stroke-width="2.5"/>\n';
   svg += '<path id="graph3-low" d="' + lowPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
@@ -295,7 +295,7 @@ function graphDampedEnergy() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 4: Damped Energy Envelope -->\n';
   svg += '<defs>' + arrowHead('arr4', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'energy / mJ', 'Damped Oscillation \u2014 Energy Envelope');
+  svg += '<g id="graph4-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'energy / mJ', 'Damped Oscillation \u2014 Energy Envelope') + '\n</g>\n';
   svg += '<g id="graph4-curves">\n';
   svg += '<path id="graph4-env" d="' + path + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
   svg += '<path id="graph4-osc" d="' + oscPath + '" fill="none" stroke="#2b6f9e" stroke-width="1.2" opacity="0.5"/>\n';
@@ -350,7 +350,7 @@ function graphHOTSExperimental() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 5: HOTS Experimental Error -->\n';
   svg += '<defs>' + arrowHead('arr5', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'kinetic energy / mJ', 'HOTS: Experimental vs Theoretical E_k');
+  svg += '<g id="graph5-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'kinetic energy / mJ', 'HOTS: Experimental vs Theoretical E_k') + '\n</g>\n';
   svg += '<g id="graph5-curves">\n';
   svg += '<path id="graph5-theory" d="' + thPath + '" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>\n';
   svg += '<path id="graph5-experiment" d="' + exPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
@@ -390,7 +390,7 @@ function graphHOTSDamping() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 6: HOTS Damped vs Undamped -->\n';
   svg += '<defs>' + arrowHead('arr6', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'total energy / mJ', 'HOTS: Effect of Damping on Total Energy');
+  svg += '<g id="graph6-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'total energy / mJ', 'HOTS: Effect of Damping on Total Energy') + '\n</g>\n';
 
   svg += '<g id="graph6-curves">\n';
   const undampedPath = genPath([[0, 25], [10, 25]], X0, X1, Y0, Y1);
@@ -454,7 +454,7 @@ function graphPhaseRelations() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 7: Phase Relationships -->\n';
   svg += '<defs>' + arrowHead('arr7', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'x, v, a / (cm, cm s\u207B\u00B9, cm s\u207B\u00B2)', 'Phase Relationships in SHM');
+  svg += '<g id="graph7-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'x, v, a / (cm, cm s\u207B\u00B9, cm s\u207B\u00B2)', 'Phase Relationships in SHM') + '\n</g>\n';
   svg += '<g id="graph7-curves">\n';
   svg += '<path id="graph7-x" d="' + xPath + '" fill="none" stroke="#1a3a5c" stroke-width="2.5"/>\n';
   svg += '<path id="graph7-v" d="' + vPath + '" fill="none" stroke="#2b6f9e" stroke-width="2"/>\n';
@@ -519,7 +519,7 @@ function graphResonance() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 8: Resonance Curves -->\n';
   svg += '<defs>' + arrowHead('arr8', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'driving frequency / natural frequency', 'amplitude', 'Resonance at Different Damping Levels');
+  svg += '<g id="graph8-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'driving frequency / natural frequency', 'amplitude', 'Resonance at Different Damping Levels') + '\n</g>\n';
   svg += '<g id="graph8-curves">\n';
   svg += '<path id="graph8-light" d="' + lightPath + '" fill="none" stroke="' + colors[0] + '" stroke-width="2.5"/>\n';
   svg += '<path id="graph8-medium" d="' + medPath + '" fill="none" stroke="' + colors[1] + '" stroke-width="2.5"/>\n';
@@ -599,7 +599,7 @@ function graphQ5Grid() {
   svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 9: Q5 Interactive Grid -->\n';
   svg += '<defs>' + arrowHead('arr9', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'x\u00B2 / cm\u00B2', 'E_k / mJ', 'E_k vs x\u00B2 \u2014 Interactive Plot');
+  svg += '<g id="graph9-axes">\n' + drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'x\u00B2 / cm\u00B2', 'E_k / mJ', 'E_k vs x\u00B2 \u2014 Interactive Plot') + '\n</g>\n';
   svg += '<g id="graph9-curves">\n';
   svg += '<path id="graph9-theory" d="' + theoryPath + '" fill="none" stroke="#2b6f9e" stroke-width="2.5" stroke-dasharray="8,4"/>\n';
   svg += '</g>\n';
