@@ -538,11 +538,14 @@
   }
 
   // ================================================================
-  // Legend toggle system
+  // Legend toggle system + drag-to-reposition
   // ================================================================
+  var _dragState = null;
+
   function setupToggles() {
     document.querySelectorAll('.legend-toggle').forEach(function (el) {
       el.addEventListener('click', function () {
+        if (this._dragMoved) { this._dragMoved = false; return; }
         var targetId = this.dataset.target;
         var target = document.getElementById(targetId);
         if (!target) return;
@@ -555,6 +558,53 @@
         }
       });
     });
+  }
+
+  function _svgPt(svg, cx, cy) {
+    var pt = svg.createSVGPoint();
+    pt.x = cx; pt.y = cy;
+    return pt.matrixTransform(svg.getScreenCTM().inverse());
+  }
+  function _getTrans(el) {
+    var m = (el.getAttribute('transform') || '').match(/translate\(([\d.-]+),([\d.-]+)\)/);
+    return m ? { x: +m[1], y: +m[2] } : { x: 0, y: 0 };
+  }
+  function setupDragLegends() {
+    document.querySelectorAll('.legend-toggle').forEach(function (el) {
+      el.addEventListener('mousedown', function (e) {
+        e.preventDefault();
+        var svg = this.closest('svg');
+        if (!svg) return;
+        var s = _svgPt(svg, e.clientX, e.clientY);
+        var o = _getTrans(this);
+        _dragState = { el: this, svg: svg, sx: s.x, sy: s.y, ox: o.x, oy: o.y };
+      });
+      el.addEventListener('touchstart', function (e) {
+        var t = e.changedTouches[0];
+        var svg = this.closest('svg');
+        if (!svg) return;
+        var s = _svgPt(svg, t.clientX, t.clientY);
+        var o = _getTrans(this);
+        _dragState = { el: this, svg: svg, sx: s.x, sy: s.y, ox: o.x, oy: o.y };
+      }, { passive: true });
+    });
+    document.addEventListener('mousemove', function (e) {
+      if (!_dragState) return;
+      var s = _svgPt(_dragState.svg, e.clientX, e.clientY);
+      var dx = s.x - _dragState.sx, dy = s.y - _dragState.sy;
+      if (Math.hypot(dx, dy) > 3) _dragState.el._dragMoved = true;
+      _dragState.el.setAttribute('transform', 'translate(' + (_dragState.ox + dx).toFixed(1) + ',' + (_dragState.oy + dy).toFixed(1) + ')');
+    });
+    document.addEventListener('touchmove', function (e) {
+      if (!_dragState) return;
+      var t = e.changedTouches[0];
+      var s = _svgPt(_dragState.svg, t.clientX, t.clientY);
+      var dx = s.x - _dragState.sx, dy = s.y - _dragState.sy;
+      if (Math.hypot(dx, dy) > 3) _dragState.el._dragMoved = true;
+      _dragState.el.setAttribute('transform', 'translate(' + (_dragState.ox + dx).toFixed(1) + ',' + (_dragState.oy + dy).toFixed(1) + ')');
+    }, { passive: true });
+    document.addEventListener('mouseup', function () { _dragState = null; });
+    document.addEventListener('touchend', function () { _dragState = null; });
   }
 
   // ================================================================
@@ -696,6 +746,7 @@
   // ================================================================
   function init() {
     setupToggles();
+    setupDragLegends();
     setupTooltips();
     setupSliders();
     setupZoom();

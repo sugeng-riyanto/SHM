@@ -349,6 +349,12 @@ section h3 {
 .legend-toggle.dimmed {
   opacity: 0.4;
 }
+.legend-toggle {
+  cursor: grab;
+}
+.legend-toggle:active {
+  cursor: grabbing;
+}
 .legend-toggle:hover {
   opacity: 0.8;
 }
