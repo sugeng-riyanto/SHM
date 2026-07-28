@@ -125,25 +125,31 @@
     var axesId = svg.id + '-axes';
     var axesG = document.getElementById(axesId);
     if (!axesG) return;
+    // Fade out
+    axesG.style.transition = 'opacity 0.1s ease';
+    axesG.style.opacity = '0';
     var markup = drawAxesStr(x0, x1, y0, y1, xStep, yStep, xUnit, yUnit);
-    try {
-      var parser = new DOMParser();
-      var doc = parser.parseFromString('<svg xmlns="http://www.w3.org/2000/svg">' + markup + '</svg>', 'image/svg+xml');
-      var nodes = doc.documentElement.childNodes;
-      while (axesG.firstChild) axesG.removeChild(axesG.firstChild);
-      for (var i = 0; i < nodes.length; i++) {
-        axesG.appendChild(document.importNode(nodes[i], true));
+    setTimeout(function () {
+      try {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString('<svg xmlns="http://www.w3.org/2000/svg">' + markup + '</svg>', 'image/svg+xml');
+        var nodes = doc.documentElement.childNodes;
+        while (axesG.firstChild) axesG.removeChild(axesG.firstChild);
+        for (var i = 0; i < nodes.length; i++) {
+          axesG.appendChild(document.importNode(nodes[i], true));
+        }
+      } catch(e) {
+        while (axesG.firstChild) axesG.removeChild(axesG.firstChild);
+        var tmp = document.createElement('div');
+        tmp.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg">' + markup + '</svg>';
+        var svgNodes = tmp.querySelector('svg').childNodes;
+        for (var i = 0; i < svgNodes.length; i++) {
+          axesG.appendChild(document.importNode(svgNodes[i], true));
+        }
       }
-    } catch(e) {
-      // Fallback: inject via range
-      while (axesG.firstChild) axesG.removeChild(axesG.firstChild);
-      var tmp = document.createElement('div');
-      tmp.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg">' + markup + '</svg>';
-      var svgNodes = tmp.querySelector('svg').childNodes;
-      for (var i = 0; i < svgNodes.length; i++) {
-        axesG.appendChild(document.importNode(svgNodes[i], true));
-      }
-    }
+      // Fade in
+      axesG.style.opacity = '1';
+    }, 100);
   }
 
   // ================================================================
@@ -573,23 +579,29 @@
       });
     }
 
+    var rafPending = false;
     document.querySelectorAll('.param-slider').forEach(function (slider) {
       slider.addEventListener('input', function () {
         var param = this.dataset.param;
         var val = parseFloat(this.value);
         syncParam(param, val);
-        var p = readParams();
-        updateGraph1(p.x0, 2);
-        updateGraph2(p.x0, 2, p.omega);
-        updateGraph3(p.x0, p.omega);
-        updateGraph4(p.gamma);
-        updateGraph5(p.gamma);
-        updateGraph6(p.gamma);
-        updateGraph7(p.x0, p.omega);
-        updateGraph8(p.gamma);
-        if (document.getElementById('graph9')) {
-          updateGraph9(p.omega);
-        }
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(function () {
+          rafPending = false;
+          var p = readParams();
+          updateGraph1(p.x0, 2);
+          updateGraph2(p.x0, 2, p.omega);
+          updateGraph3(p.x0, p.omega);
+          updateGraph4(p.gamma);
+          updateGraph5(p.gamma);
+          updateGraph6(p.gamma);
+          updateGraph7(p.x0, p.omega);
+          updateGraph8(p.gamma);
+          if (document.getElementById('graph9')) {
+            updateGraph9(p.omega);
+          }
+        });
       });
     });
   }
