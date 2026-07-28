@@ -112,7 +112,6 @@ function graphEnergyDisplacement() {
   const X0 = -6, X1 = 6, Y0 = -3, Y1 = 28;
   const xStep = 2, yStep = 5;
 
-  // Data: Ep = x^2, Ek = 25 - x^2, Etot = 25 (when k=2, x0=5, so Emax=25)
   const n = 100;
   const epData = [], ekData = [];
   for (let i = 0; i <= n; i++) {
@@ -126,36 +125,34 @@ function graphEnergyDisplacement() {
   const ekPath = genPath(ekData, X0, X1, Y0, Y1);
   const etotPath = genPath(etotData, X0, X1, Y0, Y1);
 
-  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
-  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4"/>\n';
+  let svg = '<svg id="graph1" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 1: Energy vs Displacement -->\n';
   svg += '<defs>' + arrowHead('arr1', '#333') + '</defs>\n';
   svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'energy / mJ', 'Energy vs Displacement');
-  svg += '<!-- Ep curve -->\n';
-  svg += '<path d="' + epPath + '" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>\n';
-  svg += '<!-- Ek curve -->\n';
-  svg += '<path d="' + ekPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
-  svg += '<!-- Etot curve -->\n';
-  svg += '<path d="' + etotPath + '" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>\n';
+  svg += '<g id="graph1-curves">\n';
+  svg += '<path id="graph1-ep" d="' + epPath + '" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>\n';
+  svg += '<path id="graph1-ek" d="' + ekPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '<path id="graph1-etot" d="' + etotPath + '" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>\n';
+  svg += '</g>\n';
 
-  // Legend
+  // Interactive Legend
   const lx = PX + 15, ly = PY + 18;
-  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="160" height="64" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>\n';
-  svg += line(lx + 8, ly, lx + 38, ly, '#1a7a3a', 2.5);
-  svg += textEl(lx + 44, ly + 4, 'E_p = \u00BDkx\u00B2', 11, 'start', '#333');
-  svg += line(lx + 8, ly + 20, lx + 38, ly + 20, '#c44536', 2.5);
-  svg += textEl(lx + 44, ly + 24, 'E_k = \u00BDk(x\u2080\u00B2 \u2212 x\u00B2)', 11, 'start', '#333');
-  svg += line(lx + 8, ly + 40, lx + 38, ly + 40, '#2b6f9e', 2);
-  svg += '<line x1="' + (lx + 8) + '" y1="' + (ly + 40) + '" x2="' + (lx + 38) + '" y2="' + (ly + 40) + '" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>\n';
-  svg += textEl(lx + 44, ly + 44, 'E_total (constant)', 11, 'start', '#333');
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="175" height="64" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph1-ep" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#1a7a3a" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_p = \u00BDkx\u00B2</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph1-ek" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#c44536" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_k = \u00BDk(x\u2080\u00B2 \u2212 x\u00B2)</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph1-etot" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 40) + '" x2="' + (lx + 38) + '" y2="' + (ly + 40) + '" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/><text x="' + (lx + 44) + '" y="' + (ly + 44) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_total (constant)</text></g>\n';
 
-  // Annotations: x0, -x0
+  // Annotations
   const x0px = sx(5, X0, X1);
   const nx0px = sx(-5, X0, X1);
+  svg += '<g class="annotations">\n';
   svg += line(x0px, sy(0, Y0, Y1), x0px, sy(25, Y0, Y1), '#999', 0.8, '3,2');
   svg += line(nx0px, sy(0, Y0, Y1), nx0px, sy(25, Y0, Y1), '#999', 0.8, '3,2');
-  svg += textEl(x0px, sy(0, Y0, Y1) + 32, '+x\u2080', 11, 'center', '#666');
-  svg += textEl(nx0px, sy(0, Y0, Y1) + 32, '\u2212x\u2080', 11, 'center', '#666');
+  svg += '<text id="graph1-x0-lbl" x="' + x0px.toFixed(1) + '" y="' + (sy(0, Y0, Y1) + 32) + '" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">+x\u2080</text>\n';
+  svg += '<text id="graph1-nx0-lbl" x="' + nx0px.toFixed(1) + '" y="' + (sy(0, Y0, Y1) + 32) + '" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">\u2212x\u2080</text>\n';
+  svg += '</g>\n';
 
   svg += '</svg>\n';
   return svg;
@@ -168,7 +165,6 @@ function graphEnergyTime() {
   const X0 = -0.3, X1 = 3.5, Y0 = -3, Y1 = 28;
   const xStep = 0.5, yStep = 5;
 
-  // Ep(t) = 25*sin^2(2t), Ek(t) = 25*cos^2(2t), T = pi = 3.14
   const n = 120;
   const epData = [], ekData = [];
   for (let i = 0; i <= n; i++) {
@@ -182,28 +178,31 @@ function graphEnergyTime() {
   const epPath = genPath(epData, X0, X1, Y0, Y1);
   const ekPath = genPath(ekData, X0, X1, Y0, Y1);
 
-  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
-  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4"/>\n';
+  let svg = '<svg id="graph2" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 2: Energy vs Time -->\n';
   svg += '<defs>' + arrowHead('arr2', '#333') + '</defs>\n';
   svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'energy / mJ', 'Energy vs Time');
-  svg += '<path d="' + epPath + '" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>\n';
-  svg += '<path d="' + ekPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '<g id="graph2-curves">\n';
+  svg += '<path id="graph2-ep" d="' + epPath + '" fill="none" stroke="#1a7a3a" stroke-width="2.5"/>\n';
+  svg += '<path id="graph2-ek" d="' + ekPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '</g>\n';
 
-  // Legend
+  // Interactive Legend
   const lx = PX + 15, ly = PY + 18;
-  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="160" height="44" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>\n';
-  svg += line(lx + 8, ly, lx + 38, ly, '#1a7a3a', 2.5);
-  svg += textEl(lx + 44, ly + 4, 'E_p = \u00BDkx\u2080\u00B2 sin\u00B2(\u03C9t)', 11, 'start', '#333');
-  svg += line(lx + 8, ly + 20, lx + 38, ly + 20, '#c44536', 2.5);
-  svg += textEl(lx + 44, ly + 24, 'E_k = \u00BDkx\u2080\u00B2 cos\u00B2(\u03C9t)', 11, 'start', '#333');
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="175" height="44" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph2-ep" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#1a7a3a" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_p = \u00BDkx\u2080\u00B2 sin\u00B2(\u03C9t)</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph2-ek" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#c44536" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E_k = \u00BDkx\u2080\u00B2 cos\u00B2(\u03C9t)</text></g>\n';
 
-  // Annotations: T/4, T/2
+  // Annotations
   const t4 = sx(0.785, X0, X1), t2 = sx(1.57, X0, X1);
+  svg += '<g class="annotations">\n';
   svg += line(t4, PY, t4, PY + PH, '#999', 0.8, '3,2');
   svg += line(t2, PY, t2, PY + PH, '#999', 0.8, '3,2');
-  svg += textEl(t4, PY + PH + 18, 'T/4', 10, 'center', '#666');
-  svg += textEl(t2, PY + PH + 18, 'T/2', 10, 'center', '#666');
+  svg += '<text id="graph2-T4" x="' + t4.toFixed(1) + '" y="' + (PY + PH + 18) + '" font-size="10" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">T/4</text>\n';
+  svg += '<text id="graph2-T2" x="' + t2.toFixed(1) + '" y="' + (PY + PH + 18) + '" font-size="10" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">T/2</text>\n';
+  svg += '</g>\n';
 
   svg += '</svg>\n';
   return svg;
@@ -216,7 +215,6 @@ function graphVelocityDisplacement() {
   const X0 = -6, X1 = 6, Y0 = -12, Y1 = 12;
   const xStep = 2, yStep = 4;
 
-  // v = +/- omega * sqrt(x0^2 - x^2), omega=2, x0=5
   const n = 80;
   const upper = [], lower = [];
   for (let i = 0; i <= n; i++) {
@@ -233,34 +231,37 @@ function graphVelocityDisplacement() {
   const upPath = genPath(upper, X0, X1, Y0, Y1);
   const lowPath = genPath(lower, X0, X1, Y0, Y1);
 
-  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
-  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4"/>\n';
+  let svg = '<svg id="graph3" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 3: Velocity vs Displacement -->\n';
   svg += '<defs>' + arrowHead('arr3', '#333') + '</defs>\n';
   svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'velocity / cm s\u207B\u00B9', 'Velocity vs Displacement');
-  svg += '<path d="' + upPath + '" fill="none" stroke="#2b6f9e" stroke-width="2.5"/>\n';
-  svg += '<path d="' + lowPath + '" fill="none" stroke="#2b6f9e" stroke-width="2.5"/>\n';
+  svg += '<g id="graph3-curves">\n';
+  svg += '<path id="graph3-up" d="' + upPath + '" fill="none" stroke="#2b6f9e" stroke-width="2.5"/>\n';
+  svg += '<path id="graph3-low" d="' + lowPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '</g>\n';
 
-  // Direction arrows on ellipse
+  // Direction arrows
   const ax1 = sx(0, X0, X1), ay1 = sy(10, Y0, Y1);
   const ax2 = sx(3, X0, X1), ay2 = sy(8, Y0, Y1);
-  svg += '<polygon points="' + (ax1-5) + ',' + (ay1-2) + ' ' + ax1 + ',' + (ay1-8) + ' ' + (ax1+5) + ',' + (ay1-2) + '" fill="#2b6f9e"/>\n';
-  svg += '<polygon points="' + (ax2-2) + ',' + (ay2-5) + ' ' + (ax2-8) + ',' + ay2 + ' ' + (ax2-2) + ',' + (ay2+5) + '" fill="#c44536"/>\n';
+  svg += '<polygon points="' + (ax1-5) + ',' + (ay1-2) + ' ' + ax1 + ',' + (ay1-8) + ' ' + (ax1+5) + ',' + (ay1-2) + '" fill="#2b6f9e" pointer-events="none"/>\n';
+  svg += '<polygon points="' + (ax2-2) + ',' + (ay2-5) + ' ' + (ax2-8) + ',' + ay2 + ' ' + (ax2-2) + ',' + (ay2+5) + '" fill="#c44536" pointer-events="none"/>\n';
 
-  // Legend
+  // Interactive Legend
   const lx = PX + 15, ly = PY + 18;
-  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="170" height="44" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>\n';
-  svg += line(lx + 8, ly, lx + 38, ly, '#2b6f9e', 2.5);
-  svg += textEl(lx + 44, ly + 4, 'v = +\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)', 11, 'start', '#333');
-  svg += line(lx + 8, ly + 20, lx + 38, ly + 20, '#c44536', 2.5);
-  svg += textEl(lx + 44, ly + 24, 'v = \u2212\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)', 11, 'start', '#333');
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="185" height="44" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph3-up" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#2b6f9e" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">v = +\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph3-low" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#c44536" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">v = \u2212\u03C9\u221A(x\u2080\u00B2 \u2212 x\u00B2)</text></g>\n';
 
   // Annotations
   const x0px = sx(5, X0, X1), nx0px = sx(-5, X0, X1);
-  svg += textEl(x0px, sy(0, Y0, Y1) + 28, '+x\u2080', 11, 'center', '#666');
-  svg += textEl(nx0px, sy(0, Y0, Y1) + 28, '\u2212x\u2080', 11, 'center', '#666');
-  svg += textEl(sx(0, X0, X1), sy(10, Y0, Y1) - 10, '+\u03C9x\u2080', 11, 'center', '#666');
-  svg += textEl(sx(0, X0, X1), sy(-10, Y0, Y1) + 18, '\u2212\u03C9x\u2080', 11, 'center', '#666');
+  svg += '<g class="annotations">\n';
+  svg += '<text id="graph3-x0-lbl" x="' + x0px.toFixed(1) + '" y="' + (sy(0, Y0, Y1) + 28) + '" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">+x\u2080</text>\n';
+  svg += '<text id="graph3-nx0-lbl" x="' + nx0px.toFixed(1) + '" y="' + (sy(0, Y0, Y1) + 28) + '" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">\u2212x\u2080</text>\n';
+  svg += '<text id="graph3-vmax-lbl" x="' + sx(0, X0, X1).toFixed(1) + '" y="' + (sy(10, Y0, Y1) - 10) + '" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">+\u03C9x\u2080</text>\n';
+  svg += '<text id="graph3-vmin-lbl" x="' + sx(0, X0, X1).toFixed(1) + '" y="' + (sy(-10, Y0, Y1) + 18) + '" font-size="11" text-anchor="center" fill="#666" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">\u2212\u03C9x\u2080</text>\n';
+  svg += '</g>\n';
 
   svg += '</svg>\n';
   return svg;
@@ -273,7 +274,6 @@ function graphDampedEnergy() {
   const X0 = -0.3, X1 = 10, Y0 = -3, Y1 = 28;
   const xStep = 2, yStep = 5;
 
-  // E(t) = 25*exp(-0.3*t)
   const n = 100;
   const data = [];
   for (let i = 0; i <= n; i++) {
@@ -282,15 +282,6 @@ function graphDampedEnergy() {
   }
   const path = genPath(data, X0, X1, Y0, Y1);
 
-  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
-  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4"/>\n';
-  svg += '<!-- Graph 4: Damped Energy Envelope -->\n';
-  svg += '<defs>' + arrowHead('arr4', '#333') + '</defs>\n';
-  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'energy / mJ', 'Damped Oscillation \u2014 Energy Envelope');
-  svg += '<path d="' + path + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
-  svg += '<path d="' + path.replace('M', 'M') + '" fill="none" stroke="#c44536" stroke-width="1" stroke-dasharray="2,2" opacity="0.3"/>\n';
-
-  // Add an oscillating signal beneath the envelope (visual hint)
   const oscData = [];
   for (let i = 0; i <= 200; i++) {
     const t = 10 * i / 200;
@@ -298,16 +289,24 @@ function graphDampedEnergy() {
     oscData.push([t, env * (0.5 + 0.5 * Math.cos(8 * t))]);
   }
   const oscPath = genPath(oscData, X0, X1, Y0, Y1);
-  svg += '<path d="' + oscPath + '" fill="none" stroke="#2b6f9e" stroke-width="1.2" opacity="0.5"/>\n';
 
-  // Legend
+  let svg = '<svg id="graph4" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
+  svg += '<!-- Graph 4: Damped Energy Envelope -->\n';
+  svg += '<defs>' + arrowHead('arr4', '#333') + '</defs>\n';
+  svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'energy / mJ', 'Damped Oscillation \u2014 Energy Envelope');
+  svg += '<g id="graph4-curves">\n';
+  svg += '<path id="graph4-env" d="' + path + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '<path id="graph4-osc" d="' + oscPath + '" fill="none" stroke="#2b6f9e" stroke-width="1.2" opacity="0.5"/>\n';
+  svg += '</g>\n';
+
+  // Interactive Legend
   const lx = PX + 15, ly = PY + 18;
-  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="195" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>\n';
-  svg += line(lx + 8, ly, lx + 38, ly, '#c44536', 2.5);
-  svg += textEl(lx + 44, ly + 4, 'E\u209C\u2092\u209C(t) = E\u2080 e\u207B\u03B3\u1D57  (envelope)', 11, 'start', '#333');
-  svg += line(lx + 8, ly + 20, lx + 38, ly + 20, '#2b6f9e', 1.5);
-  svg += textEl(lx + 44, ly + 24, 'Instantaneous E (oscillatory)', 11, 'start', '#333');
-  svg += textEl(lx + 8, ly + 40, '\u03B3 = damping coefficient', 10, 'start', '#888');
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="230" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph4-env" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#c44536" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">E\u209C\u2092\u209C(t) = E\u2080 e\u207B\u03B3\u1D57  (envelope)</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph4-osc" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#2b6f9e" stroke-width="1.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Instantaneous E (oscillatory)</text></g>\n';
+  svg += '<text x="' + (lx + 8) + '" y="' + (ly + 40) + '" font-size="10" fill="#888" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" pointer-events="none">\u03B3 = damping coefficient</text>\n';
 
   svg += '</svg>\n';
   return svg;
@@ -326,7 +325,6 @@ function graphHOTSExperimental() {
     const x = -5 + 10 * i / n;
     const ek = 25 - x * x;
     theoretical.push([x, ek]);
-    // Experimental: 92% of theoretical with slight asymmetry (hysteresis-like)
     const loss = 0.92 + 0.03 * Math.sin(x * 0.5);
     experimental.push([x, ek * loss]);
   }
@@ -334,7 +332,6 @@ function graphHOTSExperimental() {
   const thPath = genPath(theoretical, X0, X1, Y0, Y1);
   const exPath = genPath(experimental, X0, X1, Y0, Y1);
 
-  // Error bars at selected points
   let errBars = '';
   const errPoints = [-4, -2, 0, 2, 4];
   errPoints.forEach(x => {
@@ -348,24 +345,26 @@ function graphHOTSExperimental() {
     errBars += line(xp - 3, yp + 6, xp + 3, yp + 6, '#c44536', 1);
   });
 
-  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
-  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4"/>\n';
+  let svg = '<svg id="graph5" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 5: HOTS Experimental Error -->\n';
   svg += '<defs>' + arrowHead('arr5', '#333') + '</defs>\n';
   svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'displacement / cm', 'kinetic energy / mJ', 'HOTS: Experimental vs Theoretical E_k');
-  svg += '<path d="' + thPath + '" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>\n';
-  svg += '<path d="' + exPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
-  svg += errBars;
+  svg += '<g id="graph5-curves">\n';
+  svg += '<path id="graph5-theory" d="' + thPath + '" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>\n';
+  svg += '<path id="graph5-experiment" d="' + exPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '</g>\n';
 
-  // Legend
+  // Error bars (always visible, part of experimental group)
+  svg += '<g id="graph5-errors">\n' + errBars + '</g>\n';
+
+  // Interactive Legend
   const lx = PX + 15, ly = PY + 18;
-  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="180" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>\n';
-  svg += line(lx + 8, ly, lx + 38, ly, '#2b6f9e', 2);
-  svg += '<line x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/>\n';
-  svg += textEl(lx + 44, ly + 4, 'Theoretical E_k', 11, 'start', '#333');
-  svg += line(lx + 8, ly + 20, lx + 38, ly + 20, '#c44536', 2.5);
-  svg += textEl(lx + 44, ly + 24, 'Experimental E_k (with error bars)', 11, 'start', '#333');
-  svg += textEl(lx + 8, ly + 40, 'Systematic loss ~8%, uncertainty shown', 10, 'start', '#888');
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="210" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph5-theory" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="6,3"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Theoretical E_k</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph5-experiment" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#c44536" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Experimental E_k (with error bars)</text></g>\n';
+  svg += '<text x="' + (lx + 8) + '" y="' + (ly + 40) + '" font-size="10" fill="#888" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" pointer-events="none">Systematic loss ~8%, uncertainty shown</text>\n';
 
   svg += '</svg>\n';
   return svg;
@@ -378,8 +377,6 @@ function graphHOTSDamping() {
   const X0 = -0.3, X1 = 10, Y0 = -3, Y1 = 28;
   const xStep = 2, yStep = 5;
 
-  // Undamped: E = 25 (constant)
-  // Damped: E = 25*exp(-0.2*t)
   const n = 100;
   const dampedData = [];
   for (let i = 0; i <= n; i++) {
@@ -388,18 +385,20 @@ function graphHOTSDamping() {
   }
   const dampedPath = genPath(dampedData, X0, X1, Y0, Y1);
 
-  let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
-  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4"/>\n';
+  let svg = '<svg id="graph6" class="graph-svg" data-x0="' + X0 + '" data-x1="' + X1 + '" data-y0="' + Y0 + '" data-y1="' + Y1 + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" style="font-family:Segoe UI,Helvetica Neue,Arial,sans-serif">\n';
+  svg += '<rect class="hitarea" width="' + W + '" height="' + H + '" fill="transparent" rx="4" style="cursor:crosshair"/>\n';
+  svg += '<rect width="' + W + '" height="' + H + '" fill="#fff" rx="4" pointer-events="none"/>\n';
   svg += '<!-- Graph 6: HOTS Damped vs Undamped -->\n';
   svg += '<defs>' + arrowHead('arr6', '#333') + '</defs>\n';
   svg += drawAxes(X0, X1, Y0, Y1, xStep, yStep, 'time / s', 'total energy / mJ', 'HOTS: Effect of Damping on Total Energy');
 
-  // Undamped: horizontal line at y=25
+  svg += '<g id="graph6-curves">\n';
   const undampedPath = genPath([[0, 25], [10, 25]], X0, X1, Y0, Y1);
-  svg += '<path d="' + undampedPath + '" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="8,4"/>\n';
-  svg += '<path d="' + dampedPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '<path id="graph6-undamped" d="' + undampedPath + '" fill="none" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="8,4"/>\n';
+  svg += '<path id="graph6-damped" d="' + dampedPath + '" fill="none" stroke="#c44536" stroke-width="2.5"/>\n';
+  svg += '</g>\n';
 
-  // Shaded area between curves (optional — show energy loss)
+  // Shaded area
   const shadeData = [];
   for (let i = 0; i <= 100; i++) {
     const t = 10 * i / 100;
@@ -412,22 +411,18 @@ function graphHOTSDamping() {
     return (i === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1);
   }).join(' ');
   const undampedEnd = sx(10, X0, X1);
-  const dampedEnd = sy(25 * Math.exp(-2), Y0, Y1);
-  svg += '<path d="' + shadeStr + 'L' + undampedEnd.toFixed(1) + ',' + sy(25, Y0, Y1).toFixed(1) + ' Z" fill="rgba(196,69,54,0.08)"/>\n';
+  svg += '<path id="graph6-shade" d="' + shadeStr + 'L' + undampedEnd.toFixed(1) + ',' + sy(25, Y0, Y1).toFixed(1) + ' Z" fill="rgba(196,69,54,0.08)" pointer-events="none"/>\n';
 
-  // Legend
+  // Interactive Legend
   const lx = PX + 15, ly = PY + 18;
-  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="230" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3"/>\n';
-  svg += line(lx + 8, ly, lx + 38, ly, '#2b6f9e', 2);
-  svg += '<line x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="8,4"/>\n';
-  svg += textEl(lx + 44, ly + 4, 'Undamped: E_total = constant', 11, 'start', '#333');
-  svg += line(lx + 8, ly + 20, lx + 38, ly + 20, '#c44536', 2.5);
-  svg += textEl(lx + 44, ly + 24, 'Lightly damped: E_total decays', 11, 'start', '#333');
-  svg += textEl(lx + 8, ly + 40, 'Shaded region = energy dissipated to surroundings', 10, 'start', '#888');
+  svg += '<rect x="' + lx + '" y="' + (ly - 12) + '" width="250" height="60" fill="rgba(255,255,255,0.92)" stroke="#bbb" rx="3" pointer-events="none"/>\n';
+  svg += '<g class="legend-toggle" data-target="graph6-undamped" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + ly + '" x2="' + (lx + 38) + '" y2="' + ly + '" stroke="#2b6f9e" stroke-width="2" stroke-dasharray="8,4"/><text x="' + (lx + 44) + '" y="' + (ly + 4) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Undamped: E_total = constant</text></g>\n';
+  svg += '<g class="legend-toggle" data-target="graph6-damped" style="cursor:pointer"><line class="legend-line" x1="' + (lx + 8) + '" y1="' + (ly + 20) + '" x2="' + (lx + 38) + '" y2="' + (ly + 20) + '" stroke="#c44536" stroke-width="2.5"/><text x="' + (lx + 44) + '" y="' + (ly + 24) + '" font-size="11" fill="#333" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif">Lightly damped: E_total decays</text></g>\n';
+  svg += '<text x="' + (lx + 8) + '" y="' + (ly + 40) + '" font-size="10" fill="#888" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" pointer-events="none">Shaded region = energy dissipated to surroundings</text>\n';
 
   // Annotations
-  svg += textEl(sx(2, X0, X1), sy(20, Y0, Y1), 'Energy loss', 10, 'start', '#888');
-  svg += textEl(sx(2, X0, X1), sy(17, Y0, Y1), 'per cycle \u2193', 10, 'start', '#888');
+  svg += '<text x="' + sx(2, X0, X1).toFixed(1) + '" y="' + sy(20, Y0, Y1).toFixed(1) + '" font-size="10" fill="#888" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" pointer-events="none">Energy loss</text>\n';
+  svg += '<text x="' + sx(2, X0, X1).toFixed(1) + '" y="' + sy(17, Y0, Y1).toFixed(1) + '" font-size="10" fill="#888" font-family="Segoe UI,Helvetica Neue,Arial,sans-serif" pointer-events="none">per cycle \u2193</text>\n';
 
   svg += '</svg>\n';
   return svg;
