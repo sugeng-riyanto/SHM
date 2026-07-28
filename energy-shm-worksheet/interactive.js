@@ -264,22 +264,20 @@
     }
     setPath(svg, 'graph9-theory', theory);
     var grad = -Emax / 25;
-    var gradEl = svg.getElementById('graph9-grad-lbl');
+    var gradEl = document.getElementById('graph9-grad-lbl');
     if (gradEl) gradEl.textContent = 'Gradient = ' + grad.toFixed(2) + ' mJ cm\u207B\u00B2';
-    var omegaEl = svg.getElementById('graph9-omega-lbl');
+    var omegaEl = document.getElementById('graph9-omega-lbl');
     if (omegaEl) omegaEl.textContent = 'Fitted \u03C9 = ' + omega.toFixed(1) + ' rad s\u207B\u00B9';
   }
 
   function setPath(svg, id, data) {
-    var el = svg.getElementById(id);
+    var el = document.getElementById(id);
     if (el) el.setAttribute('d', genPath(svg, data));
   }
 
   function updateAnnotation(svg, id, label, xDefault, newVal) {
-    var el = svg.getElementById(id);
+    var el = document.getElementById(id);
     if (el) {
-      var r = getRange(svg);
-      var xPos = sx(svg, xDefault === 0 ? 0 : (xDefault > 0 ? xDefault : -xDefault), r.x0, r.x1);
       el.textContent = label;
     }
   }
