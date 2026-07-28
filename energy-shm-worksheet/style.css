@@ -357,6 +357,71 @@ section h3 {
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
+/* ---- Workbook download bar ---- */
+.download-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #1a3a5c 0%, #2b6f9e 100%);
+  border-radius: 6px;
+  color: #fff;
+}
+
+.download-bar-label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-right: 0.3rem;
+  white-space: nowrap;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 5px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-download:hover {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.6);
+}
+
+.btn-download:active {
+  background: rgba(255,255,255,0.35);
+}
+
+.btn-download svg {
+  flex-shrink: 0;
+}
+
+.btn-pdf:hover {
+  background: #c44536;
+  border-color: #c44536;
+}
+
+.btn-docx:hover {
+  background: #218838;
+  border-color: #218838;
+}
+
+@media print {
+  .download-bar {
+    display: none;
+  }
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 700px) {
   .graph-grid {
