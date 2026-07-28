@@ -129,6 +129,46 @@
   }
 
   // ================================================================
+  // Additional data generators for Graph 7 (phase) and Graph 8 (resonance)
+  // ================================================================
+
+  function genPhaseX(x0, omega) {
+    var d = [];
+    for (var i = 0; i <= 150; i++) {
+      var t = 6.4 * i / 150;
+      d.push([t, x0 * Math.sin(omega * t)]);
+    }
+    return d;
+  }
+
+  function genPhaseV(x0, omega) {
+    var d = [];
+    for (var i = 0; i <= 150; i++) {
+      var t = 6.4 * i / 150;
+      d.push([t, omega * x0 * Math.cos(omega * t)]);
+    }
+    return d;
+  }
+
+  function genPhaseA(x0, omega) {
+    var d = [];
+    for (var i = 0; i <= 150; i++) {
+      var t = 6.4 * i / 150;
+      d.push([t, -omega * omega * x0 * Math.sin(omega * t)]);
+    }
+    return d;
+  }
+
+  function genResonanceCurve(gamma) {
+    var d = [];
+    for (var i = 0; i <= 120; i++) {
+      var r = 4.2 * i / 120;
+      d.push([r, 5 / Math.sqrt(Math.pow(1 - r * r, 2) + Math.pow(2 * gamma * r, 2))]);
+    }
+    return d;
+  }
+
+  // ================================================================
   // Graph updaters
   // ================================================================
   function updateGraph1(x0, k) {
@@ -170,10 +210,45 @@
     setPath(svg, 'graph4-osc', genDampedOsc(gamma));
   }
 
+  function updateGraph5(gamma) {
+    var svg = document.getElementById('graph5');
+    if (!svg) return;
+    var x0 = 5, k = 2, Emax = 0.5 * k * x0 * x0;
+    var n = 80;
+    var theoretical = [], experimental = [];
+    var lossFactor = Math.max(0.05, 1 - gamma * 0.35);
+    for (var i = 0; i <= n; i++) {
+      var x = -x0 + 2 * x0 * i / n;
+      var ek = Emax - 0.5 * k * x * x;
+      theoretical.push([x, ek]);
+      experimental.push([x, ek * lossFactor]);
+    }
+    setPath(svg, 'graph5-theory', theoretical);
+    setPath(svg, 'graph5-experiment', experimental);
+  }
+
   function updateGraph6(gamma) {
     var svg = document.getElementById('graph6');
     if (!svg) return;
     setPath(svg, 'graph6-damped', genDampedEnvelope(gamma));
+  }
+
+  function updateGraph7(x0, omega) {
+    var svg = document.getElementById('graph7');
+    if (!svg) return;
+    setPath(svg, 'graph7-x', genPhaseX(x0, omega));
+    setPath(svg, 'graph7-v', genPhaseV(x0, omega));
+    setPath(svg, 'graph7-a', genPhaseA(x0, omega));
+  }
+
+  function updateGraph8(gamma) {
+    var svg = document.getElementById('graph8');
+    if (!svg) return;
+    // Three damping levels proportional to gamma slider
+    var gL = gamma * 0.5, gM = gamma * 1.3, gH = gamma * 2.7;
+    setPath(svg, 'graph8-light', genResonanceCurve(gL));
+    setPath(svg, 'graph8-medium', genResonanceCurve(gM));
+    setPath(svg, 'graph8-heavy', genResonanceCurve(gH));
   }
 
   function setPath(svg, id, data) {
@@ -320,7 +395,9 @@
         var g = parseFloat(this.value);
         if (gammaDisplay) gammaDisplay.textContent = g.toFixed(2);
         updateGraph4(g);
+        updateGraph5(g);
         updateGraph6(g);
+        updateGraph8(g);
       });
     }
 
@@ -331,9 +408,11 @@
       x0Slider.addEventListener('input', function () {
         var x0 = parseFloat(this.value);
         if (x0Display) x0Display.textContent = x0.toFixed(1);
+        var omega = omegaSlider ? parseFloat(omegaSlider.value) : 2;
         updateGraph1(x0, 2);
-        updateGraph2(x0, 2, 2);
-        updateGraph3(x0, 2);
+        updateGraph2(x0, 2, omega);
+        updateGraph3(x0, omega);
+        updateGraph7(x0, omega);
       });
     }
 
@@ -347,6 +426,7 @@
         var x0 = x0Slider ? parseFloat(x0Slider.value) : 5;
         updateGraph2(x0, 2, omega);
         updateGraph3(x0, omega);
+        updateGraph7(x0, omega);
       });
     }
   }
@@ -372,7 +452,10 @@
     updateGraph2(x0, 2, omega);
     updateGraph3(x0, omega);
     updateGraph4(gamma);
+    updateGraph5(gamma);
     updateGraph6(gamma);
+    updateGraph7(x0, omega);
+    updateGraph8(gamma);
   }
 
   if (document.readyState === 'loading') {

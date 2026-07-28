@@ -9,9 +9,9 @@
 <body>
 
 <header class="worksheet-header">
-  <h1>Energy Interchange in Simple Harmonic Motion</h1>
+  <h1>Simple Harmonic Motion &mdash; Comprehensive Worksheet</h1>
   <p class="subtitle">Cambridge International AS &amp; A Level Physics &mdash; 9702/4 Oscillations</p>
-  <span class="syllabus-ref">Syllabus ref: 17.1 &middot; 17.2 &middot; 17.3</span>
+  <span class="syllabus-ref">Syllabus ref: 17.1 &middot; 17.2 &middot; 17.3 &middot; 17.4</span>
 </header>
 
 <main>
@@ -215,19 +215,85 @@
   <h2>4. Period of Oscillation for Common SHM Systems</h2>
 
   <h3>4.1 Mass&ndash;Spring System</h3>
-  <p>For a mass <em>m</em> on a spring of force constant <em>k</em>:</p>
-  <div class="final-formula" style="font-size:1rem;">&omega; = &radic;(k/m) &nbsp; &rArr; &nbsp; T = 2&pi;&radic;(m/k)</div>
+  <p>The period of a mass&ndash;spring oscillator depends only on the mass <em>m</em> and the spring constant <em>k</em>. Let us derive <strong>T = 2&pi;&radic;(m/k)</strong> step by step.</p>
 
-  <h3>4.2 Simple Pendulum</h3>
-  <p>For a pendulum of length <em>L</em> (small-angle approximation):</p>
-  <div class="final-formula" style="font-size:1rem;">&omega; = &radic;(g/L) &nbsp; &rArr; &nbsp; T = 2&pi;&radic;(L/g)</div>
+  <div class="derivation-step">
+    <span class="step-num">Step 1</span>
+    <span class="prompt">&#9654; Write the restoring force on a mass <em>m</em> attached to a spring of force constant <em>k</em> at displacement <em>x</em>.</span>
+    <span class="result">F = &minus;kx</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">Hooke's law: the spring exerts a restoring force proportional to displacement and directed towards equilibrium.</span>
+  </div>
 
-  <p><strong>Key points:</strong></p>
-  <ul>
-    <li>The period of a mass&ndash;spring system is independent of <em>g</em> and depends only on <em>m</em> and <em>k</em>.</li>
-    <li>The period of a pendulum is independent of mass and amplitude (for small angles) &mdash; it depends only on <em>L</em> and <em>g</em>.</li>
-    <li>The period of a pendulum can be used to determine <em>g</em> experimentally.</li>
-  </ul>
+  <div class="derivation-step">
+    <span class="step-num">Step 2</span>
+    <span class="prompt">&#9654; Apply Newton's second law: F = ma. Substitute the restoring force.</span>
+    <span class="result">ma = &minus;kx &nbsp;&rArr;&nbsp; a = &minus;(k/m)x</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The acceleration is proportional to &minus;x with constant of proportionality (k/m).</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 3</span>
+    <span class="prompt">&#9654; Recall the defining equation for SHM: a = &minus;&omega;&sup2;x. Compare with Step 2 to identify &omega;.</span>
+    <span class="result">&omega;&sup2; = k/m &nbsp;&rArr;&nbsp; &omega; = &radic;(k/m)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The angular frequency is determined by the stiffness-to-mass ratio. A stiffer spring (larger <em>k</em>) or a lighter mass gives a higher frequency.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 4</span>
+    <span class="prompt">&#9654; Use the relation between angular frequency and period: &omega; = 2&pi;/T. Substitute for &omega;.</span>
+    <span class="result">2&pi;/T = &radic;(k/m) &nbsp;&rArr;&nbsp; T = 2&pi;&radic;(m/k)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;"><strong>Conceptual insight:</strong> Larger mass &rarr; more inertia &rarr; slower oscillation. Larger <em>k</em> &rarr; stiffer spring &rarr; faster oscillation. The period does NOT depend on amplitude &mdash; this is the property of <strong>isochronism</strong>.</span>
+  </div>
+
+  <div class="final-formula" style="font-size:1.05rem;padding:0.3cm 0.5cm;">
+    T = 2&pi;&radic;(m/k) &nbsp;&nbsp; <span style="font-size:0.9rem;font-weight:400;color:#2b6f9e;">Mass&ndash;spring period &#8212; independent of g and amplitude</span>
+  </div>
+
+  <h3>4.2 Simple Pendulum (small-angle approximation)</h3>
+  <p>For a pendulum bob of mass <em>m</em> on a string of length <em>L</em>, the restoring force is gravity. Let us derive <strong>T = 2&pi;&radic;(L/g)</strong>.</p>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 1</span>
+    <span class="prompt">&#9654; Consider the pendulum displaced by a small angle &theta; from equilibrium. Resolve the weight mg into components. What is the restoring force?</span>
+    <span class="result">Restoring force = &minus;mg sin&theta; &nbsp; (the component perpendicular to the string)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">The tension in the string balances mg cos&theta;. The net restoring force comes from the tangential component of weight.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 2</span>
+    <span class="prompt">&#9654; For small angles, sin&theta; &asymp; &theta; (in radians). Also relate the arc displacement <em>x</em> to &theta;: x = L&theta;.</span>
+    <span class="result">F &asymp; &minus;mg&theta; = &minus;mg(x/L) = &minus;(mg/L)x</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;"><strong>Critical approximation:</strong> For &theta; &lt; 10&deg; (0.17 rad), sin&theta; differs from &theta; by less than 0.5%. Without this approximation, the motion would not be simple harmonic.</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 3</span>
+    <span class="prompt">&#9654; Apply Newton's second law: F = ma. Use the expression for F from Step 2.</span>
+    <span class="result">ma = &minus;(mg/L)x &nbsp;&rArr;&nbsp; a = &minus;(g/L)x</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;">Comparing with a = &minus;&omega;&sup2;x, we see that (g/L) plays the role of &omega;&sup2;. The mass <em>m</em> cancels out!</span>
+  </div>
+
+  <div class="derivation-step">
+    <span class="step-num">Step 4</span>
+    <span class="prompt">&#9654; Identify &omega; and then derive T using &omega; = 2&pi;/T.</span>
+    <span class="result">&omega;&sup2; = g/L &nbsp;&rArr;&nbsp; &omega; = &radic;(g/L) &nbsp;&rArr;&nbsp; T = 2&pi;&radic;(L/g)</span>
+    <span style="display:block;font-size:0.85rem;color:#636c76;"><strong>Conceptual insights:</strong> The period is independent of mass (m cancels). Longer pendulum &rarr; larger period. Weaker gravity (smaller g) &rarr; larger period. This formula enables accurate measurement of g by timing a pendulum.</span>
+  </div>
+
+  <div class="final-formula" style="font-size:1.05rem;padding:0.3cm 0.5cm;">
+    T = 2&pi;&radic;(L/g) &nbsp;&nbsp; <span style="font-size:0.9rem;font-weight:400;color:#2b6f9e;">Pendulum period &#8212; independent of mass and amplitude (small angles only)</span>
+  </div>
+
+  <h3>4.3 Comparison Summary</h3>
+  <table class="data-table" style="min-width:80%;">
+    <tr><th>Property</th><th>Mass&ndash;Spring</th><th>Simple Pendulum</th></tr>
+    <tr><td>Period</td><td>T = 2&pi;&radic;(m/k)</td><td>T = 2&pi;&radic;(L/g)</td></tr>
+    <tr><td>Restoring mechanism</td><td>Elastic (spring)</td><td>Gravitational (weight component)</td></tr>
+    <tr><td>Depends on mass?</td><td>Yes (T &prop; &radic;m)</td><td>No (mass cancels out)</td></tr>
+    <tr><td>Depends on gravity?</td><td>No</td><td>Yes (T &prop; 1/&radic;g)</td></tr>
+    <tr><td>Amplitude limit?</td><td>Ideal spring: any amplitude (Hooke's law limit)</td><td>Small angles only (&theta; &lt; 10&deg; for &lt; 0.5% error)</td></tr>
+    <tr><td>Applications</td><td>Suspension systems, seismometers, clock mechanisms</td><td>Pendulum clocks, measuring g, metronomes</td></tr>
+  </table>
 </section>
 
 <!-- ============================================================ -->
@@ -254,7 +320,7 @@
       <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:#636c76;"><span>0.00</span><span>1.00</span></div>
     </div>
   </div>
-  <p style="font-size:0.88rem;color:#636c76;margin:0 0 0.8rem 0;">&#9654; Adjust sliders to change parameters in real time. Click legend items to toggle curves. Hover over any graph for numerical readout.</p>
+  <p style="font-size:0.88rem;color:#636c76;margin:0 0 0.8rem 0;">&#9654; Adjust sliders to change parameters in real time. Affects all interactive graphs (including phase plot Fig. 7 and resonance curves Fig. 8). Click legend items to toggle curves. Hover over any graph for numerical readout.</p>
 
   <div class="graph-grid">
 
@@ -645,7 +711,7 @@
 <!--  DAMPING & RESONANCE                                         -->
 <!-- ============================================================ -->
 <section>
-  <h2>3. Damping, Forced Oscillations and Resonance</h2>
+  <h2>6. Damping, Forced Oscillations and Resonance</h2>
 
   <h3>3.1 Light, Critical and Heavy Damping</h3>
   <p>The degree of damping determines how quickly the oscillation amplitude decays:</p>
@@ -688,7 +754,7 @@
 <!--  WORKED EXAMPLE                                              -->
 <!-- ============================================================ -->
 <section>
-  <h2>4. Worked Example</h2>
+  <h2>7. Worked Example</h2>
 
   <div class="example-box">
     <p class="given"><strong>Problem:</strong> A 200 g mass oscillates on a spring of spring constant 50 N m<sup>&minus;1</sup> with amplitude 4.0 cm. Determine:</p>
@@ -719,7 +785,7 @@
 <!--  HOTS QUESTION BANK                                          -->
 <!-- ============================================================ -->
 <section>
-  <h2>5. Higher Order Thinking Skills &mdash; Question Bank</h2>
+  <h2>8. Higher Order Thinking Skills &mdash; Question Bank</h2>
 
   <!-- ---------------------------------------------------------- -->
   <!--  QUESTION 1                                                -->
@@ -1021,10 +1087,91 @@
 </section>
 
 <!-- ============================================================ -->
+<!--  CONCEPT CASE STUDIES                                        -->
+<!-- ============================================================ -->
+<section>
+  <h2>9. Concept Case Studies &mdash; Cambridge-Style Reasoning</h2>
+  <p style="font-size:0.9rem;color:#636c76;margin-bottom:0.6rem;">Each case study tests your ability to apply SHM concepts to novel real-world contexts, following CIE 9702 syllabus criteria. Marks and reasoning steps follow Cambridge convention (M1/A1/B1).</p>
+
+  <!-- Case Study A -->
+  <div class="question">
+    <p class="q-header">Case Study A &mdash; Suspension Bridge Oscillations [6]</p>
+    <p class="q-context">A suspension bridge has a natural frequency of oscillation of 0.25 Hz. On a windy day, gusts of wind produce a periodic driving force on the bridge deck at frequencies between 0.10 Hz and 0.50 Hz.</p>
+
+    <div class="q-part"><p><span class="cmd-word">(a) Identify</span> the condition required for resonance to occur. <span class="marks">[1]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(b) Explain</span> why the bridge oscillations would be most dangerous when the wind gust frequency is 0.25 Hz. Use the concept of energy transfer from the driving force to the oscillator. <span class="marks">[3]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(c) Suggest</span> and explain one method engineers could use to reduce the amplitude of the bridge oscillations. <span class="marks">[2]</span></p></div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Case Study A</p>
+    <div class="ms-point"><strong>(a)</strong> B1: Resonance occurs when the driving frequency equals (or is close to) the natural frequency of the bridge. [1]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: At resonance, the driving frequency equals the natural frequency (0.25 Hz). A1: The driving force is in phase with the velocity of the bridge, so work done by the force is positive throughout each cycle &mdash; energy is continuously fed into the system. A1: The amplitude builds up to a maximum, potentially exceeding the structural limits of the bridge and causing damage or collapse. [3]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: Adding dampers (shock absorbers) or tuned mass dampers increases the damping of the bridge structure. A1: Increased damping dissipates energy from the oscillating system, reducing the amplitude at resonance and broadening the resonance curve so that the bridge is less sensitive to any specific driving frequency. [2]</div>
+    <p class="ms-total">Total: [6]</p>
+  </div>
+
+  <!-- Case Study B -->
+  <div class="question">
+    <p class="q-header">Case Study B &mdash; Designing a Seismometer [6]</p>
+    <p class="q-context">A seismometer contains a mass&ndash;spring system designed to detect ground vibrations. The mass is 0.50 kg and the spring constant is adjustable. A seismometer must be critically damped so that it returns to equilibrium quickly after a disturbance.</p>
+
+    <div class="q-part"><p><span class="cmd-word">(a) Calculate</span> the spring constant <em>k</em> required for the seismometer to have a natural period of 2.0 s. <span class="marks">[2]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(b) Explain</span> the meaning of critical damping and why it is desirable in a seismometer rather than light or heavy damping. <span class="marks">[2]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(c) The</span> seismometer is taken to a location where <em>g</em> is 1% smaller. Would the period change? Justify your answer. <span class="marks">[2]</span></p></div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Case Study B</p>
+    <div class="ms-point"><strong>(a)</strong> M1: T = 2&pi;&radic;(m/k) &rarr; k = 4&pi;&sup2;m/T&sup2;. A1: k = 4&pi;&sup2; &times; 0.50 / 4.0 = 4.93 N m<sup>&minus;1</sup> (accept 4.9&ndash;5.0 N m<sup>&minus;1</sup>). [2]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: Critical damping returns the system to equilibrium in the shortest possible time without oscillating. A1: Light damping would overshoot (oscillate), giving a delayed reading. Heavy damping would return too slowly, missing rapid successive tremors. Critical damping gives the fastest accurate reading. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> M1: The period of a mass&ndash;spring system is T = 2&pi;&radic;(m/k), which does NOT contain <em>g</em>. A1: Therefore, the period remains unchanged. (A pendulum-based seismometer <em>would</em> be affected, but this mass&ndash;spring system is gravity-independent.) [2]</div>
+    <p class="ms-total">Total: [6]</p>
+  </div>
+
+  <!-- Case Study C -->
+  <div class="question">
+    <p class="q-header">Case Study C &mdash; Microwave Oven Resonance [5]</p>
+    <p class="q-context">A microwave oven operates at 2.45 GHz to heat food. Water molecules in the food have a natural resonance frequency near this value. A student argues that the oven works by forcing the water molecules to oscillate at 2.45 GHz.</p>
+
+    <div class="q-part"><p><span class="cmd-word">(a) Explain</span> why the microwaves cause water molecules to gain energy efficiently. Refer to the SHM concept of resonance. <span class="marks">[2]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(b) Discuss</span> whether the student's statement that molecules are "forced to oscillate at 2.45 GHz" is accurate. What actually happens to the molecules? <span class="marks">[2]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(c) Suggest</span> why microwave oven doors have a metal mesh with holes smaller than the wavelength of 2.45 GHz radiation. <span class="marks">[1]</span></p></div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Case Study C</p>
+    <div class="ms-point"><strong>(a)</strong> M1: The driving frequency (2.45 GHz) closely matches the natural resonance frequency of water molecules. A1: At resonance, energy transfer from the microwaves to the molecules is most efficient &mdash; the oscillating electric field does maximum work on the polar water molecules, increasing their kinetic (rotational) energy, which is experienced as heating. [2]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: The statement is partially inaccurate. The molecules are not forced to oscillate at 2.45 GHz; they oscillate (rotate) at their own natural frequency, but the driving field at 2.45 GHz most effectively pumps energy into this oscillation. A1: The molecules absorb energy and increase their rotational kinetic energy (temperature), which is then shared via collisions with neighbouring molecules. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> B1: The mesh acts as a Faraday cage &mdash; the holes are smaller than the wavelength (~12.2 cm), so the microwaves cannot pass through, but visible light can. [1]</div>
+    <p class="ms-total">Total: [5]</p>
+  </div>
+
+  <!-- Case Study D -->
+  <div class="question">
+    <p class="q-header">Case Study D &mdash; Car Suspension System [5]</p>
+    <p class="q-context">A car's suspension system uses springs and shock absorbers (dampers) to provide a comfortable ride. Each wheel has a spring of spring constant 2.0 &times; 10<sup>4</sup> N m<sup>&minus;1</sup> supporting a quarter of the car's mass (approximately 300 kg).</p>
+
+    <div class="q-part"><p><span class="cmd-word">(a) Calculate</span> the natural frequency of the car body (mass&ndash;spring system). <span class="marks">[2]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(b) Explain</span> why the shock absorber is designed to provide critical damping rather than light damping. <span class="marks">[2]</span></p></div>
+    <div class="q-part"><p><span class="cmd-word">(c) Predict</span> what would happen if the spring corrodes and its spring constant decreases. How would the ride quality change? <span class="marks">[1]</span></p></div>
+  </div>
+
+  <div class="mark-scheme">
+    <p class="ms-header">Mark Scheme &mdash; Case Study D</p>
+    <div class="ms-point"><strong>(a)</strong> M1: f = (1/2&pi;)&radic;(k/m) = (1/2&pi;)&radic;(2.0 &times; 10<sup>4</sup> / 300). A1: f = (1/2&pi;)&radic;(66.7) = 1.30 Hz (accept 1.3 Hz). Period T = 0.77 s. [2]</div>
+    <div class="ms-point"><strong>(b)</strong> M1: Light damping would cause the car to oscillate (bounce repeatedly) after hitting a bump, leading to an uncomfortable ride and poor tyre contact. A1: Critical damping returns the car body to equilibrium in the shortest time without oscillation, giving a smooth ride and rapid tyre recovery. [2]</div>
+    <div class="ms-point"><strong>(c)</strong> B1: A lower k reduces the natural frequency, making the ride feel softer/floatier and increasing the tendency to oscillate at lower bump frequencies. [1]</div>
+    <p class="ms-total">Total: [5]</p>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
 <!--  SUMMARY OF KEY EQUATIONS                                    -->
 <!-- ============================================================ -->
 <section>
-  <h2>7. Summary of Key Equations</h2>
+  <h2>10. Summary of Key Equations</h2>
   <table class="data-table" style="min-width:70%;">
     <tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>
     <tr><td>Definition of SHM</td><td>a = &minus;&omega;&sup2;x</td><td>Acceleration &prop; &minus;displacement</td></tr>

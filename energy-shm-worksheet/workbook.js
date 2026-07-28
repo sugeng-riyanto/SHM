@@ -126,6 +126,7 @@
       workedExample() +
       '<div class="appendix"></div>' +
       questionsSection(q5grid) +
+      conceptCaseStudies() +
       markSchemeAppendix() +
       summaryEquations() +
       '</div>\n</body>\n</html>';
@@ -321,7 +322,7 @@
   // ──────────────────────────────────────────────────────────────
 
   function questionsSection(q5grid) {
-    return '<h2>8. Practice Questions</h2>' +
+    return '<h2>8. Higher Order Thinking Skills \u2014 Question Bank</h2>' +
       q1() + q2() + q3() + q4() + q5(q5grid) + q6() + q7();
   }
 
@@ -402,11 +403,72 @@
   }
 
   // ──────────────────────────────────────────────────────────────
+  //  Concept case studies
+  // ──────────────────────────────────────────────────────────────
+
+  function conceptCaseStudies() {
+    return '<h2>9. Concept Case Studies \u2014 Cambridge-Style Reasoning</h2>' +
+      '<p style="font-size:10pt;color:#636c76;">Each case study applies SHM concepts to real-world contexts following CIE 9702 syllabus criteria (M1/A1/B1 convention).</p>' +
+
+      /* Case A */
+      '<h3>Case Study A \u2014 Suspension Bridge Oscillations [6]</h3>' +
+      '<div class="question">' +
+      '<p class="q-context">A suspension bridge has natural frequency 0.25 Hz. Wind gusts produce a periodic driving force at frequencies between 0.10 Hz and 0.50 Hz.</p>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Identify the condition required for resonance. <span class="marks">[1]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Explain why oscillations are most dangerous at 0.25 Hz. Use energy transfer concepts. <span class="marks">[3]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Suggest and explain one method to reduce oscillation amplitude. <span class="marks">[2]</span></div>' +
+      '</div>' +
+      '<div class="mark-scheme">' +
+      '<div class="ms-point">(a) B1: When driving frequency equals natural frequency of the bridge. [1]</div>' +
+      '<div class="ms-point">(b) M1: At resonance, driving frequency = natural frequency (0.25 Hz). A1: Driving force in phase with velocity, so work done positive each cycle. A1: Amplitude builds to maximum, potentially exceeding structural limits. [3]</div>' +
+      '<div class="ms-point">(c) M1: Add dampers / tuned mass dampers. A1: Damping dissipates energy, reducing resonance amplitude and broadening the curve. [2]</div></div>' +
+
+      /* Case B */
+      '<h3>Case Study B \u2014 Designing a Seismometer [6]</h3>' +
+      '<div class="question">' +
+      '<p class="q-context">A 0.50 kg mass\u2013spring seismometer must be critically damped with natural period 2.0 s.</p>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Calculate spring constant k for T = 2.0 s. <span class="marks">[2]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Explain critical damping and why it is desirable here. <span class="marks">[2]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Would the period change if g were 1% smaller? Justify. <span class="marks">[2]</span></div>' +
+      '</div>' +
+      '<div class="mark-scheme">' +
+      '<div class="ms-point">(a) M1: T = 2\u03C0\u221A(m/k) \u2192 k = 4\u03C0\u00B2m/T\u00B2. A1: k = 4\u03C0\u00B2 \u00D7 0.50 / 4.0 = 4.93 N m\u207B\u00B9. [2]</div>' +
+      '<div class="ms-point">(b) M1: Critical damping returns to equilibrium fastest without oscillating. A1: Light damping overshoots; heavy is too slow. Critical gives fastest accurate reading. [2]</div>' +
+      '<div class="ms-point">(c) M1: Mass\u2013spring period T = 2\u03C0\u221A(m/k) does NOT contain g. A1: Period unchanged. [2]</div></div>' +
+
+      /* Case C */
+      '<h3>Case Study C \u2014 Microwave Oven Resonance [5]</h3>' +
+      '<div class="question">' +
+      '<p class="q-context">A microwave oven operates at 2.45 GHz. Water molecules have a natural resonance near this frequency.</p>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Explain why microwaves heat water efficiently. Refer to resonance. <span class="marks">[2]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Is it accurate that molecules are "forced to oscillate at 2.45 GHz"? Discuss. <span class="marks">[2]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Why do oven doors have a metal mesh with holes < wavelength? <span class="marks">[1]</span></div>' +
+      '</div>' +
+      '<div class="mark-scheme">' +
+      '<div class="ms-point">(a) M1: Driving frequency (2.45 GHz) matches water\u2019s natural resonance. A1: Energy transfer most efficient at resonance; oscillating electric field does maximum work on polar molecules. [2]</div>' +
+      '<div class="ms-point">(b) M1: Partially inaccurate. Molecules oscillate at their own frequency; the field pumps energy into this oscillation. A1: Molecules increase rotational KE (heat), shared via collisions. [2]</div>' +
+      '<div class="ms-point">(c) B1: Faraday cage: holes < wavelength (~12.2 cm) block microwaves but pass visible light. [1]</div></div>' +
+
+      /* Case D */
+      '<h3>Case Study D \u2014 Car Suspension System [5]</h3>' +
+      '<div class="question">' +
+      '<p class="q-context">A car spring has k = 2.0 \u00D7 10\u2074 N m\u207B\u00B9, supporting 300 kg per wheel.</p>' +
+      '<div class="q-part"><span class="cmd-word">(a)</span> Calculate the natural frequency. <span class="marks">[2]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(b)</span> Why are shock absorbers critically damped rather than lightly? <span class="marks">[2]</span></div>' +
+      '<div class="q-part"><span class="cmd-word">(c)</span> Predict the effect if the spring corrodes (k decreases). <span class="marks">[1]</span></div>' +
+      '</div>' +
+      '<div class="mark-scheme">' +
+      '<div class="ms-point">(a) M1: f = (1/2\u03C0)\u221A(k/m) = (1/2\u03C0)\u221A(2.0\u00D710\u2074/300). A1: f = 1.30 Hz. [2]</div>' +
+      '<div class="ms-point">(b) M1: Light damping causes repeated bouncing after a bump. A1: Critical damping returns to equilibrium fastest without oscillation, giving smooth ride. [2]</div>' +
+      '<div class="ms-point">(c) B1: Lower k reduces natural frequency; ride becomes softer/floatier. [1]</div></div>';
+  }
+
+  // ──────────────────────────────────────────────────────────────
   //  Mark scheme appendix
   // ──────────────────────────────────────────────────────────────
 
   function markSchemeAppendix() {
-    return '<h2>9. Mark Scheme Appendix</h2>' +
+    return '<h2>11. Mark Scheme Appendix</h2>' +
       '<p style="font-size:10pt;color:#636c76;">Cambridge 9702 convention: M1/A1/B1. M = method, A = answer, B = independent mark.</p>' +
       '<h3>Question 1 [7]</h3>' +
       '<div class="mark-scheme"><div class="ms-point">(a) M1: Experimental curve consistently below theoretical at all displacements. A1: Error bars (\u00B14%) smaller than deviation (~8%) \u2192 systematic error present. [2]</div>' +
@@ -449,7 +511,7 @@
   // ──────────────────────────────────────────────────────────────
 
   function summaryEquations() {
-    return '<h2>10. Summary of Key Equations</h2>' +
+    return '<h2>12. Summary of Key Equations</h2>' +
       '<table class="summary-table">' +
       '<tr><th>Quantity</th><th>Equation</th><th>Notes</th></tr>' +
       '<tr><td>Definition of SHM</td><td>a = \u2212\u03C9\u00B2x</td><td>Acceleration \u221D \u2212displacement</td></tr>' +
