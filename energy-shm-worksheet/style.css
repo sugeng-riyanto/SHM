@@ -337,11 +337,6 @@ section h3 {
   -webkit-user-select: none;
 }
 
-/* ---- Smooth transitions ---- */
-.graph-svg path[id] {
-  transition: d 0.12s ease;
-}
-
 /* ---- Per-graph slider controls ---- */
 .slider-control {
   margin: 0.5rem auto 0.2rem;

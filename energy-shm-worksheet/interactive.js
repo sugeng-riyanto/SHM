@@ -579,29 +579,23 @@
       });
     }
 
-    var rafPending = false;
     document.querySelectorAll('.param-slider').forEach(function (slider) {
       slider.addEventListener('input', function () {
         var param = this.dataset.param;
         var val = parseFloat(this.value);
         syncParam(param, val);
-        if (rafPending) return;
-        rafPending = true;
-        requestAnimationFrame(function () {
-          rafPending = false;
-          var p = readParams();
-          updateGraph1(p.x0, 2);
-          updateGraph2(p.x0, 2, p.omega);
-          updateGraph3(p.x0, p.omega);
-          updateGraph4(p.gamma);
-          updateGraph5(p.gamma);
-          updateGraph6(p.gamma);
-          updateGraph7(p.x0, p.omega);
-          updateGraph8(p.gamma);
-          if (document.getElementById('graph9')) {
-            updateGraph9(p.omega);
-          }
-        });
+        var p = readParams();
+        updateGraph1(p.x0, 2);
+        updateGraph2(p.x0, 2, p.omega);
+        updateGraph3(p.x0, p.omega);
+        updateGraph4(p.gamma);
+        updateGraph5(p.gamma);
+        updateGraph6(p.gamma);
+        updateGraph7(p.x0, p.omega);
+        updateGraph8(p.gamma);
+        if (document.getElementById('graph9')) {
+          updateGraph9(p.omega);
+        }
       });
     });
   }
